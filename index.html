@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Riku Kanzaki — Robotics Engineer</title>
+  <meta name="description" content="Riku Kanzaki is a robotics engineer building humanoids at Foundation Robotics — from mechanical design and test fixtures to control loops and autonomy." />
+  <meta property="og:title" content="Riku Kanzaki — Robotics Engineer" />
+  <meta property="og:description" content="I build robots from the bracket to the control loop." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23111'/><circle cx='16' cy='16' r='5' fill='%23ff4f00'/></svg>" />
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="mark">RK<span class="dot"></span></a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-meta mono"><span class="pulse"></span>SF <span id="clock">--:--</span></div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow mono">Robotics Engineer · Foundation Robotics</p>
+        <h1>I build robots<br />from the <em>bracket</em><br />to the <em>control loop.</em></h1>
+        <p class="lede">I'm Riku, a mechanical engineer (UIUC MechSE) who works across the whole robot: structures, fixtures and actuators, plus the sensing, controls and autonomy that make them move. Right now I build humanoids in San Francisco.</p>
+        <div class="cta">
+          <a class="btn primary" href="#work">See selected work <span>↓</span></a>
+          <a class="btn" href="mailto:rikukanzaki2003@gmail.com">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-fig">
+        <div class="fig-frame">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <canvas id="arm" aria-label="Interactive two-link robot arm that follows your cursor"></canvas>
+          <div class="fig-cap mono">
+            <span>FIG. 00 — 2-LINK IK, LIVE</span>
+            <span id="readout">θ₁ 0.0° · θ₂ 0.0°</span>
+          </div>
+        </div>
+        <p class="hint mono">↖ move your cursor — the arm solves inverse kinematics in real time</p>
+      </div>
+    </section>
+
+    <!-- SPEC STRIP -->
+    <section class="specs reveal">
+      <div><b>40<small>kn</small></b><span class="mono">autonomous V-hull boat</span></div>
+      <div><b>&lt;2<small>°</small></b><span class="mono">torso-angle estimation error</span></div>
+      <div><b>12<small>motor</small></b><span class="mono">UAV chassis to production</span></div>
+      <div><b>1<small>patent</small></b><span class="mono">motor design, concept → release</span></div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="section">
+      <div class="section-head reveal">
+        <span class="mono idx">01</span>
+        <h2>Selected work</h2>
+        <p>Six projects across humanoids, marine autonomy, aerial systems and assistive robotics.</p>
+      </div>
+
+      <div class="projects">
+        <article class="project reveal wide">
+          <figure class="fig">
+            <svg viewBox="0 0 400 240" class="draw">
+              <!-- glove to robot hand -->
+              <g class="ink">
+                <path d="M70 190 L70 120 M90 190 L90 95 M110 190 L110 92 M130 190 L130 100 M50 190 L40 140" />
+                <rect x="40" y="185" width="100" height="30" rx="6" />
+              </g>
+              <g class="joints">
+                <circle cx="70" cy="150" r="3"/><circle cx="70" cy="120" r="3"/>
+                <circle cx="90" cy="140" r="3"/><circle cx="90" cy="95" r="3"/>
+                <circle cx="110" cy="138" r="3"/><circle cx="110" cy="92" r="3"/>
+                <circle cx="130" cy="145" r="3"/><circle cx="130" cy="100" r="3"/>
+                <circle cx="45" cy="165" r="3"/><circle cx="40" cy="140" r="3"/>
+              </g>
+              <path class="accent dash flow" d="M160 150 C 200 120, 220 120, 250 150" />
+              <text x="205" y="112" class="lbl" text-anchor="middle">TELEOP · RT</text>
+              <g class="ink">
+                <path d="M290 190 L290 150 L285 120 M310 190 L310 140 L312 98 M330 190 L330 140 L333 95 M350 190 L350 145 L355 105 M272 190 L262 160 L255 140" />
+                <rect x="262" y="185" width="100" height="30" rx="2" />
+              </g>
+              <g class="joints accent-fill">
+                <circle cx="290" cy="150" r="4"/><circle cx="310" cy="140" r="4"/><circle cx="330" cy="140" r="4"/><circle cx="350" cy="145" r="4"/><circle cx="262" cy="160" r="4"/>
+              </g>
+              <text x="90" y="232" class="lbl" text-anchor="middle">OPERATOR GLOVE</text>
+              <text x="312" y="232" class="lbl" text-anchor="middle">ROBOT HAND</text>
+            </svg>
+            <figcaption class="mono">FIG. 01</figcaption>
+          </figure>
+          <div class="project-body">
+            <p class="meta mono">Foundation Robotics · 2026 — Present</p>
+            <h3>Real-time teleoperation smart gloves</h3>
+            <p>Lead engineer for the gloves operators use to drive a humanoid's hands. I own the hardware–software integration, from sensing on the glove to joint commands on the robot hand, with latency low enough to feel direct.</p>
+            <ul class="tags mono"><li>Teleoperation</li><li>Sensor integration</li><li>Real-time control</li></ul>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <figure class="fig">
+            <svg viewBox="0 0 400 240" class="draw">
+              <path class="ink" d="M90 70 L310 70 L280 120 L200 175 L120 120 Z" />
+              <path class="ink thin" d="M90 70 L200 70 M200 70 L200 175" />
+              <path class="accent" d="M60 150 Q 200 200 340 150" />
+              <path class="ink thin dash" d="M40 130 L360 130" />
+              <text x="365" y="126" class="lbl" text-anchor="end">WL</text>
+              <path class="ink thin" d="M200 175 L230 200" /><text x="234" y="210" class="lbl">DEADRISE</text>
+              <text x="200" y="45" class="lbl" text-anchor="middle">PLANING V-HULL · SECTION A–A</text>
+            </svg>
+            <figcaption class="mono">FIG. 02</figcaption>
+          </figure>
+          <div class="project-body">
+            <p class="meta mono">ASNE · 2025 — 2026</p>
+            <h3>Autonomous boat, 40 knots</h3>
+            <p>Owned the full autonomy stack (ROS + ArduPilot) and filtered GPS, IMU and vision noise for real-time state estimation. I also laid up the fiberglass planing hull and designed the power and thermal system.</p>
+            <ul class="tags mono"><li>ROS</li><li>ArduPilot</li><li>Sensor fusion</li><li>Composites</li></ul>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <figure class="fig">
+            <svg viewBox="0 0 400 240" class="draw">
+              <path class="ink thin" d="M30 120 L370 120 M30 40 L30 200" />
+              <path class="accent wave" d="M30 120 C 45 60, 60 60, 75 120 S 105 180, 120 120 S 150 60, 165 120 S 195 180, 210 120 S 240 60, 255 120 S 285 180, 300 120 S 330 60, 345 120" />
+              <path class="ink thin dash" d="M75 50 L75 190 M165 50 L165 190" />
+              <text x="120" y="45" class="lbl" text-anchor="middle">1 / f</text>
+              <text x="370" y="215" class="lbl" text-anchor="end">TREMOR · 4–6 Hz</text>
+            </svg>
+            <figcaption class="mono">FIG. 03</figcaption>
+          </figure>
+          <div class="project-body">
+            <p class="meta mono">UIUC Human Dynamics &amp; Control Lab · 2025</p>
+            <h3>Parkinsonian training robot</h3>
+            <p>Robotic arm and leg modules that reproduce 4–6 Hz tremor and jerk-like rigidity so clinicians can practise on them. A redesign of the electromechanical system cut motion error by about 30%.</p>
+            <ul class="tags mono"><li>Mechatronics</li><li>Clinical</li><li>Motion fidelity</li></ul>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <figure class="fig">
+            <svg viewBox="0 0 400 240" class="draw">
+              <g transform="translate(200 120)">
+                <g class="ink arms">
+                  <line x1="0" y1="0" x2="0" y2="-85"/><line x1="0" y1="0" x2="74" y2="-42"/><line x1="0" y1="0" x2="74" y2="42"/>
+                  <line x1="0" y1="0" x2="0" y2="85"/><line x1="0" y1="0" x2="-74" y2="42"/><line x1="0" y1="0" x2="-74" y2="-42"/>
+                </g>
+                <g class="rotors">
+                  <circle cx="0" cy="-85" r="22"/><circle cx="74" cy="-42" r="22"/><circle cx="74" cy="42" r="22"/>
+                  <circle cx="0" cy="85" r="22"/><circle cx="-74" cy="42" r="22"/><circle cx="-74" cy="-42" r="22"/>
+                </g>
+                <g class="rotors inner">
+                  <circle cx="0" cy="-85" r="13"/><circle cx="74" cy="-42" r="13"/><circle cx="74" cy="42" r="13"/>
+                  <circle cx="0" cy="85" r="13"/><circle cx="-74" cy="42" r="13"/><circle cx="-74" cy="-42" r="13"/>
+                </g>
+                <circle class="ink fill-paper" r="20"/><circle class="accent-fill" r="4"/>
+              </g>
+              <text x="20" y="225" class="lbl">6 ARMS × COAXIAL = 12 MOTORS</text>
+            </svg>
+            <figcaption class="mono">FIG. 04</figcaption>
+          </figure>
+          <div class="project-body">
+            <p class="meta mono">Aerial Industries · 2024</p>
+            <h3>12-motor UAV chassis</h3>
+            <p>Took a heavy-lift multirotor from prototype to flight-ready production hardware. I built parametric CAD for the propulsion and payload systems, balancing structural, thermal and electrical requirements.</p>
+            <ul class="tags mono"><li>Production release</li><li>Parametric CAD</li><li>Propulsion</li></ul>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <figure class="fig">
+            <svg viewBox="0 0 400 240" class="draw">
+              <g transform="translate(200 120)">
+                <circle class="ink" r="90"/>
+                <circle class="ink thin" r="70"/>
+                <g class="teeth ink">
+                  <rect x="-6" y="-70" width="12" height="28" transform="rotate(0)"/><rect x="-6" y="-70" width="12" height="28" transform="rotate(30)"/>
+                  <rect x="-6" y="-70" width="12" height="28" transform="rotate(60)"/><rect x="-6" y="-70" width="12" height="28" transform="rotate(90)"/>
+                  <rect x="-6" y="-70" width="12" height="28" transform="rotate(120)"/><rect x="-6" y="-70" width="12" height="28" transform="rotate(150)"/>
+                  <rect x="-6" y="-70" width="12" height="28" transform="rotate(180)"/><rect x="-6" y="-70" width="12" height="28" transform="rotate(210)"/>
+                  <rect x="-6" y="-70" width="12" height="28" transform="rotate(240)"/><rect x="-6" y="-70" width="12" height="28" transform="rotate(270)"/>
+                  <rect x="-6" y="-70" width="12" height="28" transform="rotate(300)"/><rect x="-6" y="-70" width="12" height="28" transform="rotate(330)"/>
+                </g>
+                <g class="spin"><circle class="accent" r="36"/><line class="accent" x1="0" y1="0" x2="0" y2="-36"/></g>
+                <circle class="accent-fill" r="5"/>
+              </g>
+              <text x="20" y="225" class="lbl">STATOR / ROTOR · PATENTED</text>
+            </svg>
+            <figcaption class="mono">FIG. 05</figcaption>
+          </figure>
+          <div class="project-body">
+            <p class="meta mono">Aerial Mechanica · 2025</p>
+            <h3>Patented motor design</h3>
+            <p>Owned a new motor design end to end, from first concept through production release. I also used FEA and risk analysis to validate the carbon-fiber frame and landing legs under dynamic flight loads.</p>
+            <ul class="tags mono"><li>Electromechanical</li><li>FEA</li><li>Carbon fiber</li></ul>
+          </div>
+        </article>
+
+        <article class="project reveal wide flip">
+          <figure class="fig">
+            <svg viewBox="0 0 400 240" class="draw">
+              <path class="ink" d="M120 200 L280 200" />
+              <path class="ink" d="M150 200 L150 120 Q150 100 170 100" />
+              <path class="accent" d="M200 200 L232 70" />
+              <circle class="ink fill-paper" cx="232" cy="58" r="14"/>
+              <path class="ink thin dash" d="M200 200 L200 60" />
+              <path class="accent" d="M200 150 A50 50 0 0 1 212 151.5" />
+              <text x="212" y="140" class="lbl">θ</text>
+              <circle class="joints accent-fill" cx="200" cy="200" r="5"/>
+              <text x="300" y="80" class="lbl">ENCODER + ToF</text>
+              <text x="300" y="96" class="lbl">ERR &lt; 2°</text>
+              <path class="ink thin" d="M296 84 L245 84" />
+            </svg>
+            <figcaption class="mono">FIG. 06</figcaption>
+          </figure>
+          <div class="project-body">
+            <p class="meta mono">UIUC Human Dynamics &amp; Control Lab · 2024 — 2025</p>
+            <h3>Assistive torso-driven backrest</h3>
+            <p>A hybrid sensing system (rotary encoders + time-of-flight) that estimates torso angle to within 2° for hands-free control. It sits on a compliant backrest with hard angle limits, so it can safely "hug" the user.</p>
+            <ul class="tags mono"><li>Sensing</li><li>Compliant mechanisms</li><li>HRI</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="section-head reveal">
+        <span class="mono idx">02</span>
+        <h2>Experience</h2>
+        <p>Four teams, three domains: humanoids, energy, and aerial robotics.</p>
+      </div>
+      <ol class="timeline">
+        <li class="reveal">
+          <div class="when mono">May 2026 — Now</div>
+          <div class="what">
+            <h3>Foundation Robotics <span>· Robotics Build Engineer</span></h3>
+            <p class="where mono">San Francisco, CA</p>
+            <ul>
+              <li>Built a real-time catch policy and a vision-based navigation policy that maps rooms from the robot's onboard cameras.</li>
+              <li>Tuned PID gains on humanoid joint actuator loops for better tracking, stability and response.</li>
+              <li>Built a robot-arm ChArUco/AprilTag calibration rig that checks every camera before install, plus EtherCAT diagnostics that separate hardware faults from software faults.</li>
+              <li>Designed production test fixtures, compute bracket (with thermal analysis), battery integration hardware and full-body assembly processes.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="when mono">Jan — May 2026</div>
+          <div class="what">
+            <h3>Tesla <span>· Mechanical Tooling / Process Engineering Intern, Energy</span></h3>
+            <p class="where mono">Bay Area, CA</p>
+            <ul>
+              <li>Designed tooling and hardware in SolidWorks with DFM in mind; rapid-prototyped with 3D printing and machining.</li>
+              <li>Developed vehicle hardware retrofits for service-readiness and durability; wrote 10+ standardized service procedures.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="when mono">Apr — Aug 2025</div>
+          <div class="what">
+            <h3>Aerial Mechanica <span>· Systems Engineering Intern</span></h3>
+            <p class="where mono">Remote / Singapore</p>
+            <ul><li>Patented motor design from concept to production; FEA validation of carbon-fiber frame and landing legs.</li></ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="when mono">May — Aug 2024</div>
+          <div class="what">
+            <h3>Aerial Industries <span>· Engineering Intern</span></h3>
+            <p class="where mono">Pendleton, OR</p>
+            <ul><li>Led production release of a 12-motor UAV chassis; parametric CAD for propulsion and payload.</li></ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research" class="section">
+      <div class="section-head reveal">
+        <span class="mono idx">03</span>
+        <h2>Research &amp; education</h2>
+      </div>
+      <div class="research">
+        <div class="card reveal">
+          <p class="meta mono">Human Dynamics and Control Lab · UIUC MechSE · 2024 — 2026</p>
+          <h3>Undergraduate researcher</h3>
+          <p>Advised by Prof. Elizabeth T. Hsiao-Wecksler. I worked on assistive and clinical-training robots where the physical design matters as much as the control: compliance, pinch-point safety and comfort, alongside accuracy.</p>
+        </div>
+        <div class="card reveal">
+          <p class="meta mono">Publication · IMMERSE Symposium · Apr 2025</p>
+          <h3><em>Immersive VR-Based Evaluation of Hands-Free Torso-Driven Control for Virtual Robot Navigation</em></h3>
+          <p class="mono small">Fulss R., Song S.Y., Moore P., <b>Kanzaki R.</b>, Dao L., Hsiao-Wecksler E.T.</p>
+        </div>
+        <div class="card reveal">
+          <p class="meta mono">University of Illinois Urbana-Champaign · Dec 2025</p>
+          <h3>B.S. Mechanical Engineering</h3>
+          <p>GPA 3.58 / 4.0</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="section">
+      <div class="section-head reveal">
+        <span class="mono idx">04</span>
+        <h2>Toolkit</h2>
+      </div>
+      <div class="caps">
+        <div class="reveal">
+          <h4 class="mono">// Mechanical</h4>
+          <p>SolidWorks · Siemens NX · CATIA v6 · Fusion 360 · FEA (Ansys, Abaqus) · Thermal analysis · GD&amp;T · DFM · Fixture &amp; tooling design · Composite layup · Machining · 3D printing</p>
+        </div>
+        <div class="reveal">
+          <h4 class="mono">// Controls &amp; autonomy</h4>
+          <p>ROS · ArduPilot · PID tuning · EtherCAT · Sensor filtering &amp; fusion · Camera calibration (ChArUco / AprilTag) · Teleoperation · Vision-based navigation</p>
+        </div>
+        <div class="reveal">
+          <h4 class="mono">// Software</h4>
+          <p>Python · C / C++ · MATLAB / Simulink · Java</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact reveal">
+      <p class="mono eyebrow">05 — Contact</p>
+      <h2>Let's build something<br /><em>that moves.</em></h2>
+      <div class="contact-links">
+        <a href="mailto:rikukanzaki2003@gmail.com">rikukanzaki2003@gmail.com <span>↗</span></a>
+        <a href="https://linkedin.com/in/rikukanzaki" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot mono">
+    <span>© 2026 Riku Kanzaki</span>
+    <span>DWG NO. RK-001 · REV A · SCALE 1:1</span>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
