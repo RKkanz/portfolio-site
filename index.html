@@ -69,7 +69,7 @@
       <div class="section-head reveal">
         <span class="mono idx">01</span>
         <h2>Selected work</h2>
-        <p>Six projects across humanoids, marine autonomy, aerial systems and assistive robotics, plus a side project.</p>
+        <p>Six projects across humanoids, marine autonomy, aerial systems and assistive robotics, plus the robots and tools I build on my own time.</p>
       </div>
 
       <div class="projects">
@@ -234,6 +234,74 @@
           </div>
         </article>
 
+        <article class="project reveal wide">
+          <figure class="fig">
+            <svg viewBox="0 0 400 240" class="draw" role="img" aria-label="Schematic figure: wheel-legged biped with five-bar legs"><title>Schematic: follow-me-robo wheel-legged biped</title>
+              <rect class="ink fill-paper" x="150" y="40" width="100" height="62" rx="4" />
+              <g class="ink thin"><circle cx="182" cy="66" r="7"/><circle cx="218" cy="66" r="7"/></g>
+              <g class="ink">
+                <path d="M175 102 L150 145 L176 190 M205 102 L206 148 L176 190" />
+                <path d="M195 102 L224 145 L248 190 M225 102 L270 140 L248 190" />
+              </g>
+              <circle class="ink fill-paper" cx="176" cy="190" r="26"/><circle class="ink fill-paper" cx="248" cy="190" r="26"/>
+              <g class="joints accent-fill">
+                <circle cx="175" cy="102" r="4"/><circle cx="205" cy="102" r="4"/><circle cx="195" cy="102" r="4"/><circle cx="225" cy="102" r="4"/>
+                <circle cx="176" cy="190" r="4"/><circle cx="248" cy="190" r="4"/>
+              </g>
+              <path class="ink thin dash" d="M40 216 L360 216" />
+              <path class="accent dash flow" d="M280 70 L340 70" /><text x="345" y="74" class="lbl">FOLLOW</text>
+              <text x="20" y="232" class="lbl">FIVE-BAR LEGS · L0 5–16 cm · GAIN-SCHEDULED LQR</text>
+            </svg>
+            <figcaption class="mono">FIG. 07</figcaption>
+          </figure>
+          <div class="project-body">
+            <p class="meta mono">Personal build · 2026 — in progress</p>
+            <h3>follow-me-robo: wheel-legged biped</h3>
+            <p>A small wheel-legged biped meant to follow me at walking pace, film, hop, self-right and hand things over with one arm. Each leg is a five-bar linkage with a wheel at the foot, driven by drone motors through 3D-printed planetary gearboxes on FOC drivers over CAN. An ESP32 runs balance on its own, so the robot stays upright even if the Raspberry Pi doing vision and person-tracking crashes. I'm designing it in simulation first: a gain-scheduled LQR stays stable across the full 5–16 cm leg-length range, a leg model showed a 25 cm jump would sit at the motors' burst-current limit with a 6:1 reduction (so the hips moved to 8:1), and a robustness sweep set a hard 2 ms sensor-latency budget.</p>
+            <ul class="tags mono"><li>LQR</li><li>Legged robotics</li><li>Simulation</li><li>FOC / CAN</li></ul>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <figure class="fig photo swap">
+            <img src="media/smallbot-exterior.jpg" width="1000" height="750" loading="lazy" alt="Render of Small-bot: a tracked desk robot with a round camera head and two servo arms, next to a ruler for scale">
+            <img src="media/smallbot-xray.jpg" width="1000" height="750" loading="lazy" alt="X-ray render of Small-bot showing the Raspberry Pi, motor driver, battery and servos inside the shell" class="alt">
+            <figcaption class="mono">FIG. 08 · HOVER FOR X-RAY</figcaption>
+          </figure>
+          <div class="project-body">
+            <p class="meta mono">Personal build · 2026 — in progress</p>
+            <h3>Small-bot: desk rover</h3>
+            <p>A palm-sized tracked robot with two servo arms that wanders a desk without falling off. I modeled it in Blender from part datasheets (Pi Zero 2 W, N20 gearmotors, TB6612 driver, four infrared cliff sensors) with fully printed tracks. Safety lives in the robot layer, under the behavior code, so no planner can override a cliff stop. Escapes are steered by which sensors fired, never by reversing the last command, because a flickering sensor would otherwise reverse the robot's own retreat. The code is tested in simulation and on mocked GPIO before hardware arrives.</p>
+            <ul class="tags mono"><li>Raspberry Pi</li><li>Python</li><li>Safety layering</li><li>Blender</li></ul>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <figure class="fig">
+            <svg viewBox="0 0 400 240" class="draw" role="img" aria-label="Schematic figure: Vigil, a phone controlling a hub that dispatches worker agents"><title>Schematic: Vigil agent hub</title>
+              <rect class="ink fill-paper" x="34" y="80" width="46" height="84" rx="8" />
+              <path class="ink thin" d="M50 154 L64 154" />
+              <path class="accent dash flow" d="M84 122 L150 122" />
+              <rect class="ink fill-paper" x="152" y="92" width="86" height="60" rx="3" />
+              <text x="195" y="118" class="lbl" text-anchor="middle">HUB</text>
+              <text x="195" y="132" class="lbl" text-anchor="middle">RUST</text>
+              <g class="ink thin"><path d="M238 122 L290 60 M238 122 L290 122 M238 122 L290 184" /></g>
+              <g class="joints"><circle cx="300" cy="60" r="11"/><circle cx="300" cy="122" r="11"/><circle cx="300" cy="184" r="11"/></g>
+              <g class="accent-fill"><circle cx="300" cy="60" r="3"/><circle cx="300" cy="122" r="3"/><circle cx="300" cy="184" r="3"/></g>
+              <text x="320" y="64" class="lbl">PLAN</text><text x="320" y="126" class="lbl">BUILD</text><text x="320" y="188" class="lbl">VERIFY</text>
+              <text x="57" y="182" class="lbl" text-anchor="middle">PHONE</text>
+              <text x="20" y="225" class="lbl">MASTER → WORKERS · GIT WORKTREES</text>
+            </svg>
+            <figcaption class="mono">FIG. 09</figcaption>
+          </figure>
+          <div class="project-body">
+            <p class="meta mono">Side project · Rust · 2026</p>
+            <h3>Vigil: agent control panel</h3>
+            <p>A single Rust binary (axum + tokio) and phone UI that runs AI coding agents on my laptop. A master agent dispatches worker agents into project folders, gives parallel workers their own git worktrees and merges them back automatically, and tracks everything on a task board. Its autopilot splits a goal into dependent steps, runs them, executes the test checks itself and has a fresh verifier sign off. Trimming what each agent loads cut startup context from 21.3k to 8.4k tokens. Vigil's autopilot finished this site.</p>
+            <ul class="tags mono"><li>Rust</li><li>axum / tokio</li><li>LLM agents</li><li>Tooling</li></ul>
+          </div>
+        </article>
+
         <article class="project reveal wide flip">
           <figure class="fig">
             <svg viewBox="0 0 400 240" class="draw" role="img" aria-label="Schematic figure: handcad"><title>Schematic: handcad</title>
@@ -249,7 +317,7 @@
               </g>
               <text x="20" y="225" class="lbl">HAND-SKELETON OVERLAY</text>
             </svg>
-            <figcaption class="mono">FIG. 07</figcaption>
+            <figcaption class="mono">FIG. 10</figcaption>
           </figure>
           <div class="project-body">
             <p class="meta mono">Side project</p>
@@ -324,7 +392,7 @@
         <div class="card reveal">
           <p class="meta mono">Human Dynamics and Control Lab · UIUC · Aug 2024 — Jan 2026</p>
           <h3>Undergraduate researcher</h3>
-          <p>I worked on two projects, an assistive backrest and a Parkinsonian training robot:  assistive and clinical-training robots where the physical design matters as much as the control: compliance, pinch-point safety and comfort, alongside accuracy.</p>
+          <p>I worked on two assistive and clinical-training robots, an assistive backrest and a Parkinsonian training robot, where the physical design matters as much as the control: compliance, pinch-point safety and comfort, alongside accuracy.</p>
         </div>
         <div class="card reveal">
           <p class="meta mono">Publication · IMMERSE Symposium, UIUC · Apr 29–30, 2025</p>
