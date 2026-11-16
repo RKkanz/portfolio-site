@@ -231,3 +231,13 @@ h2 { font: 400 clamp(40px, 5vw, 64px)/1 var(--serif); letter-spacing: -.02em; }
   .timeline > li { grid-template-columns: 1fr; gap: 8px; }
   .foot { flex-direction: column; gap: 6px; }
 }
+
+/* SMALL SCREENS / OVERFLOW SAFETY */
+svg, canvas, img { max-width: 100%; }
+.mono, .foot, .contact-links a, p, li, h1, h2, h3 { overflow-wrap: anywhere; }
+@media (max-width: 480px) {
+  .project.wide .project-body { padding: 20px; }
+  .contact-links a { padding: 14px 18px; font-size: 14px; }
+  .specs { grid-template-columns: 1fr; }
+  .specs div { border-right: 0 !important; border-bottom: 1px solid var(--rule); }
+}

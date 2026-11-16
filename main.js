@@ -8,11 +8,15 @@ const tick = () => {
 tick();
 setInterval(tick, 15000);
 
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // Scroll reveal
 const io = new IntersectionObserver((entries) => {
   for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
 }, { threshold: 0.15 });
-document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+document.querySelectorAll(".reveal").forEach((el) => {
+  if (reduceMotion) el.classList.add("in"); else io.observe(el);
+});
 
 // Hero: 2-link planar arm, analytic IK, target smoothed with a critically-damped spring
 const canvas = document.getElementById("arm");
@@ -40,7 +44,7 @@ function resize() {
   L1 = H * 0.30; L2 = H * 0.25;
   if (!tip.x) { tip.x = base.x + L1 * 0.6; tip.y = base.y - L1; }
 }
-window.addEventListener("resize", resize);
+window.addEventListener("resize", () => { resize(); if (reduceMotion) frame(0); });
 resize();
 
 const setPointer = (e) => {
@@ -48,8 +52,10 @@ const setPointer = (e) => {
   pointer = { x: e.clientX - r.left, y: e.clientY - r.top };
   lastMove = performance.now();
 };
-window.addEventListener("pointermove", setPointer);
-canvas.addEventListener("pointerdown", setPointer);
+if (!reduceMotion) {
+  window.addEventListener("pointermove", setPointer);
+  canvas.addEventListener("pointerdown", setPointer);
+}
 
 function solveIK(tx, ty) {
   let dx = tx - base.x, dy = ty - base.y;
@@ -83,16 +89,17 @@ function joint(x, y, r, fill) {
 
 function frame(t) {
   // Idle: trace a lissajous when the user isn't driving the arm
-  const idle = !pointer || t - lastMove > 2500;
+  const idle = reduceMotion || !pointer || t - lastMove > 2500;
   const target = idle
     ? { x: base.x + Math.sin(t / 1400) * L1 * 0.9, y: base.y - L1 * 0.95 + Math.sin(t / 700) * L2 * 0.45 }
     : pointer;
 
+  if (reduceMotion) { tip.x = target.x; tip.y = target.y; }
   // Spring-damper on the tip (k, c chosen near critical damping)
   const k = 0.012, c = 0.2;
   tip.vx += (target.x - tip.x) * k - tip.vx * c;
   tip.vy += (target.y - tip.y) * k - tip.vy * c;
-  tip.x += tip.vx; tip.y += tip.vy;
+  if (!reduceMotion) { tip.x += tip.vx; tip.y += tip.vy; }
 
   const { q1, q2 } = solveIK(tip.x, tip.y);
   const ex = base.x + L1 * Math.cos(q1), ey = base.y + L1 * Math.sin(q1);
@@ -154,6 +161,7 @@ function frame(t) {
   const deg = (r) => (r * 180 / Math.PI).toFixed(1).padStart(6, " ");
   readout.textContent = `θ₁ ${deg(-q1)}° · θ₂ ${deg(-q2)}°`;
 
-  requestAnimationFrame(frame);
+  if (!reduceMotion) requestAnimationFrame(frame);
 }
-requestAnimationFrame(frame);
+// Reduced motion: draw one static pose and never start the loop
+if (reduceMotion) frame(0); else requestAnimationFrame(frame);
