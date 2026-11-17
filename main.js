@@ -18,6 +18,16 @@ document.querySelectorAll(".reveal").forEach((el) => {
   if (reduceMotion) el.classList.add("in"); else io.observe(el);
 });
 
+// Nav: underline the section currently on screen
+const navLinks = [...document.querySelectorAll(".nav nav a")];
+const spy = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (!e.isIntersecting) continue;
+    navLinks.forEach((a) => a.classList.toggle("on", a.hash === "#" + e.target.id));
+  }
+}, { rootMargin: "-45% 0px -50% 0px" });
+navLinks.forEach((a) => { const s = document.querySelector(a.hash); if (s) spy.observe(s); });
+
 // Hero: 2-link planar arm, analytic IK, target smoothed with a critically-damped spring
 const canvas = document.getElementById("arm");
 const ctx = canvas.getContext("2d");
@@ -87,6 +97,24 @@ function joint(x, y, r, fill) {
   ctx.strokeStyle = INK; ctx.lineWidth = 1.6; ctx.stroke();
 }
 
+// Drafting centerline cross through a joint
+function centerCross(x, y, r) {
+  ctx.beginPath();
+  ctx.moveTo(x - r, y); ctx.lineTo(x + r, y); ctx.moveTo(x, y - r); ctx.lineTo(x, y + r);
+  ctx.setLineDash([6, 2, 1.5, 2]); ctx.strokeStyle = INK3; ctx.lineWidth = 0.8; ctx.stroke(); ctx.setLineDash([]);
+}
+
+// Link-length label, offset to the outside of the link (away from the elbow bend)
+function linkLabel(x1, y1, x2, y2, text, side) {
+  const a = Math.atan2(y2 - y1, x2 - x1);
+  const mx = (x1 + x2) / 2 + Math.cos(a + side * Math.PI / 2) * 22;
+  const my = (y1 + y2) / 2 + Math.sin(a + side * Math.PI / 2) * 22;
+  ctx.fillStyle = INK3; ctx.font = "500 11px JetBrains Mono, monospace";
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  ctx.fillText(text, mx, my);
+  ctx.textAlign = "start"; ctx.textBaseline = "alphabetic";
+}
+
 function frame(t) {
   // Idle: trace a lissajous when the user isn't driving the arm
   const idle = reduceMotion || !pointer || t - lastMove > 2500;
@@ -139,6 +167,10 @@ function frame(t) {
   link(ex, ey, fx, fy, 16);
   joint(base.x, base.y, 9);
   joint(ex, ey, 7);
+  centerCross(base.x, base.y, 18);
+  centerCross(ex, ey, 14);
+  linkLabel(base.x, base.y, ex, ey, "L1", q2 < 0 ? 1 : -1);
+  linkLabel(ex, ey, fx, fy, "L2", q2 < 0 ? 1 : -1);
 
   // Gripper
   const a = q1 + q2, open = 6 + 3 * Math.sin(t / 300);
