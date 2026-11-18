@@ -57,7 +57,7 @@
         <i>02</i>
         <b>Mechanical design</b>
         <span>Robot hardware · tooling · production release</span>
-        <em>8 projects</em>
+        <em>9 projects</em>
       </a>
     </div>
     <button type="button" class="plain" id="openProfile2">Or read the one-page profile →</button>
@@ -99,6 +99,7 @@
             <tr><td>06</td><td><a href="#mechanical/motor">Patented motor design</a></td><td>Aerial Mechanica</td><td>2025</td></tr>
             <tr><td>07</td><td><a href="#mechanical/uav">12-motor UAV chassis</a></td><td>Aerial Industries</td><td>2024</td></tr>
             <tr><td>08</td><td><a href="#mechanical/tremor">Virtual patient tremor simulators</a></td><td>UIUC HDCL</td><td>2025</td></tr>
+            <tr><td>09</td><td><a href="#mechanical/backrest">Assistive torso-driven backrest</a></td><td>UIUC HDCL</td><td>2025</td></tr>
           </tbody>
         </table>
       </header>
@@ -242,7 +243,7 @@
         </article>
 
         <article class="proj" id="m-motor">
-          <figure class="paper"><img src="assets/drawings/motor.svg" alt="Representative motor, front and section view" loading="lazy"><figcaption>Representative motor, front + section A–A (schematic)</figcaption></figure>
+          <figure class="paper"><a href="assets/media/mech/motor-plenum.jpg" target="_blank" rel="noopener"><img src="assets/media/mech/motor-plenum.jpg" alt="Section view of the 3D-printed stator plenum, with a detail of the bleed-air path into the coreless section" loading="lazy"></a><figcaption>Stator plenum, section view: bleed air reverse-flows into the coreless section</figcaption></figure>
           <div>
             <p class="kick">06 · Aerial Mechanica · 2025</p>
             <h2>Patented motor design</h2>
@@ -288,6 +289,22 @@
               <tr><th>Funding</th><td>Jump ARCHES (OSF HealthCare + UIUC)</td></tr>
             </table>
             <ul class="notes"><li>Faculty: Elizabeth T. Hsiao-Wecksler, Inki Kim, Christopher M. Zallek.</li></ul>
+          </div>
+        </article>
+
+        <article class="proj" id="m-backrest">
+          <figure class="paper"><img src="assets/drawings/backrest.svg" alt="Side elevation of a compliant backrest with a pivot encoder, torsion spring, angle limits and a time-of-flight sensor aimed at the user's torso" loading="lazy"><figcaption>Compliant backrest, side elevation (schematic)</figcaption></figure>
+          <div>
+            <p class="kick">09 · UIUC Human Dynamics &amp; Control Lab · 2025</p>
+            <h2>Assistive torso-driven backrest</h2>
+            <p class="lede">A compliant backrest that reads where the user's torso is leaning, so a robot can be steered hands-free by leaning.</p>
+            <table class="spec">
+              <tr><th>Torso angle</th><td>&lt; 2° error, encoder + ToF fusion</td></tr>
+              <tr><th>Signal</th><td>&gt; 90% consistency</td></tr>
+              <tr><th>Mechanism</th><td>Pivot with torsion spring, hard angle limits</td></tr>
+              <tr><th>Field</th><td>Human–robot interaction</td></tr>
+            </table>
+            <ul class="notes"><li>Published: <i>VR-Based Evaluation of Hands-Free Torso-Driven Robot Navigation</i>, IMMERSE Symposium 2025.</li></ul>
           </div>
         </article>
       </section>
