@@ -124,9 +124,9 @@ const grid = new THREE.GridHelper(400, 400, 0x23262b, 0x1a1c20);
 grid.position.y = 0.002; scene.add(grid);
 
 // stage origins, spaced so the camera travels between them
-const STAGES = {
-  stairs: new THREE.Vector3(0, 0, 0), catch: new THREE.Vector3(16, 0, 0), pick: new THREE.Vector3(32, 0, 0),
-  nav: new THREE.Vector3(48, 0, 0), diag: new THREE.Vector3(64, 0, 0), boat: new THREE.Vector3(80, 0, 0),
+const STAGES = {   // laid out in chapter order, so Next always flies the same way
+  catch: new THREE.Vector3(0, 0, 0), stairs: new THREE.Vector3(16, 0, 0), nav: new THREE.Vector3(32, 0, 0),
+  diag: new THREE.Vector3(48, 0, 0), pick: new THREE.Vector3(64, 0, 0), boat: new THREE.Vector3(80, 0, 0),
 };
 const stage = {};
 for (const [k, p] of Object.entries(STAGES)) {
@@ -283,7 +283,7 @@ function endPov() {
 // ---------- UI state ----------
 let track = "home", idx = 0, fly = null, follow = null;
 const panel = $("panel"), pBody = $("pBody"), rail = $("rail");
-const HOME_VIEW = { stage: "stairs", view: [[5.2, 2.6, 6.4], [-0.6, 0.9, 0]] };
+const HOME_VIEW = { stage: "catch", view: [[6.2, 2.6, 6.4], [-0.6, 0.95, 0]] };   // the first stage in the line, like the first chapter
 
 function mediaHTML(m) {
   if (!m) return "";
@@ -374,7 +374,7 @@ function go(t, i = 0, instant = false) {
   if (!list) {
     history.replaceState(null, "", location.pathname + location.search);
     follow = null; endPov();
-    if (rigReady) { aimLights("stairs"); flyTo(viewFor(HOME_VIEW, "stairs"), instant); playDiag(false); }
+    if (rigReady) { aimLights(HOME_VIEW.stage); flyTo(viewFor(HOME_VIEW, HOME_VIEW.stage), instant); playDiag(false); }
     return;
   }
   idx = Math.max(0, Math.min(list.length - 1, i));
