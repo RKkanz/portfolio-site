@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: plan view of the boat following waypoints, with raw GPS points scattered around the fused state track"><style>
+svg{background:#f2f1ed}.draw{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.o{stroke:#141414;stroke-width:1.4}.o.thin{stroke-width:1}.t{stroke:#8a8780;stroke-width:.8}
+.h{stroke:#8a8780;stroke-width:.9;stroke-dasharray:4 3}.h.dk{stroke:#141414;stroke-width:1.1}
+.c{stroke:#8a8780;stroke-width:.7;stroke-dasharray:12 3 2 3;stroke-linecap:butt}.x{stroke:#8a8780;stroke-width:.6}
+.d{stroke:#4a4844;stroke-width:.7;marker-start:url(#arw);marker-end:url(#arw)}.d1{stroke:#4a4844;stroke-width:.7;marker-end:url(#arw)}
+.a{stroke:#e8590c;stroke-width:1.8}.a.thin{stroke-width:1}.a.stop{stroke-width:3;stroke-linecap:butt}
+.ad{stroke:#e8590c;stroke-width:1.5;stroke-dasharray:5 4}.cut{stroke:#141414;stroke-width:2.2;stroke-linecap:butt}
+.fcf{stroke:#4a4844;stroke-width:.8;fill:#f2f1ed}path.fcf{fill:none}.dat{fill:#141414;stroke:none}
+.af{fill:#e8590c;stroke:none}.ldot{fill:#4a4844;stroke:none}.gps{fill:#8a8780;stroke:none;opacity:.8}
+.pf{fill:#f2f1ed}.hf{fill:url(#hatch)}.hole{fill:#dfdbd1}.mag-n{fill:#e8590c}.coil,.coilf{fill:url(#coil)}.lamf{fill:url(#lam)}
+.f-top{fill:#f2f1ed}.f-right{fill:#e4e0d7}.f-left{fill:#d6d1c5}.bar{stroke:#141414;stroke-width:9}.bar-in{stroke:#f2f1ed;stroke-width:6.2}
+.step{stroke-width:1.1}.heat{stroke-width:1.4;marker-end:url(#arwA)}
+.lbl{font:500 8.5px 'IBM Plex Mono',ui-monospace,monospace;fill:#8a8780;stroke:none;letter-spacing:.06em}.lbl.k{fill:#4a4844}.lbl.a{fill:#e8590c}.lbl.big{font-size:13px}
+</style>
+<defs>
+<marker id="arw" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#4a4844"/></marker>
+<marker id="arwA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#e8590c"/></marker>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="5" stroke="#8a8780" stroke-width="0.8"/></pattern>
+<pattern id="coil" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="3" height="3" fill="#f6d9c8"/><line x1="0" y1="0" x2="0" y2="3" stroke="#e8590c" stroke-width="0.6" stroke-opacity=".55"/></pattern>
+<pattern id="lam" width="3" height="4" patternUnits="userSpaceOnUse"><rect width="3" height="4" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="4" stroke="#8a8780" stroke-width="0.6"/></pattern>
+</defs><title>Autonomous boat waypoint navigation</title>
+                <path class="h" d="M46 196 L47.8 194.1 L49.9 191.7 L52.2 189 L54.6 185.9 L57.3 182.6 L60.1 178.9 L63.1 175.1 L66.2 171 L69.4 166.7 L72.8 162.3 L76.3 157.8 L79.9 153.2 L83.6 148.5 L87.4 143.8 L91.2 139.1 L95.2 134.5 L99.1 129.9 L103.1 125.5 L107.1 121.2 L111.2 117 L115.2 113.1 L119.3 109.4 L123.3 106 L127.3 102.8 L131.2 100 L135.1 97.6 L139 95.5 L142.7 93.9 L146.4 92.7 L150 92 L153.5 91.9 L157.1 92.3 L160.7 93.2 L164.3 94.7 L167.9 96.6 L171.5 98.9 L175.1 101.5 L178.8 104.5 L182.4 107.8 L186.1 111.3 L189.7 115 L193.4 118.8 L197.1 122.8 L200.7 126.9 L204.4 131 L208 135.1 L211.7 139.2 L215.3 143.2 L219 147 L222.6 150.7 L226.2 154.2 L229.8 157.5 L233.4 160.5 L237 163.1 L240.5 165.4 L244.1 167.3 L247.6 168.8 L251.1 169.7 L254.6 170.1 L258 170 L261.5 169.3 L265 168.1 L268.6 166.5 L272.3 164.4 L276 162 L279.8 159.2 L283.6 156 L287.4 152.6 L291.2 148.9 L295 145 L298.8 140.8 L302.6 136.5 L306.4 132.1 L310.1 127.5 L313.8 122.9 L317.4 118.2 L320.9 113.5 L324.3 108.8 L327.7 104.2 L331 99.7 L334.1 95.3 L337.2 91 L340.1 86.9 L342.8 83.1 L345.5 79.4 L347.9 76.1 L350.2 73 L352.3 70.3 L354.3 67.9 L356 66"/>
+                <circle class="gps" cx="48.2" cy="195" r="1.5"/>
+                <circle class="gps" cx="55.8" cy="180.5" r="1.5"/>
+                <circle class="gps" cx="60.1" cy="169.6" r="1.5"/>
+                <circle class="gps" cx="83.5" cy="160.5" r="1.5"/>
+                <circle class="gps" cx="94.1" cy="145.4" r="1.5"/>
+                <circle class="gps" cx="101.7" cy="131.1" r="1.5"/>
+                <circle class="gps" cx="100.4" cy="122.6" r="1.5"/>
+                <circle class="gps" cx="126.6" cy="109.2" r="1.5"/>
+                <circle class="gps" cx="124.1" cy="86.2" r="1.5"/>
+                <circle class="gps" cx="140.6" cy="89.6" r="1.5"/>
+                <circle class="gps" cx="159.1" cy="92" r="1.5"/>
+                <circle class="gps" cx="171.3" cy="92.4" r="1.5"/>
+                <circle class="gps" cx="180.8" cy="107.1" r="1.5"/>
+                <circle class="gps" cx="185.4" cy="126.1" r="1.5"/>
+                <circle class="gps" cx="204.3" cy="134.7" r="1.5"/>
+                <circle class="gps" cx="207.7" cy="134.4" r="1.5"/>
+                <circle class="gps" cx="220.4" cy="150" r="1.5"/>
+                <circle class="gps" cx="237.5" cy="162.1" r="1.5"/>
+                <circle class="gps" cx="241.2" cy="161.1" r="1.5"/>
+                <circle class="gps" cx="251.2" cy="178.1" r="1.5"/>
+                <circle class="gps" cx="259.8" cy="169.7" r="1.5"/>
+                <circle class="gps" cx="278.8" cy="152.3" r="1.5"/>
+                <circle class="gps" cx="287.7" cy="161.1" r="1.5"/>
+                <circle class="gps" cx="285.7" cy="138.7" r="1.5"/>
+                <circle class="gps" cx="309.4" cy="122.2" r="1.5"/>
+                <path class="a" d="M46 196 L47.8 194.1 L49.9 191.7 L52.2 189 L54.6 185.9 L57.3 182.6 L60.1 178.9 L63.1 175.1 L66.2 171 L69.4 166.7 L72.8 162.3 L76.3 157.8 L79.9 153.2 L83.6 148.5 L87.4 143.8 L91.2 139.1 L95.2 134.5 L99.1 129.9 L103.1 125.5 L107.1 121.2 L111.2 117 L115.2 113.1 L119.3 109.4 L123.3 106 L127.3 102.8 L131.2 100 L135.1 97.6 L139 95.5 L142.7 93.9 L146.4 92.7 L150 92 L153.5 91.9 L157.1 92.3 L160.7 93.2 L164.3 94.7 L167.9 96.6 L171.5 98.9 L175.1 101.5 L178.8 104.5 L182.4 107.8 L186.1 111.3 L189.7 115 L193.4 118.8 L197.1 122.8 L200.7 126.9 L204.4 131 L208 135.1 L211.7 139.2 L215.3 143.2 L219 147 L222.6 150.7 L226.2 154.2 L229.8 157.5 L233.4 160.5 L237 163.1 L240.5 165.4 L244.1 167.3 L247.6 168.8 L251.1 169.7 L254.6 170.1 L258 170 L261.5 169.3 L265 168.1 L268.6 166.5 L272.3 164.4 L276 162 L279.8 159.2 L283.6 156 L287.4 152.6 L291.2 148.9 L295 145 L298.8 140.8 L302.6 136.5 L306.4 132.1 L310.1 127.5 L313.8 122.9"/>
+                <circle class="o pf" cx="46" cy="196" r="5.5"/><path class="t" d="M37 196 L55 196 M46 187 L46 205"/><text class="lbl" x="55" y="214">WP1</text>
+                <circle class="o pf" cx="150" cy="92" r="5.5"/><path class="t" d="M141 92 L159 92 M150 83 L150 101"/><text class="lbl" x="159" y="84">WP2</text>
+                <circle class="o pf" cx="258" cy="170" r="5.5"/><path class="t" d="M249 170 L267 170 M258 161 L258 179"/><text class="lbl" x="267" y="188">WP3</text>
+                <circle class="o pf" cx="356" cy="66" r="5.5"/><path class="t" d="M347 66 L365 66 M356 57 L356 75"/><text class="lbl" x="365" y="58">WP4</text>
+                <g transform="translate(313.8 122.9) rotate(-52.7)"><path class="t" d="M-24 -8 L-38 -13 M-24 8 L-38 13"/><path class="o pf" d="M-24 -9 L8 -9 Q22 -7 30 0 Q22 7 8 9 L-24 9 Z"/><path class="c" d="M-30 0 L36 0"/><rect class="o pf" x="-12" y="-5" width="10" height="10" rx="1"/><circle class="af" cx="-7" cy="0" r="1.8"/></g>
+                <text class="lbl a" x="327.8" y="152.9">40 KN</text>
+                <text class="lbl k" x="20" y="28">PLAN VIEW · WAYPOINT NAV</text>
+                <circle class="gps" cx="24" cy="236" r="1.6"/><text class="lbl" x="32" y="239">RAW GPS</text>
+                <path class="a" d="M92 236 L108 236"/><text class="lbl" x="114" y="239">FUSED STATE · GPS + IMU + VISION</text>
+              </svg>

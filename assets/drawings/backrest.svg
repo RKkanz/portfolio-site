@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: side elevation of a compliant backrest with a pivot encoder, torsion spring, angle limits and a time-of-flight sensor aimed at the user's torso"><style>
+svg{background:#f2f1ed}.draw{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.o{stroke:#141414;stroke-width:1.4}.o.thin{stroke-width:1}.t{stroke:#8a8780;stroke-width:.8}
+.h{stroke:#8a8780;stroke-width:.9;stroke-dasharray:4 3}.h.dk{stroke:#141414;stroke-width:1.1}
+.c{stroke:#8a8780;stroke-width:.7;stroke-dasharray:12 3 2 3;stroke-linecap:butt}.x{stroke:#8a8780;stroke-width:.6}
+.d{stroke:#4a4844;stroke-width:.7;marker-start:url(#arw);marker-end:url(#arw)}.d1{stroke:#4a4844;stroke-width:.7;marker-end:url(#arw)}
+.a{stroke:#e8590c;stroke-width:1.8}.a.thin{stroke-width:1}.a.stop{stroke-width:3;stroke-linecap:butt}
+.ad{stroke:#e8590c;stroke-width:1.5;stroke-dasharray:5 4}.cut{stroke:#141414;stroke-width:2.2;stroke-linecap:butt}
+.fcf{stroke:#4a4844;stroke-width:.8;fill:#f2f1ed}path.fcf{fill:none}.dat{fill:#141414;stroke:none}
+.af{fill:#e8590c;stroke:none}.ldot{fill:#4a4844;stroke:none}.gps{fill:#8a8780;stroke:none;opacity:.8}
+.pf{fill:#f2f1ed}.hf{fill:url(#hatch)}.hole{fill:#dfdbd1}.mag-n{fill:#e8590c}.coil,.coilf{fill:url(#coil)}.lamf{fill:url(#lam)}
+.f-top{fill:#f2f1ed}.f-right{fill:#e4e0d7}.f-left{fill:#d6d1c5}.bar{stroke:#141414;stroke-width:9}.bar-in{stroke:#f2f1ed;stroke-width:6.2}
+.step{stroke-width:1.1}.heat{stroke-width:1.4;marker-end:url(#arwA)}
+.lbl{font:500 8.5px 'IBM Plex Mono',ui-monospace,monospace;fill:#8a8780;stroke:none;letter-spacing:.06em}.lbl.k{fill:#4a4844}.lbl.a{fill:#e8590c}.lbl.big{font-size:13px}
+</style>
+<defs>
+<marker id="arw" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#4a4844"/></marker>
+<marker id="arwA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#e8590c"/></marker>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="5" stroke="#8a8780" stroke-width="0.8"/></pattern>
+<pattern id="coil" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="3" height="3" fill="#f6d9c8"/><line x1="0" y1="0" x2="0" y2="3" stroke="#e8590c" stroke-width="0.6" stroke-opacity=".55"/></pattern>
+<pattern id="lam" width="3" height="4" patternUnits="userSpaceOnUse"><rect width="3" height="4" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="4" stroke="#8a8780" stroke-width="0.6"/></pattern>
+</defs><title>Assistive backrest side elevation</title>
+                <text class="lbl k" x="20" y="28">SIDE ELEVATION · COMPLIANT BACKREST</text>
+                <path class="o" d="M112 226 L236 226" /><rect class="hf" x="112" y="226.8" width="124" height="7" />
+                <rect class="o pf" x="168" y="196" width="8" height="30" />
+                <path class="bar" d="M104 190 L164 190" /><path class="bar-in" d="M104 190 L164 190" />
+                <path class="c" d="M172 200 L172 50" />
+                <g transform="translate(172 190) rotate(15)">
+                  <rect class="h" x="-33" y="-112" width="26" height="100" rx="13" />
+                  <circle class="h" cx="-20" cy="-128" r="12" />
+                  <path class="bar" d="M0 0 L0 -120" /><path class="bar-in" d="M0 0 L0 -120" />
+                  <path class="ad" d="M-6 -121 L-16 -98 M-6 -121 L-26 -100" />
+                  <rect class="o pf" x="-6" y="-127" width="10" height="8" rx="1" /><circle class="af" cx="-1" cy="-123" r="1.8" />
+                </g>
+                <path class="a thin" d="M172 120 A70 70 0 0 1 190.1 122.4" /><text class="lbl a" x="176" y="114">θ</text>
+                <path class="t" d="M165.3 142.5 A48 48 0 0 1 196 148.4" />
+                <path class="a stop" d="M165.9 146.4 L164.7 138.6 M194 151.9 L198 145" />
+                <path class="o" d="M172 180 L173.3 180 L174.5 180.1 L175.8 180.4 L177 180.9 L178.2 181.5 L179.3 182.3 L180.2 183.2 L181.1 184.2 L181.9 185.4 L182.5 186.6 L182.9 187.9 L183.2 189.3 L183.3 190.7 L183.2 192.1 L182.9 193.6 L182.5 194.9 L181.9 196.3 L181.1 197.5 L180.1 198.7 L179.1 199.7 L177.8 200.6 L176.5 201.3 L175.1 201.9 L173.6 202.3 L172 202.5 L170.4 202.5 L168.8 202.3 L167.3 201.9 L165.8 201.3 L164.4 200.5 L163 199.5 L161.8 198.4 L160.8 197.1 L159.9 195.7 L159.2 194.2 L158.6 192.5 L158.3 190.9 L158.2 189.1 L158.3 187.4 L158.7 185.7 L159.2 184 L160 182.4 L161 180.9 L162.1 179.5 L163.5 178.3 L165 177.2 L166.6 176.3 L168.3 175.7 L170.1 175.2 L172 175 L173.9 175 L175.8 175.3 L177.6 175.8 L179.4 176.5 L181.1 177.5 L182.7 178.6 L184.1 180 L185.3 181.5 L186.4 183.2 L187.2 185.1 L187.8 187 L188.2 189 L188.3 191 L188.1 193.1 L187.7 195.1 L187 197.1 L186.1 198.9 L184.9 200.7 L183.6 202.3 L182 203.8 L180.2 205 L178.3 206 L176.3 206.8 L174.2 207.3 L172 207.5 L169.8 207.5 L167.6 207.1 L165.4 206.6 L163.4 205.7 L161.4 204.6"/>
+                <circle class="o pf" cx="172" cy="190" r="7" /><circle class="af" cx="172" cy="190" r="2.4" />
+                <path class="t" d="M158 125 L112 112" /><circle class="ldot" cx="158" cy="125" r="1.6" /><text class="lbl" x="108" y="115" text-anchor="end">USER TORSO</text>
+                <path class="t" d="M210 70 L262 58" /><circle class="ldot" cx="210" cy="70" r="1.6" /><text class="lbl" x="266" y="61">ToF · TORSO RANGE</text>
+                <path class="t" d="M198 145 L262 130" /><circle class="ldot" cx="198" cy="145" r="1.6" /><text class="lbl" x="266" y="133">ANGLE LIMITS</text>
+                <path class="t" d="M189 182 L262 168" /><circle class="ldot" cx="189" cy="182" r="1.6" /><text class="lbl" x="266" y="171">TORSION SPRING</text>
+                <path class="t" d="M177 195 L262 206" /><circle class="ldot" cx="177" cy="195" r="1.6" /><text class="lbl" x="266" y="209">ENCODER · ERR &lt; 2°</text>
+              </svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: two-view orthographic drawing of an L-bracket with dimensions, datums and geometric tolerance frames"><style>
+svg{background:#f2f1ed}.draw{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.o{stroke:#141414;stroke-width:1.4}.o.thin{stroke-width:1}.t{stroke:#8a8780;stroke-width:.8}
+.h{stroke:#8a8780;stroke-width:.9;stroke-dasharray:4 3}.h.dk{stroke:#141414;stroke-width:1.1}
+.c{stroke:#8a8780;stroke-width:.7;stroke-dasharray:12 3 2 3;stroke-linecap:butt}.x{stroke:#8a8780;stroke-width:.6}
+.d{stroke:#4a4844;stroke-width:.7;marker-start:url(#arw);marker-end:url(#arw)}.d1{stroke:#4a4844;stroke-width:.7;marker-end:url(#arw)}
+.a{stroke:#e8590c;stroke-width:1.8}.a.thin{stroke-width:1}.a.stop{stroke-width:3;stroke-linecap:butt}
+.ad{stroke:#e8590c;stroke-width:1.5;stroke-dasharray:5 4}.cut{stroke:#141414;stroke-width:2.2;stroke-linecap:butt}
+.fcf{stroke:#4a4844;stroke-width:.8;fill:#f2f1ed}path.fcf{fill:none}.dat{fill:#141414;stroke:none}
+.af{fill:#e8590c;stroke:none}.ldot{fill:#4a4844;stroke:none}.gps{fill:#8a8780;stroke:none;opacity:.8}
+.pf{fill:#f2f1ed}.hf{fill:url(#hatch)}.hole{fill:#dfdbd1}.mag-n{fill:#e8590c}.coil,.coilf{fill:url(#coil)}.lamf{fill:url(#lam)}
+.f-top{fill:#f2f1ed}.f-right{fill:#e4e0d7}.f-left{fill:#d6d1c5}.bar{stroke:#141414;stroke-width:9}.bar-in{stroke:#f2f1ed;stroke-width:6.2}
+.step{stroke-width:1.1}.heat{stroke-width:1.4;marker-end:url(#arwA)}
+.lbl{font:500 8.5px 'IBM Plex Mono',ui-monospace,monospace;fill:#8a8780;stroke:none;letter-spacing:.06em}.lbl.k{fill:#4a4844}.lbl.a{fill:#e8590c}.lbl.big{font-size:13px}
+</style>
+<defs>
+<marker id="arw" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#4a4844"/></marker>
+<marker id="arwA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#e8590c"/></marker>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="5" stroke="#8a8780" stroke-width="0.8"/></pattern>
+<pattern id="coil" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="3" height="3" fill="#f6d9c8"/><line x1="0" y1="0" x2="0" y2="3" stroke="#e8590c" stroke-width="0.6" stroke-opacity=".55"/></pattern>
+<pattern id="lam" width="3" height="4" patternUnits="userSpaceOnUse"><rect width="3" height="4" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="4" stroke="#8a8780" stroke-width="0.6"/></pattern>
+</defs><title>Service tooling bracket, GD&amp;T drawing</title>
+                <text class="lbl k" x="60" y="28">FRONT VIEW</text><text class="lbl k" x="236" y="28">RIGHT VIEW</text>
+                <path class="o pf" d="M60 60 L60 196 L210 196 L210 178 L78 178 L78 60 Z" />
+                <path class="o pf" d="M78 122 L78 178 L134 178 Z" />
+                <path class="h" d="M60 86 L78 86 M60 98 L78 98 M166 178 L166 196 M178 178 L178 196" />
+                <path class="c" d="M52 92 L86 92 M172 172 L172 202" />
+                <rect class="o pf" x="236" y="60" width="80" height="136" />
+                <path class="o" d="M236 178 L316 178" />
+                <rect class="o pf" x="272" y="122" width="8" height="56" />
+                <circle class="o pf" cx="256" cy="92" r="6" /><circle class="o pf" cx="296" cy="92" r="6" />
+                <path class="c" d="M246 92 L266 92 M256 82 L256 102 M286 92 L306 92 M296 82 L296 102" />
+                <path class="h" d="M250 178 L250 196 M262 178 L262 196 M290 178 L290 196 M302 178 L302 196" />
+                <path class="c" d="M256 172 L256 202 M296 172 L296 202" />
+                <path class="x" d="M60 200 L60 250 M210 200 L210 250" /><path class="d" d="M60 244 L210 244" /><text class="lbl k" x="135" y="240" text-anchor="middle">L</text>
+                <path class="x" d="M56 60 L16 60 M56 196 L16 196" /><path class="d" d="M22 60 L22 196" /><text class="lbl k" x="18" y="131" text-anchor="end">H</text>
+                <path class="x" d="M256 84 L256 40 M296 84 L296 40" /><path class="d" d="M256 46 L296 46" /><text class="lbl k" x="276" y="42" text-anchor="middle">P</text>
+                <path class="dat" d="M94 196 L106 196 L100 203 Z" /><path class="t" d="M100 203 L100 208" />
+                <rect class="fcf" x="93" y="208" width="14" height="14" /><text class="lbl k" x="100" y="218.5" text-anchor="middle">A</text>
+                <path class="dat" d="M60 144 L60 156 L53 150 Z" /><path class="t" d="M53 150 L47 150" />
+                <rect class="fcf" x="33" y="143" width="14" height="14" /><text class="lbl k" x="40" y="153.5" text-anchor="middle">B</text>
+                <path class="d1" d="M96 73 L79 73" />
+                <rect class="fcf" x="96" y="66" width="54" height="14" /><path class="fcf" d="M110 66 L110 80 M136 66 L136 80" />
+                <path class="o thin" d="M99 76.5 L107 76.5 M103 76.5 L103 69.5" />
+                <text class="lbl k" x="123" y="76.5" text-anchor="middle">0.05</text><text class="lbl k" x="143" y="76.5" text-anchor="middle">A</text>
+                <path class="t" d="M300.2 87.8 L328 74" /><circle class="ldot" cx="300.2" cy="87.8" r="1.4" />
+                <text class="lbl k" x="332" y="77">2× Ø d THRU</text>
+                <rect class="fcf" x="332" y="84" width="62" height="14" /><path class="fcf" d="M346 84 L346 98 M370 84 L370 98 M382 84 L382 98" />
+                <circle class="o thin" cx="339" cy="91" r="3.4" /><path class="o thin" d="M333.5 91 L344.5 91 M339 85.5 L339 96.5" />
+                <text class="lbl k" x="358" y="94.5" text-anchor="middle">Ø.1</text><text class="lbl k" x="376" y="94.5" text-anchor="middle">A</text><text class="lbl k" x="388" y="94.5" text-anchor="middle">B</text>
+              </svg>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: electric motor front view showing rotor magnets, stator teeth and windings, with a side section A–A"><style>
+svg{background:#f2f1ed}.draw{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.o{stroke:#141414;stroke-width:1.4}.o.thin{stroke-width:1}.t{stroke:#8a8780;stroke-width:.8}
+.h{stroke:#8a8780;stroke-width:.9;stroke-dasharray:4 3}.h.dk{stroke:#141414;stroke-width:1.1}
+.c{stroke:#8a8780;stroke-width:.7;stroke-dasharray:12 3 2 3;stroke-linecap:butt}.x{stroke:#8a8780;stroke-width:.6}
+.d{stroke:#4a4844;stroke-width:.7;marker-start:url(#arw);marker-end:url(#arw)}.d1{stroke:#4a4844;stroke-width:.7;marker-end:url(#arw)}
+.a{stroke:#e8590c;stroke-width:1.8}.a.thin{stroke-width:1}.a.stop{stroke-width:3;stroke-linecap:butt}
+.ad{stroke:#e8590c;stroke-width:1.5;stroke-dasharray:5 4}.cut{stroke:#141414;stroke-width:2.2;stroke-linecap:butt}
+.fcf{stroke:#4a4844;stroke-width:.8;fill:#f2f1ed}path.fcf{fill:none}.dat{fill:#141414;stroke:none}
+.af{fill:#e8590c;stroke:none}.ldot{fill:#4a4844;stroke:none}.gps{fill:#8a8780;stroke:none;opacity:.8}
+.pf{fill:#f2f1ed}.hf{fill:url(#hatch)}.hole{fill:#dfdbd1}.mag-n{fill:#e8590c}.coil,.coilf{fill:url(#coil)}.lamf{fill:url(#lam)}
+.f-top{fill:#f2f1ed}.f-right{fill:#e4e0d7}.f-left{fill:#d6d1c5}.bar{stroke:#141414;stroke-width:9}.bar-in{stroke:#f2f1ed;stroke-width:6.2}
+.step{stroke-width:1.1}.heat{stroke-width:1.4;marker-end:url(#arwA)}
+.lbl{font:500 8.5px 'IBM Plex Mono',ui-monospace,monospace;fill:#8a8780;stroke:none;letter-spacing:.06em}.lbl.k{fill:#4a4844}.lbl.a{fill:#e8590c}.lbl.big{font-size:13px}
+</style>
+<defs>
+<marker id="arw" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#4a4844"/></marker>
+<marker id="arwA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#e8590c"/></marker>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="5" stroke="#8a8780" stroke-width="0.8"/></pattern>
+<pattern id="coil" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="3" height="3" fill="#f6d9c8"/><line x1="0" y1="0" x2="0" y2="3" stroke="#e8590c" stroke-width="0.6" stroke-opacity=".55"/></pattern>
+<pattern id="lam" width="3" height="4" patternUnits="userSpaceOnUse"><rect width="3" height="4" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="4" stroke="#8a8780" stroke-width="0.6"/></pattern>
+</defs><title>Motor front view and section A–A</title>
+                <g transform="translate(124 130)">
+                  <g>
+                  <path class="o hf" fill-rule="evenodd" d="M92 0 A92 92 0 1 1 -92 0 A92 92 0 1 1 92 0 Z M84 0 A84 84 0 1 0 -84 0 A84 84 0 1 0 84 0 Z"/>
+                  <path class="o mag-n" d="M84 1.8 A84 84 0 0 1 76.4 34.9 L69.1 31.5 A76 76 0 0 0 76 1.6 Z"/>
+                  <path class="o pf" d="M74.9 38 A84 84 0 0 1 53.7 64.6 L48.6 58.4 A76 76 0 0 0 67.8 34.4 Z"/>
+                  <path class="o mag-n" d="M51 66.8 A84 84 0 0 1 20.4 81.5 L18.5 73.7 A76 76 0 0 0 46.1 60.4 Z"/>
+                  <path class="o pf" d="M17 82.3 A84 84 0 0 1 -17 82.3 L-15.4 74.4 A76 76 0 0 0 15.4 74.4 Z"/>
+                  <path class="o mag-n" d="M-20.4 81.5 A84 84 0 0 1 -51 66.8 L-46.1 60.4 A76 76 0 0 0 -18.5 73.7 Z"/>
+                  <path class="o pf" d="M-53.7 64.6 A84 84 0 0 1 -74.9 38 L-67.8 34.4 A76 76 0 0 0 -48.6 58.4 Z"/>
+                  <path class="o mag-n" d="M-76.4 34.9 A84 84 0 0 1 -84 1.8 L-76 1.6 A76 76 0 0 0 -69.1 31.5 Z"/>
+                  <path class="o pf" d="M-84 -1.8 A84 84 0 0 1 -76.4 -34.9 L-69.1 -31.5 A76 76 0 0 0 -76 -1.6 Z"/>
+                  <path class="o mag-n" d="M-74.9 -38 A84 84 0 0 1 -53.7 -64.6 L-48.6 -58.4 A76 76 0 0 0 -67.8 -34.4 Z"/>
+                  <path class="o pf" d="M-51 -66.8 A84 84 0 0 1 -20.4 -81.5 L-18.5 -73.7 A76 76 0 0 0 -46.1 -60.4 Z"/>
+                  <path class="o mag-n" d="M-17 -82.3 A84 84 0 0 1 17 -82.3 L15.4 -74.4 A76 76 0 0 0 -15.4 -74.4 Z"/>
+                  <path class="o pf" d="M20.4 -81.5 A84 84 0 0 1 51 -66.8 L46.1 -60.4 A76 76 0 0 0 18.5 -73.7 Z"/>
+                  <path class="o mag-n" d="M53.7 -64.6 A84 84 0 0 1 74.9 -38 L67.8 -34.4 A76 76 0 0 0 48.6 -58.4 Z"/>
+                  <path class="o pf" d="M76.4 -34.9 A84 84 0 0 1 84 -1.8 L76 -1.6 A76 76 0 0 0 69.1 -31.5 Z"/>
+                  </g>
+                  <path class="t coil" d="M42 5.2 L62 5.2 L62 11.2 L42 11.2 Z"/>
+                  <path class="t coil" d="M42 -5.2 L62 -5.2 L62 -11.2 L42 -11.2 Z"/>
+                  <path class="t coil" d="M33.8 25.5 L51.1 35.5 L48.1 40.7 L30.8 30.7 Z"/>
+                  <path class="t coil" d="M39 16.5 L56.3 26.5 L59.3 21.3 L42 11.3 Z"/>
+                  <path class="t coil" d="M16.5 39 L26.5 56.3 L21.3 59.3 L11.3 42 Z"/>
+                  <path class="t coil" d="M25.5 33.8 L35.5 51.1 L40.7 48.1 L30.7 30.8 Z"/>
+                  <path class="t coil" d="M-5.2 42 L-5.2 62 L-11.2 62 L-11.2 42 Z"/>
+                  <path class="t coil" d="M5.2 42 L5.2 62 L11.2 62 L11.2 42 Z"/>
+                  <path class="t coil" d="M-25.5 33.8 L-35.5 51.1 L-40.7 48.1 L-30.7 30.8 Z"/>
+                  <path class="t coil" d="M-16.5 39 L-26.5 56.3 L-21.3 59.3 L-11.3 42 Z"/>
+                  <path class="t coil" d="M-39 16.5 L-56.3 26.5 L-59.3 21.3 L-42 11.3 Z"/>
+                  <path class="t coil" d="M-33.8 25.5 L-51.1 35.5 L-48.1 40.7 L-30.8 30.7 Z"/>
+                  <path class="t coil" d="M-42 -5.2 L-62 -5.2 L-62 -11.2 L-42 -11.2 Z"/>
+                  <path class="t coil" d="M-42 5.2 L-62 5.2 L-62 11.2 L-42 11.2 Z"/>
+                  <path class="t coil" d="M-33.8 -25.5 L-51.1 -35.5 L-48.1 -40.7 L-30.8 -30.7 Z"/>
+                  <path class="t coil" d="M-39 -16.5 L-56.3 -26.5 L-59.3 -21.3 L-42 -11.3 Z"/>
+                  <path class="t coil" d="M-16.5 -39 L-26.5 -56.3 L-21.3 -59.3 L-11.3 -42 Z"/>
+                  <path class="t coil" d="M-25.5 -33.8 L-35.5 -51.1 L-40.7 -48.1 L-30.7 -30.8 Z"/>
+                  <path class="t coil" d="M5.2 -42 L5.2 -62 L11.2 -62 L11.2 -42 Z"/>
+                  <path class="t coil" d="M-5.2 -42 L-5.2 -62 L-11.2 -62 L-11.2 -42 Z"/>
+                  <path class="t coil" d="M25.5 -33.8 L35.5 -51.1 L40.7 -48.1 L30.7 -30.8 Z"/>
+                  <path class="t coil" d="M16.5 -39 L26.5 -56.3 L21.3 -59.3 L11.3 -42 Z"/>
+                  <path class="t coil" d="M39 -16.5 L56.3 -26.5 L59.3 -21.3 L42 -11.3 Z"/>
+                  <path class="t coil" d="M33.8 -25.5 L51.1 -35.5 L48.1 -40.7 L30.8 -30.7 Z"/>
+                  <path class="o pf" fill-rule="evenodd" d="M37.7 -4.5 L64 -4.5 L64.6 -13.7 L70.4 -15 A72 72 0 0 1 70.4 15 L64.6 13.7 L64 4.5 L37.7 4.5 A38 38 0 0 1 34.9 15 L57.7 28.1 L62.8 20.4 L68.5 22.2 A72 72 0 0 1 53.5 48.2 L49 44.2 L53.2 35.9 L30.4 22.8 A38 38 0 0 1 22.8 30.4 L35.9 53.2 L44.2 49 L48.2 53.5 A72 72 0 0 1 22.2 68.5 L20.4 62.8 L28.1 57.7 L15 34.9 A38 38 0 0 1 4.5 37.7 L4.5 64 L13.7 64.6 L15 70.4 A72 72 0 0 1 -15 70.4 L-13.7 64.6 L-4.5 64 L-4.5 37.7 A38 38 0 0 1 -15 34.9 L-28.1 57.7 L-20.4 62.8 L-22.2 68.5 A72 72 0 0 1 -48.2 53.5 L-44.2 49 L-35.9 53.2 L-22.8 30.4 A38 38 0 0 1 -30.4 22.8 L-53.2 35.9 L-49 44.2 L-53.5 48.2 A72 72 0 0 1 -68.5 22.2 L-62.8 20.4 L-57.7 28.1 L-34.9 15 A38 38 0 0 1 -37.7 4.5 L-64 4.5 L-64.6 13.7 L-70.4 15 A72 72 0 0 1 -70.4 -15 L-64.6 -13.7 L-64 -4.5 L-37.7 -4.5 A38 38 0 0 1 -34.9 -15 L-57.7 -28.1 L-62.8 -20.4 L-68.5 -22.2 A72 72 0 0 1 -53.5 -48.2 L-49 -44.2 L-53.2 -35.9 L-30.4 -22.8 A38 38 0 0 1 -22.8 -30.4 L-35.9 -53.2 L-44.2 -49 L-48.2 -53.5 A72 72 0 0 1 -22.2 -68.5 L-20.4 -62.8 L-28.1 -57.7 L-15 -34.9 A38 38 0 0 1 -4.5 -37.7 L-4.5 -64 L-13.7 -64.6 L-15 -70.4 A72 72 0 0 1 15 -70.4 L13.7 -64.6 L4.5 -64 L4.5 -37.7 A38 38 0 0 1 15 -34.9 L28.1 -57.7 L20.4 -62.8 L22.2 -68.5 A72 72 0 0 1 48.2 -53.5 L44.2 -49 L35.9 -53.2 L22.8 -30.4 A38 38 0 0 1 30.4 -22.8 L53.2 -35.9 L49 -44.2 L53.5 -48.2 A72 72 0 0 1 68.5 -22.2 L62.8 -20.4 L57.7 -28.1 L34.9 -15 A38 38 0 0 1 37.7 -4.5 Z M16 0 A16 16 0 1 0 -16 0 A16 16 0 1 0 16 0 Z"/>
+                  <circle class="h" r="12"/><circle class="o pf" r="8"/>
+                  <path class="c" d="M-106 0 L106 0 M0 -106 L0 106"/>
+                  <path class="cut" d="M0 -110 L0 -98 M0 98 L0 110"/>
+                  <path class="d1" d="M0 -110 L14 -110"/><path class="d1" d="M0 110 L14 110"/>
+                  <text class="lbl k" x="19" y="-107">A</text><text class="lbl k" x="19" y="113">A</text>
+                </g>
+                <!-- section A-A -->
+                <rect class="o pf" x="250" y="122" width="126" height="16" />
+                <path class="o hf" d="M266 38 L344 38 L344 46 L272 46 L272 122 L266 122 Z" />
+                <path class="o hf" d="M266 222 L344 222 L344 214 L272 214 L272 138 L266 138 Z" />
+                <rect class="o mag-n" x="282" y="46" width="58" height="8" /><rect class="o mag-n" x="282" y="206" width="58" height="8" />
+                <rect class="o lamf" x="286" y="58" width="50" height="56" /><rect class="o lamf" x="286" y="146" width="50" height="56" />
+                <rect class="o coilf" x="279" y="62" width="7" height="26" rx="3" /><rect class="o coilf" x="336" y="62" width="7" height="26" rx="3" />
+                <rect class="o coilf" x="279" y="172" width="7" height="26" rx="3" /><rect class="o coilf" x="336" y="172" width="7" height="26" rx="3" />
+                <path class="o hf" d="M336 100 L352 100 L352 64 L360 64 L360 122 L336 122 Z" />
+                <path class="o hf" d="M336 160 L352 160 L352 196 L360 196 L360 138 L336 138 Z" />
+                <g class="brg"><rect class="o pf" x="290" y="114" width="12" height="8" /><path class="t" d="M290 114 L302 122 M302 114 L290 122" />
+                  <rect class="o pf" x="322" y="114" width="12" height="8" /><path class="t" d="M322 114 L334 122 M334 114 L322 122" />
+                  <rect class="o pf" x="290" y="138" width="12" height="8" /><path class="t" d="M290 138 L302 146 M302 138 L290 146" />
+                  <rect class="o pf" x="322" y="138" width="12" height="8" /><path class="t" d="M322 138 L334 146 M334 138 L322 146" /></g>
+                <path class="c" d="M244 130 L384 130" />
+                <text class="lbl k" x="124" y="254" text-anchor="middle">FRONT</text>
+                <text class="lbl k" x="313" y="254" text-anchor="middle">SECTION A–A</text>
+                <path class="t" d="M306 42 L306 24 L318 24" /><circle class="ldot" cx="306" cy="42" r="1.6" /><text class="lbl" x="322" y="27">ROTOR CAN</text>
+                <path class="t" d="M290 50 L290 14 L318 14" /><circle class="ldot" cx="290" cy="50" r="1.6" /><text class="lbl a" x="322" y="17">MAGNETS</text>
+              </svg>

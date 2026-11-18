@@ -3,823 +3,373 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Riku Kanzaki — Robotics &amp; Mechanical Design Engineer</title>
-  <meta name="description" content="Riku Kanzaki, Robotics Build Engineer at Foundation Robotics. Robot learning, controls and diagnostics; mechanical design, tooling and production release. B.S. Mechanical Engineering, UIUC." />
-  <meta property="og:title" content="Riku Kanzaki — Robotics &amp; Mechanical Design Engineer" />
-  <meta property="og:description" content="I build robots from the bracket to the control loop." />
+  <title>Riku Kanzaki — Robotics & Mechanical Design</title>
+  <meta name="description" content="Riku Kanzaki, Robotics Build Engineer at Foundation Robotics. Explore robot policies, autonomy and diagnostics, or mechanical design, tooling and production hardware, in an interactive 3D lab." />
+  <meta property="og:title" content="Riku Kanzaki — Robotics & Mechanical Design" />
+  <meta property="og:description" content="Robots, from the bracket to the control loop. An interactive 3D lab." />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#0c0d0f" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <script type="importmap">
   { "imports": {
     "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-    "three/": "https://cdn.jsdelivr.net/npm/three@0.160.0/",
-    "urdf-loader": "https://cdn.jsdelivr.net/npm/urdf-loader@0.12.3/src/URDFLoader.js"
+    "three/": "https://cdn.jsdelivr.net/npm/three@0.160.0/"
   } }
   </script>
 </head>
-<body>
-  <div class="grid-bg" aria-hidden="true"></div>
+<body data-track="home">
+  <canvas id="stage" aria-hidden="true"></canvas>
 
-  <!-- shared drafting symbols for the drawings -->
-  <svg class="defs" aria-hidden="true" focusable="false">
-    <defs>
-      <marker id="arw" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#4a4945" /></marker>
-      <marker id="arwA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#ff4f00" /></marker>
-      <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#f3f1ec" /><line x1="0" y1="0" x2="0" y2="5" stroke="#8b8982" stroke-width="0.8" /></pattern>
-      <pattern id="coil" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="3" height="3" fill="#f6d9c8" /><line x1="0" y1="0" x2="0" y2="3" stroke="#ff4f00" stroke-width="0.6" stroke-opacity=".55" /></pattern>
-      <pattern id="lam" width="3" height="4" patternUnits="userSpaceOnUse"><rect width="3" height="4" fill="#f3f1ec" /><line x1="0" y1="0" x2="0" y2="4" stroke="#8b8982" stroke-width="0.6" /></pattern>
-    </defs>
-  </svg>
-
-  <header class="nav">
-    <a href="#top" class="mark" aria-label="Riku Kanzaki, back to top">RK<span class="dot"></span></a>
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="lab.html" class="ext">3D Lab <span>↗</span></a>
+  <header class="bar">
+    <a class="who" href="#" data-go="home">
+      <b>Riku Kanzaki</b>
+      <span>Robotics Build Engineer · Foundation Robotics</span>
+    </a>
+    <nav class="tracks" aria-label="Discipline">
+      <a href="#robotics" data-go="robotics"><i>01</i>Robotics</a>
+      <a href="#mechanical" data-go="mechanical"><i>02</i>Mechanical<span class="long">&nbsp;design</span></a>
     </nav>
-    <a class="btn sm" href="mailto:rikukanzaki2003@gmail.com">Email me</a>
+    <div class="links">
+      <button type="button" id="openProfile">Profile</button>
+      <a href="mailto:rikukanzaki2003@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/rikukanzaki" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/RKkanz" target="_blank" rel="noopener">GitHub</a>
+    </div>
   </header>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow mono">Robotics &amp; Mechanical Design Engineer</p>
-        <h1>I build robots from the <em>bracket</em> to the <em>control loop.</em></h1>
-        <p class="lede">Humanoids at Foundation Robotics: learned policies, controls and fleet diagnostics on one side; brackets, fixtures, tooling and production release on the other.</p>
-        <dl class="facts">
-          <div><dt class="mono">Now</dt><dd>Robotics Build Engineer, <b>Foundation Robotics</b></dd></div>
-          <div><dt class="mono">Before</dt><dd>Tesla Energy · Aerial Mechanica · Aerial Industries</dd></div>
-          <div><dt class="mono">Education</dt><dd>B.S. Mechanical Engineering, <b>UIUC</b> 2025</dd></div>
-          <div><dt class="mono">Based</dt><dd>San Francisco, CA</dd></div>
-        </dl>
-        <div class="cta">
-          <a class="btn primary" href="mailto:rikukanzaki2003@gmail.com">Email</a>
-          <a class="btn" href="https://linkedin.com/in/rikukanzaki" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-          <a class="btn" href="https://github.com/RKkanz" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+  <!-- landing -->
+  <section class="intro" id="intro">
+    <p class="label">Interactive lab · drag to orbit</p>
+    <h1>Robots, from the bracket to the control loop.</h1>
+    <p class="sub">I build humanoids at Foundation Robotics: the policies, autonomy and diagnostics that make them work, and the brackets, fixtures and tooling that make them buildable. Mechanical engineer, UIUC.</p>
+    <div class="choose">
+      <a href="#robotics" data-go="robotics">
+        <i>01</i>
+        <b>Robotics</b>
+        <span>Robot learning · autonomy · fleet diagnostics</span>
+        <em>6 chapters</em>
+      </a>
+      <a href="#mechanical" data-go="mechanical">
+        <i>02</i>
+        <b>Mechanical design</b>
+        <span>Robot hardware · tooling · production release</span>
+        <em>8 projects</em>
+      </a>
+    </div>
+    <button type="button" class="plain" id="openProfile2">Or read the one-page profile →</button>
+  </section>
+
+  <!-- chapter panel -->
+  <aside class="panel" id="panel" aria-live="polite">
+    <div class="phead">
+      <span id="pIndex">01 / 06</span>
+      <span id="pTrack">Robotics</span>
+    </div>
+    <div class="pbody" id="pBody"></div>
+    <div class="pfoot">
+      <button type="button" id="prev" aria-label="Previous chapter">← Prev</button>
+      <button type="button" id="next" aria-label="Next chapter">Next →</button>
+    </div>
+  </aside>
+
+  <!-- chapter rail -->
+  <nav class="rail" id="rail" aria-label="Chapters"></nav>
+
+  <p class="caption" id="caption"></p>
+
+  <!-- mechanical design: a plain scrolling page, no lab -->
+  <main class="mech" id="mech" hidden>
+    <div class="mech-in">
+      <header class="mhead">
+        <p class="label">02 · Mechanical design</p>
+        <h1>Hardware, from first sketch to production release.</h1>
+        <p class="sub">Robot hardware, tooling and vehicles: designed in CAD, built, tested, and released on drawings. Two models below are live from Onshape. Drag to orbit, slide to explode, hover to name a part.</p>
+        <table class="index">
+          <thead><tr><th>No.</th><th>Project</th><th>Where</th><th>Year</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td><a href="#mechanical/actuator">3D-printed planetary actuator</a></td><td>Side project</td><td>2026</td></tr>
+            <tr><td>02</td><td><a href="#mechanical/boat">Autonomous boat test platform</a></td><td>ASNE</td><td>2025</td></tr>
+            <tr><td>03</td><td><a href="#mechanical/hardware">Humanoid hardware</a></td><td>Foundation Robotics</td><td>2026</td></tr>
+            <tr><td>04</td><td><a href="#mechanical/gloves">Teleoperation gloves</a></td><td>Foundation Robotics</td><td>2026</td></tr>
+            <tr><td>05</td><td><a href="#mechanical/tooling">Megapack service tooling</a></td><td>Tesla Energy</td><td>2026</td></tr>
+            <tr><td>06</td><td><a href="#mechanical/motor">Patented motor design</a></td><td>Aerial Mechanica</td><td>2025</td></tr>
+            <tr><td>07</td><td><a href="#mechanical/uav">12-motor UAV chassis</a></td><td>Aerial Industries</td><td>2024</td></tr>
+            <tr><td>08</td><td><a href="#mechanical/tremor">Virtual patient tremor simulators</a></td><td>UIUC HDCL</td><td>2025</td></tr>
+          </tbody>
+        </table>
+      </header>
+
+      <article class="feature" id="m-actuator">
+        <div class="viewer" data-model="actuator">
+          <canvas aria-label="3D model of the planetary actuator"></canvas>
+          <div class="vbar">
+            <span>Assembled</span><input type="range" min="0" max="1000" value="0" aria-label="Explode the assembly"><span>Exploded</span>
+          </div>
+          <p class="vpart" data-part="Drag to orbit · hover a part">Drag to orbit · hover a part</p>
         </div>
-      </div>
-      <div class="hero-fig">
-        <div class="fig-frame live3d" id="hero3d">
-          <div class="h3d-tabs mono" role="tablist" aria-label="Policy rollouts">
-            <button data-scene="stairs" role="tab" aria-selected="true">Stairs</button>
-            <button data-scene="catch" role="tab" aria-selected="false">Catch</button>
-            <button data-scene="pick" role="tab" aria-selected="false">Pick</button>
-            <button data-scene="walk" role="tab" aria-selected="false">Walk</button>
-          </div>
-          <canvas role="img" aria-label="A humanoid robot replaying recorded policy rollouts. Drag to orbit."></canvas>
-          <div class="h3d-load mono"><span>Loading humanoid</span><i></i></div>
-          <div class="h3d-fail mono">3D preview unavailable in this browser. <a href="lab.html">Open the lab ↗</a></div>
-          <div class="fig-cap mono">
-            <span id="h3dCap">STAIR POLICY v11 · 16 CM RISE</span>
-            <a id="h3dLink" href="lab.html#stairs">Open in 3D lab ↗</a>
-          </div>
+        <div class="ftext">
+          <p class="kick">01 · Side project · 2026</p>
+          <h2>3D-printed planetary actuator</h2>
+          <p class="lede">A two-stage planetary gearbox built around a hobby outrunner, designed to be printed and assembled on a desk. A separate design from the actuators used at Foundation.</p>
+          <table class="spec">
+            <tr><th>Reduction</th><td>22.6 : 1, two stages</td></tr>
+            <tr><th>Stage 1</th><td>5.14 : 1 · sun 14T, planets 22T, ring 58T, m1</td></tr>
+            <tr><th>Stage 2</th><td>4.40 : 1 · sun 15T, planets 18T, ring 51T, m1.25</td></tr>
+            <tr><th>Envelope</th><td>Ø110 × 106 mm</td></tr>
+            <tr><th>Motor</th><td>Outrunner, up to 88 × 26 mm</td></tr>
+            <tr><th>Bearings</th><td>2 × 6810-2RS output, 12 × 623ZZ planet</td></tr>
+            <tr><th>Parts</th><td>21 printed · 15 bought</td></tr>
+          </table>
+          <ul class="notes">
+            <li>Both ring gears are cut into one printed housing, so the two stages share a single bore.</li>
+            <li>Sun 1 bolts straight to the motor's rotor: no shaft, no coupling.</li>
+            <li>Every planet runs on a pair of 623ZZ bearings instead of a printed bushing.</li>
+          </ul>
         </div>
-        <p class="hint mono">Recorded rollouts of policies I trained, replayed on Unitree's open G1 model. Drag to orbit.</p>
-      </div>
-    </section>
+      </article>
 
-    <!-- KEY NUMBERS -->
-    <section class="kpis" aria-label="Highlights">
-      <div><b>4</b><span class="mono">robot policies trained</span></div>
-      <div><b>20</b><span class="mono">robot faults root-caused</span></div>
-      <div><b>1</b><span class="mono">patented motor design</span></div>
-      <div><b>2</b><span class="mono">designs to production release</span></div>
-    </section>
-
-    <!-- WORK -->
-    <section id="work" class="section">
-      <div class="work-head">
-        <div>
-          <p class="mono idx">Selected work</p>
-          <h2>What I've <em>shipped</em></h2>
+      <article class="feature" id="m-boat">
+        <div class="viewer" data-model="boat">
+          <canvas aria-label="3D model of the autonomous boat test platform"></canvas>
+          <div class="vbar">
+            <span>Assembled</span><input type="range" min="0" max="1000" value="0" aria-label="Explode the assembly"><span>Exploded</span>
+          </div>
+          <p class="vpart" data-part="Drag to orbit · hover a part">Drag to orbit · hover a part</p>
         </div>
-        <div class="filter mono" role="tablist" aria-label="Filter work by role">
-          <button data-filter="all" role="tab" aria-selected="true">All <i></i></button>
-          <button data-filter="robotics" role="tab" aria-selected="false">Robotics <i></i></button>
-          <button data-filter="mech" role="tab" aria-selected="false">Mechanical <i></i></button>
+        <div class="ftext">
+          <p class="kick">02 · ASNE · Aug 2025 — Jan 2026</p>
+          <h2>Autonomous boat test platform</h2>
+          <p class="lede">A printed scale boat for testing the team's autonomy stack on the water, alongside the 6 ft fiberglass race hull.</p>
+          <table class="spec">
+            <tr><th>Test hull</th><td>3D-printed PLA, sealed in epoxy resin</td></tr>
+            <tr><th>Length</th><td>0.92 m overall</td></tr>
+            <tr><th>Structure</th><td>4 hull sections, 9 printed connectors, 2 hatches</td></tr>
+            <tr><th>Drive</th><td>Inboard motor, marine 120 A ESC, stinger + prop</td></tr>
+            <tr><th>Steering</th><td>Rudder on a 20 kg servo, trim tabs, turn fins</td></tr>
+            <tr><th>Sensing</th><td>Here3 GPS on a mast, forward camera</td></tr>
+            <tr><th>Race hull</th><td>6 ft fiberglass planing V-hull, 40 kn</td></tr>
+          </table>
+          <ul class="notes">
+            <li>Split into four sections so each prints on a desktop printer, then joined and sealed in epoxy.</li>
+            <li>The planing V-hull beat the team's earlier displacement hulls to reach 40 knots.</li>
+          </ul>
         </div>
-      </div>
-
-      <div class="cards">
-        <!-- diagnostics: full width -->
-        <article class="card feature" data-role="robotics">
-          <div class="shots">
-            <a href="assets/media/tools/overwatch-overview.jpg" target="_blank" rel="noopener"><img src="assets/media/tools/overwatch-overview.jpg" alt="Overwatch overview: live per-actuator fault cards for a demo robot" loading="lazy" width="1400" height="787"><span class="mono">Overwatch</span></a>
-            <a href="assets/media/tools/recall-loaded.jpg" target="_blank" rel="noopener"><img src="assets/media/tools/recall-loaded.jpg" alt="recall replaying a robot log with per-joint left/right traces" loading="lazy" width="1400" height="787"><span class="mono">recall</span></a>
-            <a href="assets/media/tools/robot-triage-terminal.jpg" target="_blank" rel="noopener"><img src="assets/media/tools/robot-triage-terminal.jpg" alt="robot-triage terminal report on a robot log" loading="lazy" width="1400" height="993"><span class="mono">robot-triage</span></a>
-          </div>
-          <div class="body two">
-            <div>
-              <p class="meta mono"><span class="role r">Robotics</span> Foundation Robotics · 2026</p>
-              <h3>Fleet diagnostics: Overwatch, recall, robot-triage</h3>
-              <p class="note">Internal details blurred.</p>
-            </div>
-            <ul class="pts">
-              <li><b>20 faults root-caused</b> across 8+ humanoids: EtherCAT dropouts, encoder faults, harness chafe, a 3.4× knee-gain regression.</li>
-              <li><b>Overwatch:</b> live per-actuator fault cards, bus health, 13-min at-rest + sweep health check.</li>
-              <li><b>recall:</b> log replay on the URDF with per-joint L/R charts and a case library.</li>
-              <li><b>robot-triage:</b> deterministic diagnosis, ranked verdict in ~6 s; multi-agent /triage on top.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="robotics">
-          <div class="media dark"><video src="assets/media/policies/stairs.mp4" muted loop playsinline preload="metadata" aria-label="Simulation: stair-climbing policy on four staircases"></video></div>
-          <div class="body">
-            <p class="meta mono"><span class="role r">Robotics</span> Foundation Robotics · 2026</p>
-            <h3>Stair-climbing policy</h3>
-            <ul class="pts">
-              <li><b>21 / 24</b> clean climbs in sim, rise 10–19 cm × tread 25–35 cm.</li>
-              <li>Whole-body IK keyframes (24 clips) → one motion-imitation policy.</li>
-              <li>Robustness harness: 10–40 ms latency is the failure mode.</li>
-            </ul>
-            <ul class="tags mono"><li>RL</li><li>Motion imitation</li><li>Sim-to-sim</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="robotics">
-          <div class="media dark"><video src="assets/media/policies/catch.mp4" muted loop playsinline preload="metadata" aria-label="Simulation: humanoid catching a thrown box"></video></div>
-          <div class="body">
-            <p class="meta mono"><span class="role r">Robotics</span> Foundation Robotics · 2026</p>
-            <h3>Throw &amp; catch</h3>
-            <ul class="pts">
-              <li><b>~2 cm</b> flight-prediction error at the catch, from head cameras.</li>
-              <li>Arm poses from overnight CEM search, 96 throws per candidate.</li>
-              <li>Deployed; first software-in-the-loop throw caught.</li>
-            </ul>
-            <ul class="tags mono"><li>Perception</li><li>CEM</li><li>Deployment</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="robotics">
-          <div class="media dark"><video src="assets/media/policies/pick.mp4" muted loop playsinline preload="metadata" aria-label="Simulation: new versus old box-pick policy"></video></div>
-          <div class="body">
-            <p class="meta mono"><span class="role r">Robotics</span> Foundation Robotics · 2026</p>
-            <h3>Box pick</h3>
-            <ul class="pts">
-              <li><b>72.5%</b> of boxes lifted across 512 randomized tables.</li>
-              <li>IK demos + gravity-comp offsets where pure PPO never reached the box.</li>
-            </ul>
-            <ul class="tags mono"><li>Manipulation</li><li>PPO</li><li>IK</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="robotics">
-          <div class="media dark contain"><img src="assets/media/policies/nav.png" alt="Navigation sim: occupancy map with the planned path through a door" loading="lazy" width="520" height="520"></div>
-          <div class="body">
-            <p class="meta mono"><span class="role r">Robotics</span> Foundation Robotics · 2026</p>
-            <h3>Vision navigation</h3>
-            <ul class="pts">
-              <li>Stereo obstacle map + Qwen VLM targets → walking-policy velocity commands.</li>
-              <li>Root-caused a <b>38°</b> camera-tilt and <b>1.43×</b> stereo-baseline error.</li>
-              <li>Scored SITL simulator; NN-free VIO branch (OKVIS2).</li>
-            </ul>
-            <ul class="tags mono"><li>Stereo</li><li>VLM</li><li>SITL</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="robotics">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: teleoperation glove with IMUs on each finger, and a plot comparing 50 Hz and 200 Hz sampling of a joint angle"><title>Teleoperation glove and sampling-rate plot</title>
-                <rect class="o pf" x="74" y="58" width="14" height="72" rx="7" />
-                <rect class="o pf" x="93" y="46" width="14" height="84" rx="7" />
-                <rect class="o pf" x="112" y="52" width="14" height="78" rx="7" />
-                <rect class="o pf" x="131" y="72" width="14" height="58" rx="7" />
-                <g transform="translate(70 172) rotate(-52)">
-                  <rect class="o pf" x="-7" y="-46" width="14" height="52" rx="7" />
-                  <path class="t" d="M-7 -28 L7 -28" />
-                  <rect class="af" x="-4" y="-20" width="8" height="7" />
-                </g>
-                <path class="o pf" d="M72 204 L68 132 Q68 118 82 117 L136 115 Q150 115 150 129 L138 204 Z" />
-                <rect class="o hf" x="70" y="200" width="72" height="32" rx="3" />
-                <path class="t" d="M74 82 L88 82 M74 104 L88 104 M93 72 L107 72 M93 98 L107 98 M112 76 L126 76 M112 102 L126 102 M131 92 L145 92 M131 112 L145 112" />
-                <path class="t" d="M106 150 L81 96 M108 150 L100 88 M112 150 L119 92 M116 150 L138 105 M96 158 L60 162" />
-                <rect class="af" x="77" y="89" width="8" height="7" /><rect class="af" x="96" y="81" width="8" height="7" />
-                <rect class="af" x="115" y="85" width="8" height="7" /><rect class="af" x="134" y="98" width="8" height="7" />
-                <rect class="o pf" x="96" y="150" width="24" height="18" rx="2" /><rect class="af" x="104" y="156" width="8" height="6" />
-                <path class="t" d="M142 101 L168 84" /><circle class="ldot" cx="142" cy="101" r="1.6" />
-                <text class="lbl" x="172" y="87">6-DOF IMU ×5</text>
-                <path class="t" d="M120 160 L168 178" /><circle class="ldot" cx="120" cy="160" r="1.6" />
-                <text class="lbl" x="172" y="181">9-DOF IMU</text>
-                <text class="lbl k" x="20" y="28">DORSAL VIEW · OPERATOR GLOVE</text>
-                <path class="o" d="M250 72 L250 204 L390 204"/>
-                <path class="t" d="M267 204 L267 208"/>
-                <path class="t" d="M284 204 L284 208"/>
-                <path class="t" d="M301 204 L301 208"/>
-                <path class="t" d="M318 204 L318 208"/>
-                <path class="t" d="M335 204 L335 208"/>
-                <path class="t" d="M352 204 L352 208"/>
-                <path class="t" d="M369 204 L369 208"/>
-                <path class="t" d="M386 204 L386 208"/>
-                <path class="c" d="M250 140 L386 140"/>
-                <path class="h" d="M250 134.4 L250.8 132.4 L251.7 130.6 L252.6 128.7 L253.4 126.9 L254.2 125.2 L255.1 123.6 L255.9 122 L256.8 120.4 L257.6 119 L258.5 117.6 L259.4 116.3 L260.2 115.1 L261.1 114 L261.9 112.9 L262.8 112 L263.6 111.1 L264.4 110.4 L265.3 109.7 L266.1 109.1 L267 108.6 L267.9 108.1 L268.7 107.8 L269.6 107.5 L270.4 107.4 L271.2 107.3 L272.1 107.2 L272.9 107.3 L273.8 107.4 L274.6 107.6 L275.5 107.9 L276.4 108.2 L277.2 108.5 L278.1 108.9 L278.9 109.4 L279.8 109.9 L280.6 110.4 L281.4 111 L282.3 111.6 L283.1 112.2 L284 112.8 L284.9 113.5 L285.7 114.2 L286.6 114.8 L287.4 115.5 L288.2 116.2 L289.1 116.9 L289.9 117.6 L290.8 118.2 L291.6 118.9 L292.5 119.5 L293.4 120.2 L294.2 120.8 L295.1 121.4 L295.9 122 L296.8 122.5 L297.6 123.1 L298.4 123.6 L299.3 124.1 L300.1 124.6 L301 125.1 L301.9 125.5 L302.7 126 L303.6 126.4 L304.4 126.8 L305.2 127.2 L306.1 127.7 L306.9 128.1 L307.8 128.5 L308.6 128.9 L309.5 129.3 L310.4 129.7 L311.2 130.1 L312.1 130.6 L312.9 131.1 L313.8 131.5 L314.6 132 L315.4 132.6 L316.3 133.1 L317.1 133.7 L318 134.4 L318.9 135 L319.7 135.7 L320.6 136.4 L321.4 137.2 L322.2 138 L323.1 138.9 L323.9 139.8 L324.8 140.7 L325.6 141.7 L326.5 142.7 L327.4 143.8 L328.2 144.9 L329.1 146 L329.9 147.2 L330.8 148.4 L331.6 149.7 L332.4 151 L333.3 152.3 L334.1 153.6 L335 154.9 L335.9 156.3 L336.7 157.7 L337.6 159.1 L338.4 160.4 L339.2 161.8 L340.1 163.2 L340.9 164.5 L341.8 165.9 L342.6 167.2 L343.5 168.5 L344.4 169.7 L345.2 170.9 L346.1 172.1 L346.9 173.2 L347.8 174.2 L348.6 175.2 L349.4 176.1 L350.3 177 L351.1 177.8 L352 178.4 L352.9 179.1 L353.7 179.6 L354.6 180 L355.4 180.3 L356.2 180.5 L357.1 180.7 L357.9 180.7 L358.8 180.6 L359.6 180.4 L360.5 180.1 L361.4 179.7 L362.2 179.2 L363.1 178.6 L363.9 177.9 L364.8 177.1 L365.6 176.1 L366.4 175.1 L367.3 174 L368.1 172.8 L369 171.4 L369.9 170 L370.7 168.6 L371.6 167 L372.4 165.4 L373.2 163.7 L374.1 161.9 L374.9 160.1 L375.8 158.2 L376.6 156.3 L377.5 154.4 L378.4 152.4 L379.2 150.4 L380.1 148.4 L380.9 146.4 L381.8 144.3 L382.6 142.3 L383.4 140.3 L384.3 138.3 L385.1 136.3 L386 134.4"/>
-                <path class="o step" d="M250 134.4 H284 V112.8 H318 V134.4 H352 V178.4 H386 V134.4"/>
-                <rect class="o pf" x="247" y="131.4" width="6" height="6"/>
-                <rect class="o pf" x="281" y="109.8" width="6" height="6"/>
-                <rect class="o pf" x="315" y="131.4" width="6" height="6"/>
-                <rect class="o pf" x="349" y="175.4" width="6" height="6"/>
-                <rect class="o pf" x="383" y="131.4" width="6" height="6"/>
-                <path class="a thin" d="M250 134.4 L258.5 117.6 L267 108.6 L275.5 107.9 L284 112.8 L292.5 119.5 L301 125.1 L309.5 129.3 L318 134.4 L326.5 142.7 L335 154.9 L343.5 168.5 L352 178.4 L360.5 180.1 L369 171.4 L377.5 154.4 L386 134.4"/>
-                <circle class="af" cx="250" cy="134.4" r="2.1"/>
-                <circle class="af" cx="258.5" cy="117.6" r="2.1"/>
-                <circle class="af" cx="267" cy="108.6" r="2.1"/>
-                <circle class="af" cx="275.5" cy="107.9" r="2.1"/>
-                <circle class="af" cx="284" cy="112.8" r="2.1"/>
-                <circle class="af" cx="292.5" cy="119.5" r="2.1"/>
-                <circle class="af" cx="301" cy="125.1" r="2.1"/>
-                <circle class="af" cx="309.5" cy="129.3" r="2.1"/>
-                <circle class="af" cx="318" cy="134.4" r="2.1"/>
-                <circle class="af" cx="326.5" cy="142.7" r="2.1"/>
-                <circle class="af" cx="335" cy="154.9" r="2.1"/>
-                <circle class="af" cx="343.5" cy="168.5" r="2.1"/>
-                <circle class="af" cx="352" cy="178.4" r="2.1"/>
-                <circle class="af" cx="360.5" cy="180.1" r="2.1"/>
-                <circle class="af" cx="369" cy="171.4" r="2.1"/>
-                <circle class="af" cx="377.5" cy="154.4" r="2.1"/>
-                <circle class="af" cx="386" cy="134.4" r="2.1"/>
-                <text class="lbl" x="244" y="76" text-anchor="end">θ</text>
-                <text class="lbl" x="390" y="220" text-anchor="end">t</text>
-                <text class="lbl k" x="250" y="54">JOINT ANGLE · SAMPLED</text>
-                <circle class="af" cx="336" cy="76" r="2.1"/><path class="a thin" d="M330 76 L342 76"/>
-                <text class="lbl a" x="348" y="79">200 Hz</text>
-                <path class="o step" d="M330 92 H335 V86 H342"/><text class="lbl k" x="348" y="91">50 Hz</text>
-              </svg></div>
-          <div class="body">
-            <p class="meta mono"><span class="role r">Robotics</span> Foundation Robotics · 2026</p>
-            <h3>Teleoperation gloves</h3>
-            <ul class="pts">
-              <li>Hand tracking <b>50 → 200 Hz</b>; 16 mm median error vs video.</li>
-              <li>Mixed 6/9-DOF IMU architecture; Hall-effect exo at <b>0.5°</b> per joint.</li>
-              <li>Firmware over USB, BLE, WiFi; 7-sensor drift-corrected solver.</li>
-            </ul>
-            <ul class="tags mono"><li>Teleoperation</li><li>IMUs</li><li>Firmware</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="mech">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: isometric view of a finned compute bracket with a mounting flange and the thermal path from the hidden compute module"><title>Compute bracket isometric</title>
-                <path class="o f-top" d="M150 60 L271.2 130 L193.3 175 L72.1 105 Z"/><path class="o f-right" d="M271.2 130 L193.3 175 L193.3 181 L271.2 136 Z"/><path class="o f-left" d="M72.1 105 L193.3 175 L193.3 181 L72.1 111 Z"/>
-                <path class="o f-top" d="M72.1 105 L193.3 175 L188.1 178 L66.9 108 Z"/><path class="o f-right" d="M193.3 175 L188.1 178 L188.1 232 L193.3 229 Z"/><path class="o f-left" d="M66.9 108 L188.1 178 L188.1 232 L66.9 162 Z"/>
-                <path class="h" d="M162.1 89 L231.4 129 L231.4 145 L181.2 174 L111.9 134 L111.9 118 Z"/>
-                <path class="h" d="M181.2 158 L231.4 129"/>
-                <path class="h" d="M181.2 158 L111.9 118"/>
-                <path class="h" d="M181.2 158 L181.2 174"/>
-                <path class="o f-top" d="M150 42 L257.4 104 L253.9 106 L146.5 44 Z"/><path class="o f-right" d="M257.4 104 L253.9 106 L253.9 132 L257.4 130 Z"/><path class="o f-left" d="M146.5 44 L253.9 106 L253.9 132 L146.5 70 Z"/>
-                <path class="o f-top" d="M137.9 49 L245.3 111 L241.8 113 L134.4 51 Z"/><path class="o f-right" d="M245.3 111 L241.8 113 L241.8 139 L245.3 137 Z"/><path class="o f-left" d="M134.4 51 L241.8 113 L241.8 139 L134.4 77 Z"/>
-                <path class="o f-top" d="M125.8 56 L233.1 118 L229.7 120 L122.3 58 Z"/><path class="o f-right" d="M233.1 118 L229.7 120 L229.7 146 L233.1 144 Z"/><path class="o f-left" d="M122.3 58 L229.7 120 L229.7 146 L122.3 84 Z"/>
-                <path class="o f-top" d="M113.6 63 L221 125 L217.5 127 L110.2 65 Z"/><path class="o f-right" d="M221 125 L217.5 127 L217.5 153 L221 151 Z"/><path class="o f-left" d="M110.2 65 L217.5 127 L217.5 153 L110.2 91 Z"/>
-                <path class="o f-top" d="M101.5 70 L208.9 132 L205.4 134 L98 72 Z"/><path class="o f-right" d="M208.9 132 L205.4 134 L205.4 160 L208.9 158 Z"/><path class="o f-left" d="M98 72 L205.4 134 L205.4 160 L98 98 Z"/>
-                <path class="o f-top" d="M89.4 77 L196.8 139 L193.3 141 L85.9 79 Z"/><path class="o f-right" d="M196.8 139 L193.3 141 L193.3 167 L196.8 165 Z"/><path class="o f-left" d="M85.9 79 L193.3 141 L193.3 167 L85.9 105 Z"/>
-                <path class="o hole" d="M93.3 155.2 L93.2 154.1 L92.9 152.8 L92.5 151.6 L92 150.3 L91.3 149.1 L90.5 148 L89.6 147 L88.6 146.2 L87.6 145.5 L86.7 145 L85.7 144.8 L84.8 144.7 L84 144.9 L83.3 145.3 L82.8 145.9 L82.4 146.7 L82.1 147.7 L82 148.8 L82.1 149.9 L82.4 151.2 L82.8 152.4 L83.3 153.7 L84 154.9 L84.8 156 L85.7 157 L86.7 157.8 L87.6 158.5 L88.6 159 L89.6 159.2 L90.5 159.3 L91.3 159.1 L92 158.7 L92.5 158.1 L92.9 157.3 L93.2 156.3 Z"/>
-                <path class="c" d="M78.1 146.5 L97.2 157.5 M87.6 163 L87.6 141"/>
-                <path class="o hole" d="M133.1 178.2 L133 177.1 L132.8 175.8 L132.4 174.6 L131.8 173.3 L131.1 172.1 L130.3 171 L129.4 170 L128.5 169.2 L127.5 168.5 L126.5 168 L125.6 167.8 L124.7 167.7 L123.9 167.9 L123.2 168.3 L122.6 168.9 L122.2 169.7 L121.9 170.7 L121.9 171.8 L121.9 172.9 L122.2 174.2 L122.6 175.4 L123.2 176.7 L123.9 177.9 L124.7 179 L125.6 180 L126.5 180.8 L127.5 181.5 L128.5 182 L129.4 182.2 L130.3 182.3 L131.1 182.1 L131.8 181.7 L132.4 181.1 L132.8 180.3 L133 179.3 Z"/>
-                <path class="c" d="M118 169.5 L137 180.5 M127.5 186 L127.5 164"/>
-                <path class="o hole" d="M172.9 201.2 L172.9 200.1 L172.6 198.8 L172.2 197.6 L171.6 196.3 L170.9 195.1 L170.1 194 L169.2 193 L168.3 192.2 L167.3 191.5 L166.3 191 L165.4 190.8 L164.5 190.7 L163.7 190.9 L163 191.3 L162.4 191.9 L162 192.7 L161.8 193.7 L161.7 194.8 L161.8 195.9 L162 197.2 L162.4 198.4 L163 199.7 L163.7 200.9 L164.5 202 L165.4 203 L166.3 203.8 L167.3 204.5 L168.3 205 L169.2 205.2 L170.1 205.3 L170.9 205.1 L171.6 204.7 L172.2 204.1 L172.6 203.3 L172.9 202.3 Z"/>
-                <path class="c" d="M157.8 192.5 L176.8 203.5 M167.3 209 L167.3 187"/>
-                <path class="a heat" d="M151.7 75 L152.9 74 L153.9 73 L154.7 72 L155.1 71 L155.2 70 L154.9 69 L154.3 68 L153.3 67 L152.2 66 L151.1 65 L150 64 L149.1 63 L148.5 62 L148.2 61 L148.4 60 L148.9 59 L149.7 58 L150.8 57 L151.9 56 L153 55 L154 54 L154.8 53 L155.2 52 L155.2 51 L154.8 50 L154.1 49 L153.2 48 L152.1 47 L150.9 46 L149.8 45 L149 44 L148.4 43 L148.2 42"/>
-                <path class="a heat" d="M177.7 90 L178.9 89 L179.9 88 L180.7 87 L181.1 86 L181.2 85 L180.9 84 L180.2 83 L179.3 82 L178.2 81 L177 80 L176 79 L175.1 78 L174.5 77 L174.2 76 L174.4 75 L174.9 74 L175.7 73 L176.7 72 L177.9 71 L179 70 L180 69 L180.7 68 L181.2 67 L181.2 66 L180.8 65 L180.1 64 L179.2 63 L178 62 L176.9 61 L175.8 60 L175 59 L174.4 58 L174.2 57"/>
-                <path class="a heat" d="M203.7 105 L204.8 104 L205.9 103 L206.6 102 L207.1 101 L207.2 100 L206.9 99 L206.2 98 L205.3 97 L204.2 96 L203 95 L201.9 94 L201 93 L200.4 92 L200.2 91 L200.3 90 L200.8 89 L201.7 88 L202.7 87 L203.9 86 L205 85 L206 84 L206.7 83 L207.1 82 L207.2 81 L206.8 80 L206.1 79 L205.1 78 L204 77 L202.9 76 L201.8 75 L200.9 74 L200.4 73 L200.2 72"/>
-                <path class="t" d="M229.7 120 L292 74"/><circle class="ldot" cx="229.7" cy="120" r="1.6"/><text class="lbl" x="296" y="77" text-anchor="start">FINS ×6</text>
-                <path class="t" d="M167.3 204 L292 196"/><circle class="ldot" cx="167.3" cy="204" r="1.6"/><text class="lbl" x="296" y="199" text-anchor="start">MOUNT HOLES ×3</text>
-                <path class="t" d="M219.3 144 L292 140"/><circle class="ldot" cx="219.3" cy="144" r="1.6"/><text class="lbl" x="296" y="143" text-anchor="start">COMPUTE (HIDDEN)</text>
-                <text class="lbl a" x="127.7" y="49" text-anchor="end">THERMAL PATH</text>
-                <text class="lbl k" x="20" y="28">ISOMETRIC · COMPUTE BRACKET</text>
-                <g transform="translate(36 228)"><path class="t" d="M0 0 L17.3 10 M0 0 L-17.3 10 M0 0 L0 -20"/><text class="lbl" x="20" y="16">X</text><text class="lbl" x="-27" y="16">Y</text><text class="lbl" x="-3" y="-24">Z</text></g>
-              </svg></div>
-          <div class="body">
-            <p class="meta mono"><span class="role m">Mechanical</span> Foundation Robotics · 2026</p>
-            <h3>Humanoid hardware</h3>
-            <ul class="pts">
-              <li>Compute bracket with thermal analysis; battery mounts; production test fixtures.</li>
-              <li>Daisy-chained actuator harness; planetary vs cycloidal actuators on a dyno.</li>
-              <li>Adhesive + fastener spec for actuator assemblies; full-body assembly process.</li>
-            </ul>
-            <ul class="tags mono"><li>Thermal</li><li>Fixtures</li><li>DFA</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="mech">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: two-view orthographic drawing of an L-bracket with dimensions, datums and geometric tolerance frames"><title>Service tooling bracket, GD&amp;T drawing</title>
-                <text class="lbl k" x="60" y="28">FRONT VIEW</text><text class="lbl k" x="236" y="28">RIGHT VIEW</text>
-                <path class="o pf" d="M60 60 L60 196 L210 196 L210 178 L78 178 L78 60 Z" />
-                <path class="o pf" d="M78 122 L78 178 L134 178 Z" />
-                <path class="h" d="M60 86 L78 86 M60 98 L78 98 M166 178 L166 196 M178 178 L178 196" />
-                <path class="c" d="M52 92 L86 92 M172 172 L172 202" />
-                <rect class="o pf" x="236" y="60" width="80" height="136" />
-                <path class="o" d="M236 178 L316 178" />
-                <rect class="o pf" x="272" y="122" width="8" height="56" />
-                <circle class="o pf" cx="256" cy="92" r="6" /><circle class="o pf" cx="296" cy="92" r="6" />
-                <path class="c" d="M246 92 L266 92 M256 82 L256 102 M286 92 L306 92 M296 82 L296 102" />
-                <path class="h" d="M250 178 L250 196 M262 178 L262 196 M290 178 L290 196 M302 178 L302 196" />
-                <path class="c" d="M256 172 L256 202 M296 172 L296 202" />
-                <path class="x" d="M60 200 L60 250 M210 200 L210 250" /><path class="d" d="M60 244 L210 244" /><text class="lbl k" x="135" y="240" text-anchor="middle">L</text>
-                <path class="x" d="M56 60 L16 60 M56 196 L16 196" /><path class="d" d="M22 60 L22 196" /><text class="lbl k" x="18" y="131" text-anchor="end">H</text>
-                <path class="x" d="M256 84 L256 40 M296 84 L296 40" /><path class="d" d="M256 46 L296 46" /><text class="lbl k" x="276" y="42" text-anchor="middle">P</text>
-                <path class="dat" d="M94 196 L106 196 L100 203 Z" /><path class="t" d="M100 203 L100 208" />
-                <rect class="fcf" x="93" y="208" width="14" height="14" /><text class="lbl k" x="100" y="218.5" text-anchor="middle">A</text>
-                <path class="dat" d="M60 144 L60 156 L53 150 Z" /><path class="t" d="M53 150 L47 150" />
-                <rect class="fcf" x="33" y="143" width="14" height="14" /><text class="lbl k" x="40" y="153.5" text-anchor="middle">B</text>
-                <path class="d1" d="M96 73 L79 73" />
-                <rect class="fcf" x="96" y="66" width="54" height="14" /><path class="fcf" d="M110 66 L110 80 M136 66 L136 80" />
-                <path class="o thin" d="M99 76.5 L107 76.5 M103 76.5 L103 69.5" />
-                <text class="lbl k" x="123" y="76.5" text-anchor="middle">0.05</text><text class="lbl k" x="143" y="76.5" text-anchor="middle">A</text>
-                <path class="t" d="M300.2 87.8 L328 74" /><circle class="ldot" cx="300.2" cy="87.8" r="1.4" />
-                <text class="lbl k" x="332" y="77">2× Ø d THRU</text>
-                <rect class="fcf" x="332" y="84" width="62" height="14" /><path class="fcf" d="M346 84 L346 98 M370 84 L370 98 M382 84 L382 98" />
-                <circle class="o thin" cx="339" cy="91" r="3.4" /><path class="o thin" d="M333.5 91 L344.5 91 M339 85.5 L339 96.5" />
-                <text class="lbl k" x="358" y="94.5" text-anchor="middle">Ø.1</text><text class="lbl k" x="376" y="94.5" text-anchor="middle">A</text><text class="lbl k" x="388" y="94.5" text-anchor="middle">B</text>
-              </svg></div>
-          <div class="body">
-            <p class="meta mono"><span class="role m">Mechanical</span> Tesla Energy · 2026</p>
-            <h3>Megapack service tooling</h3>
-            <ul class="pts">
-              <li>SolidWorks tooling released on <b>GD&amp;T</b> 2D drawings, DFM-first.</li>
-              <li>Prototyped with 3D printing + machining; vehicle hardware retrofits.</li>
-              <li>Wrote <b>10+</b> standardized service procedures.</li>
-            </ul>
-            <ul class="tags mono"><li>SolidWorks</li><li>GD&amp;T</li><li>DFM</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="mech">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: electric motor front view showing rotor magnets, stator teeth and windings, with a side section A–A"><title>Motor front view and section A–A</title>
-                <g transform="translate(124 130)">
-                  <g>
-                  <path class="o hf" fill-rule="evenodd" d="M92 0 A92 92 0 1 1 -92 0 A92 92 0 1 1 92 0 Z M84 0 A84 84 0 1 0 -84 0 A84 84 0 1 0 84 0 Z"/>
-                  <path class="o mag-n" d="M84 1.8 A84 84 0 0 1 76.4 34.9 L69.1 31.5 A76 76 0 0 0 76 1.6 Z"/>
-                  <path class="o pf" d="M74.9 38 A84 84 0 0 1 53.7 64.6 L48.6 58.4 A76 76 0 0 0 67.8 34.4 Z"/>
-                  <path class="o mag-n" d="M51 66.8 A84 84 0 0 1 20.4 81.5 L18.5 73.7 A76 76 0 0 0 46.1 60.4 Z"/>
-                  <path class="o pf" d="M17 82.3 A84 84 0 0 1 -17 82.3 L-15.4 74.4 A76 76 0 0 0 15.4 74.4 Z"/>
-                  <path class="o mag-n" d="M-20.4 81.5 A84 84 0 0 1 -51 66.8 L-46.1 60.4 A76 76 0 0 0 -18.5 73.7 Z"/>
-                  <path class="o pf" d="M-53.7 64.6 A84 84 0 0 1 -74.9 38 L-67.8 34.4 A76 76 0 0 0 -48.6 58.4 Z"/>
-                  <path class="o mag-n" d="M-76.4 34.9 A84 84 0 0 1 -84 1.8 L-76 1.6 A76 76 0 0 0 -69.1 31.5 Z"/>
-                  <path class="o pf" d="M-84 -1.8 A84 84 0 0 1 -76.4 -34.9 L-69.1 -31.5 A76 76 0 0 0 -76 -1.6 Z"/>
-                  <path class="o mag-n" d="M-74.9 -38 A84 84 0 0 1 -53.7 -64.6 L-48.6 -58.4 A76 76 0 0 0 -67.8 -34.4 Z"/>
-                  <path class="o pf" d="M-51 -66.8 A84 84 0 0 1 -20.4 -81.5 L-18.5 -73.7 A76 76 0 0 0 -46.1 -60.4 Z"/>
-                  <path class="o mag-n" d="M-17 -82.3 A84 84 0 0 1 17 -82.3 L15.4 -74.4 A76 76 0 0 0 -15.4 -74.4 Z"/>
-                  <path class="o pf" d="M20.4 -81.5 A84 84 0 0 1 51 -66.8 L46.1 -60.4 A76 76 0 0 0 18.5 -73.7 Z"/>
-                  <path class="o mag-n" d="M53.7 -64.6 A84 84 0 0 1 74.9 -38 L67.8 -34.4 A76 76 0 0 0 48.6 -58.4 Z"/>
-                  <path class="o pf" d="M76.4 -34.9 A84 84 0 0 1 84 -1.8 L76 -1.6 A76 76 0 0 0 69.1 -31.5 Z"/>
-                  </g>
-                  <path class="t coil" d="M42 5.2 L62 5.2 L62 11.2 L42 11.2 Z"/>
-                  <path class="t coil" d="M42 -5.2 L62 -5.2 L62 -11.2 L42 -11.2 Z"/>
-                  <path class="t coil" d="M33.8 25.5 L51.1 35.5 L48.1 40.7 L30.8 30.7 Z"/>
-                  <path class="t coil" d="M39 16.5 L56.3 26.5 L59.3 21.3 L42 11.3 Z"/>
-                  <path class="t coil" d="M16.5 39 L26.5 56.3 L21.3 59.3 L11.3 42 Z"/>
-                  <path class="t coil" d="M25.5 33.8 L35.5 51.1 L40.7 48.1 L30.7 30.8 Z"/>
-                  <path class="t coil" d="M-5.2 42 L-5.2 62 L-11.2 62 L-11.2 42 Z"/>
-                  <path class="t coil" d="M5.2 42 L5.2 62 L11.2 62 L11.2 42 Z"/>
-                  <path class="t coil" d="M-25.5 33.8 L-35.5 51.1 L-40.7 48.1 L-30.7 30.8 Z"/>
-                  <path class="t coil" d="M-16.5 39 L-26.5 56.3 L-21.3 59.3 L-11.3 42 Z"/>
-                  <path class="t coil" d="M-39 16.5 L-56.3 26.5 L-59.3 21.3 L-42 11.3 Z"/>
-                  <path class="t coil" d="M-33.8 25.5 L-51.1 35.5 L-48.1 40.7 L-30.8 30.7 Z"/>
-                  <path class="t coil" d="M-42 -5.2 L-62 -5.2 L-62 -11.2 L-42 -11.2 Z"/>
-                  <path class="t coil" d="M-42 5.2 L-62 5.2 L-62 11.2 L-42 11.2 Z"/>
-                  <path class="t coil" d="M-33.8 -25.5 L-51.1 -35.5 L-48.1 -40.7 L-30.8 -30.7 Z"/>
-                  <path class="t coil" d="M-39 -16.5 L-56.3 -26.5 L-59.3 -21.3 L-42 -11.3 Z"/>
-                  <path class="t coil" d="M-16.5 -39 L-26.5 -56.3 L-21.3 -59.3 L-11.3 -42 Z"/>
-                  <path class="t coil" d="M-25.5 -33.8 L-35.5 -51.1 L-40.7 -48.1 L-30.7 -30.8 Z"/>
-                  <path class="t coil" d="M5.2 -42 L5.2 -62 L11.2 -62 L11.2 -42 Z"/>
-                  <path class="t coil" d="M-5.2 -42 L-5.2 -62 L-11.2 -62 L-11.2 -42 Z"/>
-                  <path class="t coil" d="M25.5 -33.8 L35.5 -51.1 L40.7 -48.1 L30.7 -30.8 Z"/>
-                  <path class="t coil" d="M16.5 -39 L26.5 -56.3 L21.3 -59.3 L11.3 -42 Z"/>
-                  <path class="t coil" d="M39 -16.5 L56.3 -26.5 L59.3 -21.3 L42 -11.3 Z"/>
-                  <path class="t coil" d="M33.8 -25.5 L51.1 -35.5 L48.1 -40.7 L30.8 -30.7 Z"/>
-                  <path class="o pf" fill-rule="evenodd" d="M37.7 -4.5 L64 -4.5 L64.6 -13.7 L70.4 -15 A72 72 0 0 1 70.4 15 L64.6 13.7 L64 4.5 L37.7 4.5 A38 38 0 0 1 34.9 15 L57.7 28.1 L62.8 20.4 L68.5 22.2 A72 72 0 0 1 53.5 48.2 L49 44.2 L53.2 35.9 L30.4 22.8 A38 38 0 0 1 22.8 30.4 L35.9 53.2 L44.2 49 L48.2 53.5 A72 72 0 0 1 22.2 68.5 L20.4 62.8 L28.1 57.7 L15 34.9 A38 38 0 0 1 4.5 37.7 L4.5 64 L13.7 64.6 L15 70.4 A72 72 0 0 1 -15 70.4 L-13.7 64.6 L-4.5 64 L-4.5 37.7 A38 38 0 0 1 -15 34.9 L-28.1 57.7 L-20.4 62.8 L-22.2 68.5 A72 72 0 0 1 -48.2 53.5 L-44.2 49 L-35.9 53.2 L-22.8 30.4 A38 38 0 0 1 -30.4 22.8 L-53.2 35.9 L-49 44.2 L-53.5 48.2 A72 72 0 0 1 -68.5 22.2 L-62.8 20.4 L-57.7 28.1 L-34.9 15 A38 38 0 0 1 -37.7 4.5 L-64 4.5 L-64.6 13.7 L-70.4 15 A72 72 0 0 1 -70.4 -15 L-64.6 -13.7 L-64 -4.5 L-37.7 -4.5 A38 38 0 0 1 -34.9 -15 L-57.7 -28.1 L-62.8 -20.4 L-68.5 -22.2 A72 72 0 0 1 -53.5 -48.2 L-49 -44.2 L-53.2 -35.9 L-30.4 -22.8 A38 38 0 0 1 -22.8 -30.4 L-35.9 -53.2 L-44.2 -49 L-48.2 -53.5 A72 72 0 0 1 -22.2 -68.5 L-20.4 -62.8 L-28.1 -57.7 L-15 -34.9 A38 38 0 0 1 -4.5 -37.7 L-4.5 -64 L-13.7 -64.6 L-15 -70.4 A72 72 0 0 1 15 -70.4 L13.7 -64.6 L4.5 -64 L4.5 -37.7 A38 38 0 0 1 15 -34.9 L28.1 -57.7 L20.4 -62.8 L22.2 -68.5 A72 72 0 0 1 48.2 -53.5 L44.2 -49 L35.9 -53.2 L22.8 -30.4 A38 38 0 0 1 30.4 -22.8 L53.2 -35.9 L49 -44.2 L53.5 -48.2 A72 72 0 0 1 68.5 -22.2 L62.8 -20.4 L57.7 -28.1 L34.9 -15 A38 38 0 0 1 37.7 -4.5 Z M16 0 A16 16 0 1 0 -16 0 A16 16 0 1 0 16 0 Z"/>
-                  <circle class="h" r="12"/><circle class="o pf" r="8"/>
-                  <path class="c" d="M-106 0 L106 0 M0 -106 L0 106"/>
-                  <path class="cut" d="M0 -110 L0 -98 M0 98 L0 110"/>
-                  <path class="d1" d="M0 -110 L14 -110"/><path class="d1" d="M0 110 L14 110"/>
-                  <text class="lbl k" x="19" y="-107">A</text><text class="lbl k" x="19" y="113">A</text>
-                </g>
-                <!-- section A-A -->
-                <rect class="o pf" x="250" y="122" width="126" height="16" />
-                <path class="o hf" d="M266 38 L344 38 L344 46 L272 46 L272 122 L266 122 Z" />
-                <path class="o hf" d="M266 222 L344 222 L344 214 L272 214 L272 138 L266 138 Z" />
-                <rect class="o mag-n" x="282" y="46" width="58" height="8" /><rect class="o mag-n" x="282" y="206" width="58" height="8" />
-                <rect class="o lamf" x="286" y="58" width="50" height="56" /><rect class="o lamf" x="286" y="146" width="50" height="56" />
-                <rect class="o coilf" x="279" y="62" width="7" height="26" rx="3" /><rect class="o coilf" x="336" y="62" width="7" height="26" rx="3" />
-                <rect class="o coilf" x="279" y="172" width="7" height="26" rx="3" /><rect class="o coilf" x="336" y="172" width="7" height="26" rx="3" />
-                <path class="o hf" d="M336 100 L352 100 L352 64 L360 64 L360 122 L336 122 Z" />
-                <path class="o hf" d="M336 160 L352 160 L352 196 L360 196 L360 138 L336 138 Z" />
-                <g class="brg"><rect class="o pf" x="290" y="114" width="12" height="8" /><path class="t" d="M290 114 L302 122 M302 114 L290 122" />
-                  <rect class="o pf" x="322" y="114" width="12" height="8" /><path class="t" d="M322 114 L334 122 M334 114 L322 122" />
-                  <rect class="o pf" x="290" y="138" width="12" height="8" /><path class="t" d="M290 138 L302 146 M302 138 L290 146" />
-                  <rect class="o pf" x="322" y="138" width="12" height="8" /><path class="t" d="M322 138 L334 146 M334 138 L322 146" /></g>
-                <path class="c" d="M244 130 L384 130" />
-                <text class="lbl k" x="124" y="254" text-anchor="middle">FRONT</text>
-                <text class="lbl k" x="313" y="254" text-anchor="middle">SECTION A–A</text>
-                <path class="t" d="M306 42 L306 24 L318 24" /><circle class="ldot" cx="306" cy="42" r="1.6" /><text class="lbl" x="322" y="27">ROTOR CAN</text>
-                <path class="t" d="M290 50 L290 14 L318 14" /><circle class="ldot" cx="290" cy="50" r="1.6" /><text class="lbl a" x="322" y="17">MAGNETS</text>
-              </svg></div>
-          <div class="body">
-            <p class="meta mono"><span class="role m">Mechanical</span> Aerial Mechanica · 2025</p>
-            <h3>Patented motor design</h3>
-            <ul class="pts">
-              <li>Owned a <b>patented</b> motor design, concept → production release.</li>
-              <li>FEA + risk analysis of the carbon-fiber frame and landing legs.</li>
-            </ul>
-            <ul class="tags mono"><li>Electromechanical</li><li>FEA</li><li>Patent</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="mech">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: top view of a six-arm UAV frame with coaxial motor pairs"><title>12-motor UAV chassis top view</title>
-                <circle class="h" cx="280" cy="130" r="29"/><circle class="t" cx="280" cy="130" r="24"/>
-                <circle class="h" cx="240" cy="199.3" r="29"/><circle class="t" cx="240" cy="199.3" r="24"/>
-                <circle class="h" cx="160" cy="199.3" r="29"/><circle class="t" cx="160" cy="199.3" r="24"/>
-                <circle class="h" cx="120" cy="130" r="29"/><circle class="t" cx="120" cy="130" r="24"/>
-                <circle class="h" cx="160" cy="60.7" r="29"/><circle class="t" cx="160" cy="60.7" r="24"/>
-                <circle class="h" cx="240" cy="60.7" r="29"/><circle class="t" cx="240" cy="60.7" r="24"/>
-                <path class="bar" d="M200 130 L280 130"/>
-                <path class="bar" d="M200 130 L240 199.3"/>
-                <path class="bar" d="M200 130 L160 199.3"/>
-                <path class="bar" d="M200 130 L120 130"/>
-                <path class="bar" d="M200 130 L160 60.7"/>
-                <path class="bar" d="M200 130 L240 60.7"/>
-                <path class="bar-in" d="M200 130 L280 130"/>
-                <path class="bar-in" d="M200 130 L240 199.3"/>
-                <path class="bar-in" d="M200 130 L160 199.3"/>
-                <path class="bar-in" d="M200 130 L120 130"/>
-                <path class="bar-in" d="M200 130 L160 60.7"/>
-                <path class="bar-in" d="M200 130 L240 60.7"/>
-                <path class="o pf" d="M232.9 149 L200 168 L167.1 149 L167.1 111 L200 92 L232.9 111 Z"/>
-                <path class="h" d="M219.1 141 L200 152 L180.9 141 L180.9 119 L200 108 L219.1 119 Z"/>
-                <circle class="o pf" cx="229.4" cy="124.3" r="1.8"/>
-                <circle class="o pf" cx="229.4" cy="135.7" r="1.8"/>
-                <circle class="o pf" cx="219.7" cy="152.6" r="1.8"/>
-                <circle class="o pf" cx="209.8" cy="158.4" r="1.8"/>
-                <circle class="o pf" cx="190.2" cy="158.4" r="1.8"/>
-                <circle class="o pf" cx="180.3" cy="152.6" r="1.8"/>
-                <circle class="o pf" cx="170.6" cy="135.7" r="1.8"/>
-                <circle class="o pf" cx="170.6" cy="124.3" r="1.8"/>
-                <circle class="o pf" cx="180.3" cy="107.4" r="1.8"/>
-                <circle class="o pf" cx="190.2" cy="101.6" r="1.8"/>
-                <circle class="o pf" cx="209.8" cy="101.6" r="1.8"/>
-                <circle class="o pf" cx="219.7" cy="107.4" r="1.8"/>
-                <path class="c" d="M186 130 L214 130 M200 116 L200 144"/>
-                <circle class="af" cx="200" cy="130" r="2.6"/>
-                <circle class="o pf" cx="280" cy="130" r="10"/><circle class="t" cx="280" cy="130" r="5.5"/><circle class="af" cx="280" cy="130" r="2"/>
-                <circle class="o pf" cx="240" cy="199.3" r="10"/><circle class="t" cx="240" cy="199.3" r="5.5"/><circle class="af" cx="240" cy="199.3" r="2"/>
-                <circle class="o pf" cx="160" cy="199.3" r="10"/><circle class="t" cx="160" cy="199.3" r="5.5"/><circle class="af" cx="160" cy="199.3" r="2"/>
-                <circle class="o pf" cx="120" cy="130" r="10"/><circle class="t" cx="120" cy="130" r="5.5"/><circle class="af" cx="120" cy="130" r="2"/>
-                <circle class="o pf" cx="160" cy="60.7" r="10"/><circle class="t" cx="160" cy="60.7" r="5.5"/><circle class="af" cx="160" cy="60.7" r="2"/>
-                <circle class="o pf" cx="240" cy="60.7" r="10"/><circle class="t" cx="240" cy="60.7" r="5.5"/><circle class="af" cx="240" cy="60.7" r="2"/>
-                <path class="x" d="M120 144 L120 250 M280 144 L280 250"/>
-                <path class="d" d="M120 244 L280 244"/>
-                <text class="lbl k" x="200" y="240" text-anchor="middle">MOTOR SPAN</text>
-                <path class="t" d="M247 53.7 L296 30"/><circle class="ldot" cx="247" cy="53.7" r="1.6"/><text class="lbl" x="300" y="33" text-anchor="start">×2 COAXIAL</text>
-                <text class="lbl" x="300" y="44">= 12 MOTORS</text>
-                <path class="t" d="M250 127 L318 96"/><circle class="ldot" cx="250" cy="127" r="1.6"/><text class="lbl" x="322" y="99" text-anchor="start">ARM ×6</text>
-                <path class="t" d="M184 138 L70 196"/><circle class="ldot" cx="184" cy="138" r="1.6"/><text class="lbl" x="66" y="199" text-anchor="end">PAYLOAD BAY</text>
-                <text class="lbl k" x="20" y="28">TOP VIEW · COAXIAL HEX</text>
-              </svg></div>
-          <div class="body">
-            <p class="meta mono"><span class="role m">Mechanical</span> Aerial Industries · 2024</p>
-            <h3>12-motor UAV chassis</h3>
-            <ul class="pts">
-              <li>Led <b>production release</b>, prototype → flight-ready.</li>
-              <li>Parametric CAD for propulsion + payload: structural, thermal, electrical.</li>
-            </ul>
-            <ul class="tags mono"><li>Parametric CAD</li><li>Production</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="mech">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Plot: target tremor waveform with tracking before and after the electromechanical redesign"><title>Tremor tracking before and after redesign</title>
-                <path class="o" d="M46 62 L46 204"/><path class="c" d="M46 136 L384 136"/>
-                <path class="t" d="M46 135.7 L47.1 135.1 L48.3 134.6 L49.4 134.1 L50.5 133.6 L51.6 133 L52.8 132.5 L53.9 132 L55 131.9 L56.1 132.9 L57.3 133.9 L58.4 133.2 L59.5 130.7 L60.6 128.3 L61.8 125.9 L62.9 123.7 L64 120.4 L65.2 116.5 L66.3 112.5 L67.4 107.9 L68.5 102 L69.7 95.4 L70.8 90.5 L71.9 89.3 L73 92.1 L74.2 95 L75.3 96.7 L76.4 97.6 L77.5 98.4 L78.7 99.4 L79.8 100.8 L80.9 102.3 L82.1 103.7 L83.2 105.4 L84.3 107.3 L85.4 109.5 L86.6 112 L87.7 114.7 L88.8 117.6 L89.9 120.1 L91.1 122.3 L92.2 124.7 L93.3 127.1 L94.4 129.5 L95.6 132.1 L96.7 134.5 L97.8 137 L99 140.9 L100.1 145 L101.2 148.9 L102.3 152.7 L103.5 156.3 L104.6 159.7 L105.7 162.9 L106.8 165.7 L108 167.7 L109.1 169.4 L110.2 170.7 L111.3 171.8 L112.5 172.5 L113.6 173 L114.7 173.1 L115.9 172.6 L117 171.6 L118.1 170.3 L119.2 168.7 L120.4 166.7 L121.5 164.5 L122.6 162 L123.7 159.3 L124.9 156.4 L126 153.4 L127.1 150.3 L128.2 146.9 L129.4 143.5 L130.5 139.9 L131.6 136.3 L132.8 132.7 L133.9 129.7 L135 126.8 L136.1 123.9 L137.3 121.1 L138.4 118.5 L139.5 115.9 L140.6 113.4 L141.8 110.4 L142.9 106 L144 100.3 L145.1 94.5 L146.3 91.3 L147.4 91.9 L148.5 94.2 L149.7 95.9 L150.8 97.1 L151.9 98.1 L153 99.1 L154.2 100.3 L155.3 101.9 L156.4 103.8 L157.5 106 L158.7 108.5 L159.8 110.3 L160.9 112.3 L162 114.5 L163.2 117 L164.3 119.7 L165.4 122.5 L166.6 125.5 L167.7 128.7 L168.8 132.1 L169.9 135.6 L171.1 139.1 L172.2 142.6 L173.3 146.1 L174.4 149.5 L175.6 152.7 L176.7 156.1 L177.8 159.5 L178.9 162.6 L180.1 165.6 L181.2 168.3 L182.3 170.7 L183.5 172.9 L184.6 174.8 L185.7 176.1 L186.8 177 L188 177.7 L189.1 178 L190.2 177.9 L191.3 177.6 L192.5 176.9 L193.6 175.9 L194.7 174.6 L195.8 172.9 L197 171 L198.1 168.9 L199.2 166.5 L200.4 163.8 L201.5 161 L202.6 157.6 L203.7 153.8 L204.9 149.9 L206 145.8 L207.1 141.7 L208.2 137.6 L209.4 133.5 L210.5 129.4 L211.6 125.9 L212.7 122.6 L213.9 119.4 L215 116.4 L216.1 113.3 L217.3 109.8 L218.4 105.2 L219.5 99.5 L220.6 94.7 L221.8 93.1 L222.9 94.9 L224 97.6 L225.1 99.2 L226.3 99.8 L227.4 100.1 L228.5 100.4 L229.6 100.9 L230.8 101.7 L231.9 102.8 L233 104.2 L234.2 105.9 L235.3 107.8 L236.4 110.1 L237.5 113.1 L238.7 116.6 L239.8 120.2 L240.9 124 L242 127.9 L243.2 131.9 L244.3 136 L245.4 140 L246.5 143 L247.7 145.8 L248.8 148.7 L249.9 151.4 L251.1 154.1 L252.2 156.5 L253.3 158.8 L254.4 161.1 L255.6 163.4 L256.7 165.5 L257.8 167.3 L258.9 168.9 L260.1 170.1 L261.2 171 L262.3 171.7 L263.4 171.9 L264.6 171.8 L265.7 171.3 L266.8 170.5 L268 169.4 L269.1 168 L270.2 166.3 L271.3 164.3 L272.5 163 L273.6 161.4 L274.7 159.6 L275.8 157.6 L277 155.3 L278.1 153 L279.2 150.4 L280.3 147.5 L281.5 143.9 L282.6 140.2 L283.7 136.5 L284.9 132.9 L286 129.2 L287.1 125.7 L288.2 122.3 L289.4 119.5 L290.5 117.2 L291.6 114.9 L292.7 111.9 L293.9 107.6 L295 102.5 L296.1 99.3 L297.2 99.7 L298.4 101.4 L299.5 103.1 L300.6 103.6 L301.8 103.2 L302.9 102.8 L304 102.5 L305.1 102.6 L306.3 103.3 L307.4 105.5 L308.5 107.9 L309.6 110.7 L310.8 113.7 L311.9 116.9 L313 120.3 L314.1 124 L315.3 127.2 L316.4 130.1 L317.5 133 L318.7 136.1 L319.8 139.2 L320.9 142.3 L322 145.4 L323.2 148.5 L324.3 150.9 L325.4 153 L326.5 155 L327.7 156.9 L328.8 158.5 L329.9 160 L331 161.3 L332.2 162.6 L333.3 166 L334.4 169.1 L335.6 171.9 L336.7 174.4 L337.8 176.5 L338.9 178.4 L340.1 179.9 L341.2 179.7 L342.3 177.7 L343.4 175.4 L344.6 172.7 L345.7 169.8 L346.8 166.5 L347.9 163 L349.1 159.3 L350.2 156.5 L351.3 153.9 L352.5 151.1 L353.6 148.2 L354.7 145.1 L355.8 141.9 L357 138.7 L358.1 135.5 L359.2 132.3 L360.3 129.1 L361.5 126 L362.6 123 L363.7 120.1 L364.8 117.3 L366 114.6 L367.1 111.4 L368.2 106.9 L369.4 101.1 L370.5 95.2 L371.6 92 L372.7 92.5 L373.9 94.8 L375 96.4 L376.1 97.1 L377.2 97.3 L378.4 97.5 L379.5 98 L380.6 98.9 L381.7 100 L382.9 101.5 L384 103.2"/>
-                <path class="h dk" d="M46 136 L47.1 131.3 L48.3 126.6 L49.4 122.1 L50.5 117.6 L51.6 113.3 L52.8 109.2 L53.9 105.1 L55 100.6 L56.1 94.7 L57.3 87.2 L58.4 80.1 L59.5 77 L60.6 78.8 L61.8 82.4 L62.9 84.8 L64 85.6 L65.2 85.9 L66.3 86.4 L67.4 87.2 L68.5 88.4 L69.7 90.1 L70.8 92.2 L71.9 94.6 L73 97.5 L74.2 100.6 L75.3 104.1 L76.4 107.9 L77.5 111.9 L78.7 116.1 L79.8 120.5 L80.9 125.1 L82.1 129.7 L83.2 134.4 L84.3 139.1 L85.4 143.8 L86.6 148.4 L87.7 152.9 L88.8 157.3 L89.9 161.5 L91.1 165.4 L92.2 169.1 L93.3 172.4 L94.4 175.5 L95.6 178.2 L96.7 180.6 L97.8 182.5 L99 184 L100.1 185.1 L101.2 185.8 L102.3 186 L103.5 185.8 L104.6 185.1 L105.7 184 L106.8 182.5 L108 180.6 L109.1 178.2 L110.2 175.5 L111.3 172.4 L112.5 169.1 L113.6 165.4 L114.7 161.5 L115.9 157.3 L117 152.9 L118.1 148.4 L119.2 143.8 L120.4 139.1 L121.5 134.4 L122.6 129.7 L123.7 125.1 L124.9 120.5 L126 116.1 L127.1 111.9 L128.2 107.8 L129.4 103.7 L130.5 98.8 L131.6 92.3 L132.8 84.6 L133.9 78.5 L135 77.2 L136.1 80 L137.3 83.4 L138.4 85.2 L139.5 85.8 L140.6 86.1 L141.8 86.6 L142.9 87.6 L144 89 L145.1 90.8 L146.3 93 L147.4 95.5 L148.5 98.5 L149.7 101.8 L150.8 105.4 L151.9 109.2 L153 113.3 L154.2 117.6 L155.3 122.1 L156.4 126.6 L157.5 131.3 L158.7 136 L159.8 140.7 L160.9 145.4 L162 149.9 L163.2 154.4 L164.3 158.7 L165.4 162.8 L166.6 166.6 L167.7 170.2 L168.8 173.5 L169.9 176.5 L171.1 179 L172.2 181.2 L173.3 183 L174.4 184.4 L175.6 185.4 L176.7 185.9 L177.8 186 L178.9 185.6 L180.1 184.8 L181.2 183.6 L182.3 181.9 L183.5 179.8 L184.6 177.4 L185.7 174.5 L186.8 171.4 L188 167.9 L189.1 164.1 L190.2 160.1 L191.3 155.9 L192.5 151.5 L193.6 146.9 L194.7 142.3 L195.8 137.6 L197 132.9 L198.1 128.2 L199.2 123.6 L200.4 119.1 L201.5 114.7 L202.6 110.5 L203.7 106.5 L204.9 102.2 L206 96.9 L207.1 89.8 L208.2 82.2 L209.4 77.4 L210.5 77.8 L211.6 81.2 L212.7 84.2 L213.9 85.5 L215 85.9 L216.1 86.2 L217.3 86.9 L218.4 88 L219.5 89.5 L220.6 91.4 L221.8 93.8 L222.9 96.5 L224 99.6 L225.1 102.9 L226.3 106.6 L227.4 110.5 L228.5 114.7 L229.6 119.1 L230.8 123.6 L231.9 128.2 L233 132.9 L234.2 137.6 L235.3 142.3 L236.4 146.9 L237.5 151.5 L238.7 155.9 L239.8 160.1 L240.9 164.1 L242 167.9 L243.2 171.4 L244.3 174.5 L245.4 177.4 L246.5 179.8 L247.7 181.9 L248.8 183.6 L249.9 184.8 L251.1 185.6 L252.2 186 L253.3 185.9 L254.4 185.4 L255.6 184.4 L256.7 183 L257.8 181.2 L258.9 179 L260.1 176.5 L261.2 173.5 L262.3 170.2 L263.4 166.6 L264.6 162.8 L265.7 158.7 L266.8 154.4 L268 149.9 L269.1 145.4 L270.2 140.7 L271.3 136 L272.5 131.3 L273.6 126.6 L274.7 122.1 L275.8 117.6 L277 113.3 L278.1 109.2 L279.2 105.1 L280.3 100.6 L281.5 94.7 L282.6 87.2 L283.7 80.1 L284.9 77 L286 78.8 L287.1 82.4 L288.2 84.8 L289.4 85.6 L290.5 85.9 L291.6 86.4 L292.7 87.2 L293.9 88.4 L295 90.1 L296.1 92.2 L297.2 94.6 L298.4 97.5 L299.5 100.6 L300.6 104.1 L301.8 107.9 L302.9 111.9 L304 116.1 L305.1 120.5 L306.3 125.1 L307.4 129.7 L308.5 134.4 L309.6 139.1 L310.8 143.8 L311.9 148.4 L313 152.9 L314.1 157.3 L315.3 161.5 L316.4 165.4 L317.5 169.1 L318.7 172.4 L319.8 175.5 L320.9 178.2 L322 180.6 L323.2 182.5 L324.3 184 L325.4 185.1 L326.5 185.8 L327.7 186 L328.8 185.8 L329.9 185.1 L331 184 L332.2 182.5 L333.3 180.6 L334.4 178.2 L335.6 175.5 L336.7 172.4 L337.8 169.1 L338.9 165.4 L340.1 161.5 L341.2 157.3 L342.3 152.9 L343.4 148.4 L344.6 143.8 L345.7 139.1 L346.8 134.4 L347.9 129.7 L349.1 125.1 L350.2 120.5 L351.3 116.1 L352.5 111.9 L353.6 107.8 L354.7 103.7 L355.8 98.8 L357 92.3 L358.1 84.6 L359.2 78.5 L360.3 77.2 L361.5 80 L362.6 83.4 L363.7 85.2 L364.8 85.8 L366 86.1 L367.1 86.6 L368.2 87.6 L369.4 89 L370.5 90.8 L371.6 93 L372.7 95.5 L373.9 98.5 L375 101.8 L376.1 105.4 L377.2 109.2 L378.4 113.3 L379.5 117.6 L380.6 122.1 L381.7 126.6 L382.9 131.3 L384 136"/>
-                <path class="a" d="M46 135.9 L47.1 135.8 L48.3 135.6 L49.4 135.5 L50.5 130.9 L51.6 126.3 L52.8 121.9 L53.9 117.6 L55 113.5 L56.1 109.9 L57.3 106.4 L58.4 102.4 L59.5 97.2 L60.6 90.3 L61.8 84 L62.9 81.4 L64 83 L65.2 86.1 L66.3 88.1 L67.4 88.7 L68.5 88.7 L69.7 88.9 L70.8 89.4 L71.9 90.3 L73 92 L74.2 94.1 L75.3 96.6 L76.4 99.4 L77.5 102.6 L78.7 106 L79.8 109.7 L80.9 113.6 L82.1 117.6 L83.2 121.7 L84.3 126 L85.4 130.4 L86.6 134.8 L87.7 139.2 L88.8 143.6 L89.9 147.8 L91.1 151.7 L92.2 155.6 L93.3 159.2 L94.4 162.6 L95.6 165.8 L96.7 168.7 L97.8 171.3 L99 174 L100.1 176.4 L101.2 178.4 L102.3 180.1 L103.5 181.4 L104.6 182.2 L105.7 182.7 L106.8 182.6 L108 182 L109.1 181 L110.2 179.6 L111.3 177.8 L112.5 175.7 L113.6 173.1 L114.7 170.3 L115.9 167.1 L117 163.5 L118.1 159.7 L119.2 155.7 L120.4 151.5 L121.5 147.2 L122.6 142.7 L123.7 138.2 L124.9 133.8 L126 129.3 L127.1 124.9 L128.2 120.6 L129.4 116.4 L130.5 112.3 L131.6 108.4 L132.8 104.5 L133.9 100.1 L135 94.1 L136.1 87 L137.3 81.4 L138.4 80.4 L139.5 83.2 L140.6 86.5 L141.8 88.2 L142.9 88.7 L144 88.9 L145.1 89.3 L146.3 90.2 L147.4 91.4 L148.5 93 L149.7 95 L150.8 97.5 L151.9 100.5 L153 103.8 L154.2 107.4 L155.3 111.2 L156.4 115.2 L157.5 119.5 L158.7 123.9 L159.8 128.1 L160.9 132.4 L162 136.7 L163.2 141.1 L164.3 145.4 L165.4 149.6 L166.6 153.7 L167.7 157.7 L168.8 161.6 L169.9 165.2 L171.1 168.6 L172.2 171.7 L173.3 174.4 L174.4 176.9 L175.6 179 L176.7 180.7 L177.8 182.1 L178.9 183.2 L180.1 183.8 L181.2 184 L182.3 183.7 L183.5 183.1 L184.6 182 L185.7 180.5 L186.8 178.6 L188 176.3 L189.1 173.6 L190.2 170.7 L191.3 167.4 L192.5 163.9 L193.6 160.2 L194.7 156.2 L195.8 152.1 L197 147.8 L198.1 143.5 L199.2 139.1 L200.4 134.7 L201.5 130.3 L202.6 125.8 L203.7 121.4 L204.9 117.2 L206 113 L207.1 109 L208.2 104.9 L209.4 99.7 L210.5 92.8 L211.6 85.6 L212.7 81.2 L213.9 81.5 L215 84.7 L216.1 87.5 L217.3 88.7 L218.4 89 L219.5 89.4 L220.6 90 L221.8 91.1 L222.9 92.5 L224 94.4 L225.1 96.6 L226.3 99.2 L227.4 102 L228.5 105.2 L229.6 108.6 L230.8 112.3 L231.9 116.1 L233 120.2 L234.2 124.4 L235.3 128.6 L236.4 133 L237.5 137.5 L238.7 142.1 L239.8 146.7 L240.9 151.1 L242 155.5 L243.2 159.6 L244.3 163.6 L245.4 167.3 L246.5 170.4 L247.7 173.2 L248.8 175.7 L249.9 177.9 L251.1 179.6 L252.2 181 L253.3 182 L254.4 182.7 L255.6 183 L256.7 182.9 L257.8 182.4 L258.9 181.4 L260.1 180.1 L261.2 178.3 L262.3 176.2 L263.4 173.7 L264.6 170.9 L265.7 167.8 L266.8 164.3 L268 160.6 L269.1 156.7 L270.2 152.6 L271.3 148.4 L272.5 144.3 L273.6 140.1 L274.7 135.9 L275.8 131.7 L277 127.5 L278.1 123.4 L279.2 119.4 L280.3 115.5 L281.5 111.6 L282.6 107.7 L283.7 103.4 L284.9 97.8 L286 90.6 L287.1 83.9 L288.2 81 L289.4 82.8 L290.5 86.4 L291.6 88.8 L292.7 89.8 L293.9 90.3 L295 90.9 L296.1 91.9 L297.2 93.3 L298.4 94.7 L299.5 96.5 L300.6 98.6 L301.8 101 L302.9 103.8 L304 106.9 L305.1 110.2 L306.3 113.9 L307.4 118.1 L308.5 122.5 L309.6 127 L310.8 131.5 L311.9 136.2 L313 140.8 L314.1 145.4 L315.3 149.8 L316.4 154 L317.5 158 L318.7 161.8 L319.8 165.4 L320.9 168.7 L322 171.8 L323.2 174.6 L324.3 176.8 L325.4 178.7 L326.5 180.2 L327.7 181.3 L328.8 182 L329.9 182.3 L331 182.2 L332.2 181.8 L333.3 181.6 L334.4 181 L335.6 180 L336.7 178.6 L337.8 176.8 L338.9 174.7 L340.1 172.2 L341.2 169.1 L342.3 165.3 L343.4 161.2 L344.6 156.9 L345.7 152.4 L346.8 147.8 L347.9 143 L349.1 138.2 L350.2 133.8 L351.3 129.4 L352.5 125.1 L353.6 120.9 L354.7 116.8 L355.8 112.9 L357 109.1 L358.1 105.3 L359.2 100.8 L360.3 94.8 L361.5 87.6 L362.6 81.9 L363.7 80.8 L364.8 83.6 L366 86.8 L367.1 88.5 L368.2 89 L369.4 89.1 L370.5 89.5 L371.6 90.3 L372.7 91.6 L373.9 93.1 L375 95.1 L376.1 97.5 L377.2 100.3 L378.4 103.3 L379.5 106.7 L380.6 110.3 L381.7 114.2 L382.9 118.2 L384 122.4"/>
-                <path class="x" d="M135 71.2 L135 46 M209.4 71.4 L209.4 46"/>
-                <path class="d" d="M135 50 L209.4 50"/>
-                <text class="lbl k" x="172.2" y="45" text-anchor="middle">1/f · 4–6 Hz</text>
-                <text class="lbl" x="40" y="66" text-anchor="end">θ</text>
-                <text class="lbl" x="384" y="150" text-anchor="end">t</text>
-                <path class="h dk" d="M262 24 L278 24"/><text class="lbl k" x="284" y="27">TARGET TREMOR</text>
-                <path class="t" d="M262 38 L278 38"/><text class="lbl" x="284" y="41">BEFORE REDESIGN</text>
-                <path class="a" d="M262 52 L278 52"/><text class="lbl a" x="284" y="55">AFTER REDESIGN</text>
-                <text class="lbl a" x="46" y="232">≈30% LESS MOTION ERROR AFTER REDESIGN</text>
-                <text class="lbl k" x="20" y="28">TRACKING · ARM MODULE</text>
-              </svg></div>
-          <div class="body">
-            <p class="meta mono"><span class="role m">Mechanical</span> UIUC HDC Lab · 2025</p>
-            <h3>Parkinsonian training robot</h3>
-            <ul class="pts">
-              <li>Electromechanical redesign: <b>~30%</b> less motion error at 4–6 Hz tremor.</li>
-              <li>TPU + silicone enclosures removed pinch points.</li>
-            </ul>
-            <ul class="tags mono"><li>Mechatronics</li><li>Redesign</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="robotics mech">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: plan view of the boat following waypoints, with raw GPS points scattered around the fused state track"><title>Autonomous boat waypoint navigation</title>
-                <path class="h" d="M46 196 L47.8 194.1 L49.9 191.7 L52.2 189 L54.6 185.9 L57.3 182.6 L60.1 178.9 L63.1 175.1 L66.2 171 L69.4 166.7 L72.8 162.3 L76.3 157.8 L79.9 153.2 L83.6 148.5 L87.4 143.8 L91.2 139.1 L95.2 134.5 L99.1 129.9 L103.1 125.5 L107.1 121.2 L111.2 117 L115.2 113.1 L119.3 109.4 L123.3 106 L127.3 102.8 L131.2 100 L135.1 97.6 L139 95.5 L142.7 93.9 L146.4 92.7 L150 92 L153.5 91.9 L157.1 92.3 L160.7 93.2 L164.3 94.7 L167.9 96.6 L171.5 98.9 L175.1 101.5 L178.8 104.5 L182.4 107.8 L186.1 111.3 L189.7 115 L193.4 118.8 L197.1 122.8 L200.7 126.9 L204.4 131 L208 135.1 L211.7 139.2 L215.3 143.2 L219 147 L222.6 150.7 L226.2 154.2 L229.8 157.5 L233.4 160.5 L237 163.1 L240.5 165.4 L244.1 167.3 L247.6 168.8 L251.1 169.7 L254.6 170.1 L258 170 L261.5 169.3 L265 168.1 L268.6 166.5 L272.3 164.4 L276 162 L279.8 159.2 L283.6 156 L287.4 152.6 L291.2 148.9 L295 145 L298.8 140.8 L302.6 136.5 L306.4 132.1 L310.1 127.5 L313.8 122.9 L317.4 118.2 L320.9 113.5 L324.3 108.8 L327.7 104.2 L331 99.7 L334.1 95.3 L337.2 91 L340.1 86.9 L342.8 83.1 L345.5 79.4 L347.9 76.1 L350.2 73 L352.3 70.3 L354.3 67.9 L356 66"/>
-                <circle class="gps" cx="48.2" cy="195" r="1.5"/>
-                <circle class="gps" cx="55.8" cy="180.5" r="1.5"/>
-                <circle class="gps" cx="60.1" cy="169.6" r="1.5"/>
-                <circle class="gps" cx="83.5" cy="160.5" r="1.5"/>
-                <circle class="gps" cx="94.1" cy="145.4" r="1.5"/>
-                <circle class="gps" cx="101.7" cy="131.1" r="1.5"/>
-                <circle class="gps" cx="100.4" cy="122.6" r="1.5"/>
-                <circle class="gps" cx="126.6" cy="109.2" r="1.5"/>
-                <circle class="gps" cx="124.1" cy="86.2" r="1.5"/>
-                <circle class="gps" cx="140.6" cy="89.6" r="1.5"/>
-                <circle class="gps" cx="159.1" cy="92" r="1.5"/>
-                <circle class="gps" cx="171.3" cy="92.4" r="1.5"/>
-                <circle class="gps" cx="180.8" cy="107.1" r="1.5"/>
-                <circle class="gps" cx="185.4" cy="126.1" r="1.5"/>
-                <circle class="gps" cx="204.3" cy="134.7" r="1.5"/>
-                <circle class="gps" cx="207.7" cy="134.4" r="1.5"/>
-                <circle class="gps" cx="220.4" cy="150" r="1.5"/>
-                <circle class="gps" cx="237.5" cy="162.1" r="1.5"/>
-                <circle class="gps" cx="241.2" cy="161.1" r="1.5"/>
-                <circle class="gps" cx="251.2" cy="178.1" r="1.5"/>
-                <circle class="gps" cx="259.8" cy="169.7" r="1.5"/>
-                <circle class="gps" cx="278.8" cy="152.3" r="1.5"/>
-                <circle class="gps" cx="287.7" cy="161.1" r="1.5"/>
-                <circle class="gps" cx="285.7" cy="138.7" r="1.5"/>
-                <circle class="gps" cx="309.4" cy="122.2" r="1.5"/>
-                <path class="a" d="M46 196 L47.8 194.1 L49.9 191.7 L52.2 189 L54.6 185.9 L57.3 182.6 L60.1 178.9 L63.1 175.1 L66.2 171 L69.4 166.7 L72.8 162.3 L76.3 157.8 L79.9 153.2 L83.6 148.5 L87.4 143.8 L91.2 139.1 L95.2 134.5 L99.1 129.9 L103.1 125.5 L107.1 121.2 L111.2 117 L115.2 113.1 L119.3 109.4 L123.3 106 L127.3 102.8 L131.2 100 L135.1 97.6 L139 95.5 L142.7 93.9 L146.4 92.7 L150 92 L153.5 91.9 L157.1 92.3 L160.7 93.2 L164.3 94.7 L167.9 96.6 L171.5 98.9 L175.1 101.5 L178.8 104.5 L182.4 107.8 L186.1 111.3 L189.7 115 L193.4 118.8 L197.1 122.8 L200.7 126.9 L204.4 131 L208 135.1 L211.7 139.2 L215.3 143.2 L219 147 L222.6 150.7 L226.2 154.2 L229.8 157.5 L233.4 160.5 L237 163.1 L240.5 165.4 L244.1 167.3 L247.6 168.8 L251.1 169.7 L254.6 170.1 L258 170 L261.5 169.3 L265 168.1 L268.6 166.5 L272.3 164.4 L276 162 L279.8 159.2 L283.6 156 L287.4 152.6 L291.2 148.9 L295 145 L298.8 140.8 L302.6 136.5 L306.4 132.1 L310.1 127.5 L313.8 122.9"/>
-                <circle class="o pf" cx="46" cy="196" r="5.5"/><path class="t" d="M37 196 L55 196 M46 187 L46 205"/><text class="lbl" x="55" y="214">WP1</text>
-                <circle class="o pf" cx="150" cy="92" r="5.5"/><path class="t" d="M141 92 L159 92 M150 83 L150 101"/><text class="lbl" x="159" y="84">WP2</text>
-                <circle class="o pf" cx="258" cy="170" r="5.5"/><path class="t" d="M249 170 L267 170 M258 161 L258 179"/><text class="lbl" x="267" y="188">WP3</text>
-                <circle class="o pf" cx="356" cy="66" r="5.5"/><path class="t" d="M347 66 L365 66 M356 57 L356 75"/><text class="lbl" x="365" y="58">WP4</text>
-                <g transform="translate(313.8 122.9) rotate(-52.7)"><path class="t" d="M-24 -8 L-38 -13 M-24 8 L-38 13"/><path class="o pf" d="M-24 -9 L8 -9 Q22 -7 30 0 Q22 7 8 9 L-24 9 Z"/><path class="c" d="M-30 0 L36 0"/><rect class="o pf" x="-12" y="-5" width="10" height="10" rx="1"/><circle class="af" cx="-7" cy="0" r="1.8"/></g>
-                <text class="lbl a" x="327.8" y="152.9">40 KN</text>
-                <text class="lbl k" x="20" y="28">PLAN VIEW · WAYPOINT NAV</text>
-                <circle class="gps" cx="24" cy="236" r="1.6"/><text class="lbl" x="32" y="239">RAW GPS</text>
-                <path class="a" d="M92 236 L108 236"/><text class="lbl" x="114" y="239">FUSED STATE · GPS + IMU + VISION</text>
-              </svg></div>
-          <div class="body">
-            <p class="meta mono"><span class="role r">Robotics</span><span class="role m">Mechanical</span> ASNE · 2025</p>
-            <h3>Autonomous boat, 40 knots</h3>
-            <ul class="pts">
-              <li>Full autonomy stack: ROS + ArduPilot, GPS/IMU/vision state estimation.</li>
-              <li>Laid up the fiberglass planing V-hull; power + thermal system.</li>
-            </ul>
-            <ul class="tags mono"><li>ROS</li><li>ArduPilot</li><li>Composites</li></ul>
-          </div>
-        </article>
-
-        <article class="card" data-role="robotics">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: side elevation of a compliant backrest with a pivot encoder, torsion spring, angle limits and a time-of-flight sensor aimed at the user's torso"><title>Assistive backrest side elevation</title>
-                <text class="lbl k" x="20" y="28">SIDE ELEVATION · COMPLIANT BACKREST</text>
-                <path class="o" d="M112 226 L236 226" /><rect class="hf" x="112" y="226.8" width="124" height="7" />
-                <rect class="o pf" x="168" y="196" width="8" height="30" />
-                <path class="bar" d="M104 190 L164 190" /><path class="bar-in" d="M104 190 L164 190" />
-                <path class="c" d="M172 200 L172 50" />
-                <g transform="translate(172 190) rotate(15)">
-                  <rect class="h" x="-33" y="-112" width="26" height="100" rx="13" />
-                  <circle class="h" cx="-20" cy="-128" r="12" />
-                  <path class="bar" d="M0 0 L0 -120" /><path class="bar-in" d="M0 0 L0 -120" />
-                  <path class="ad" d="M-6 -121 L-16 -98 M-6 -121 L-26 -100" />
-                  <rect class="o pf" x="-6" y="-127" width="10" height="8" rx="1" /><circle class="af" cx="-1" cy="-123" r="1.8" />
-                </g>
-                <path class="a thin" d="M172 120 A70 70 0 0 1 190.1 122.4" /><text class="lbl a" x="176" y="114">θ</text>
-                <path class="t" d="M165.3 142.5 A48 48 0 0 1 196 148.4" />
-                <path class="a stop" d="M165.9 146.4 L164.7 138.6 M194 151.9 L198 145" />
-                <path class="o" d="M172 180 L173.3 180 L174.5 180.1 L175.8 180.4 L177 180.9 L178.2 181.5 L179.3 182.3 L180.2 183.2 L181.1 184.2 L181.9 185.4 L182.5 186.6 L182.9 187.9 L183.2 189.3 L183.3 190.7 L183.2 192.1 L182.9 193.6 L182.5 194.9 L181.9 196.3 L181.1 197.5 L180.1 198.7 L179.1 199.7 L177.8 200.6 L176.5 201.3 L175.1 201.9 L173.6 202.3 L172 202.5 L170.4 202.5 L168.8 202.3 L167.3 201.9 L165.8 201.3 L164.4 200.5 L163 199.5 L161.8 198.4 L160.8 197.1 L159.9 195.7 L159.2 194.2 L158.6 192.5 L158.3 190.9 L158.2 189.1 L158.3 187.4 L158.7 185.7 L159.2 184 L160 182.4 L161 180.9 L162.1 179.5 L163.5 178.3 L165 177.2 L166.6 176.3 L168.3 175.7 L170.1 175.2 L172 175 L173.9 175 L175.8 175.3 L177.6 175.8 L179.4 176.5 L181.1 177.5 L182.7 178.6 L184.1 180 L185.3 181.5 L186.4 183.2 L187.2 185.1 L187.8 187 L188.2 189 L188.3 191 L188.1 193.1 L187.7 195.1 L187 197.1 L186.1 198.9 L184.9 200.7 L183.6 202.3 L182 203.8 L180.2 205 L178.3 206 L176.3 206.8 L174.2 207.3 L172 207.5 L169.8 207.5 L167.6 207.1 L165.4 206.6 L163.4 205.7 L161.4 204.6"/>
-                <circle class="o pf" cx="172" cy="190" r="7" /><circle class="af" cx="172" cy="190" r="2.4" />
-                <path class="t" d="M158 125 L112 112" /><circle class="ldot" cx="158" cy="125" r="1.6" /><text class="lbl" x="108" y="115" text-anchor="end">USER TORSO</text>
-                <path class="t" d="M210 70 L262 58" /><circle class="ldot" cx="210" cy="70" r="1.6" /><text class="lbl" x="266" y="61">ToF · TORSO RANGE</text>
-                <path class="t" d="M198 145 L262 130" /><circle class="ldot" cx="198" cy="145" r="1.6" /><text class="lbl" x="266" y="133">ANGLE LIMITS</text>
-                <path class="t" d="M189 182 L262 168" /><circle class="ldot" cx="189" cy="182" r="1.6" /><text class="lbl" x="266" y="171">TORSION SPRING</text>
-                <path class="t" d="M177 195 L262 206" /><circle class="ldot" cx="177" cy="195" r="1.6" /><text class="lbl" x="266" y="209">ENCODER · ERR &lt; 2°</text>
-              </svg></div>
-          <div class="body">
-            <p class="meta mono"><span class="role r">Robotics</span> UIUC HDC Lab · 2025</p>
-            <h3>Assistive torso-driven backrest</h3>
-            <ul class="pts">
-              <li>Encoder + ToF fusion: torso angle at <b>&lt; 2°</b> error.</li>
-              <li>Compliant backrest with hard angle limits; &gt;90% signal consistency.</li>
-            </ul>
-            <ul class="tags mono"><li>Sensing</li><li>HRI</li></ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <div class="sec-head">
-        <p class="mono idx">Experience</p>
-        <h2>Where I've <em>worked</em></h2>
-      </div>
-      <ol class="timeline">
-        <li>
-          <div class="when mono">May 2026 — Now</div>
-          <div class="what">
-            <h3>Foundation Robotics <span>Robotics Build Engineer · San Francisco</span></h3>
-            <ul>
-              <li>Trained stair-climbing, throw-and-catch and box-pick policies; built stereo + VLM vision navigation.</li>
-              <li>Root-caused 20 robot faults; built Overwatch, recall and robot-triage for the service team.</li>
-              <li>Teleop gloves (50 → 200 Hz); PID tuning on joint actuators; camera-calibration rig; EtherCAT diagnostics.</li>
-              <li>Compute bracket (thermal), battery mounts, test fixtures, actuator harness, dyno testing.</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <div class="when mono">Jan — May 2026</div>
-          <div class="what">
-            <h3>Tesla <span>Mechanical Tooling / Process Engineering Intern, Energy</span></h3>
-            <ul>
-              <li>Megapack service tooling in SolidWorks with GD&amp;T drawings; 3D printing + machining.</li>
-              <li>Vehicle hardware retrofits; 10+ standardized service procedures.</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <div class="when mono">Apr — Aug 2025</div>
-          <div class="what">
-            <h3>Aerial Mechanica <span>Systems Engineering Intern</span></h3>
-            <ul><li>Patented motor design, concept to production; FEA of carbon-fiber frame and landing legs.</li></ul>
-          </div>
-        </li>
-        <li>
-          <div class="when mono">May — Aug 2024</div>
-          <div class="what">
-            <h3>Aerial Industries <span>Engineering Intern</span></h3>
-            <ul><li>Production release of a 12-motor UAV chassis; parametric CAD for propulsion and payload.</li></ul>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <div class="sec-head">
-        <p class="mono idx">Skills</p>
-        <h2>What I <em>use</em></h2>
-      </div>
-      <div class="caps">
-        <div class="cap" data-role="robotics">
-          <h4 class="mono">Robotics &amp; controls</h4>
-          <dl>
-            <div><dt class="mono">Learning</dt><dd><span>PPO</span><span>Motion imitation</span><span>CEM search</span><span>Whole-body IK</span><span>Sim-to-sim</span></dd></div>
-            <div><dt class="mono">Control</dt><dd><span>PID tuning</span><span>LQR</span><span>Real-time control</span><span>Teleoperation</span></dd></div>
-            <div><dt class="mono">Autonomy</dt><dd><span>ROS</span><span>ArduPilot</span><span>Stereo depth</span><span>VIO</span><span>VLM targeting</span><span>State estimation</span></dd></div>
-            <div><dt class="mono">Hardware</dt><dd><span>EtherCAT</span><span>FOC / CAN</span><span>IMUs</span><span>Encoders</span><span>Camera calibration</span></dd></div>
-          </dl>
+        <div class="strip">
+          <figure class="paper"><img src="assets/media/boat/boat-printed-cutout.jpg" alt="Printed demo hull, assembled" loading="lazy"><figcaption>Printed test hull, assembled</figcaption></figure>
+          <figure class="paper"><img src="assets/media/boat/hull-fiberglass-cutout.jpg" alt="Fiberglass planing hull after layup" loading="lazy"><figcaption>6 ft fiberglass hull, after layup</figcaption></figure>
+          <figure class="paper"><a href="assets/media/boat/boat-assembly.jpg" target="_blank" rel="noopener"><img src="assets/media/boat/boat-assembly.jpg" alt="Exploded assembly drawing with bill of materials" loading="lazy"></a><figcaption>Exploded view + BOM (Onshape)</figcaption></figure>
         </div>
-        <div class="cap" data-role="mech">
-          <h4 class="mono">Mechanical design</h4>
-          <dl>
-            <div><dt class="mono">CAD</dt><dd><span>SolidWorks</span><span>Onshape</span><span>Siemens NX</span><span>CATIA v6</span><span>Fusion 360</span></dd></div>
-            <div><dt class="mono">Analysis</dt><dd><span>FEA (Ansys, Abaqus)</span><span>Thermal</span><span>Risk analysis</span></dd></div>
-            <div><dt class="mono">Drawings</dt><dd><span>GD&amp;T</span><span>2D drawings</span><span>DFM / DFA</span><span>Production release</span></dd></div>
-            <div><dt class="mono">Build</dt><dd><span>Fixtures &amp; tooling</span><span>Dyno testing</span><span>Harnessing</span><span>Composites</span><span>Machining</span><span>3D printing</span></dd></div>
-          </dl>
-        </div>
-      </div>
-      <p class="sw"><span class="mono">Software</span> Python · C / C++ · MATLAB / Simulink · Rust · Java</p>
-    </section>
+      </article>
 
-    <!-- SIDE PROJECTS -->
-    <section id="side" class="section">
-      <div class="sec-head">
-        <p class="mono idx">Side projects</p>
-        <h2>On my own <em>time</em></h2>
-      </div>
-      <div class="minis">
-        <article class="mini">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: side elevation of a wheel-legged biped with five-bar legs and a leg-length dimension"><title>follow-me-robo side elevation</title>
-                <text class="lbl k" x="20" y="28">SIDE ELEVATION</text>
-                <path class="ad" d="M300 28 L352 28" /><text class="lbl a" x="358" y="31">FOLLOW</text>
-                <path class="o" d="M112 226 L300 226" /><rect class="hf" x="112" y="226.8" width="188" height="7" />
-                <g transform="translate(200 196)">
-                  <g>
-                    <circle class="o pf" r="30" /><circle class="t" r="23" />
-                    <path class="t" d="M0 -6 L0 -23 M5.2 3 L19.9 11.5 M-5.2 3 L-19.9 11.5 M5.2 -3 L19.9 -11.5 M-5.2 -3 L-19.9 -11.5 M0 6 L0 23" />
-                  </g>
-                </g>
-                <rect class="o pf" x="162" y="40" width="76" height="52" rx="6" />
-                <rect class="t" x="172" y="58" width="28" height="18" rx="1" /><rect class="af" x="182" y="64" width="8" height="6" />
-                <circle class="o pf" cx="224" cy="58" r="7" /><circle class="af" cx="224" cy="58" r="2.6" />
-                <path class="bar" d="M186 92 L154 130 L200 196 M214 92 L246 130 L200 196" />
-                <path class="bar-in" d="M186 92 L154 130 L200 196 M214 92 L246 130 L200 196" />
-                <circle class="o pf" cx="154" cy="130" r="4" /><circle class="o pf" cx="246" cy="130" r="4" />
-                <circle class="o pf" cx="186" cy="92" r="9" /><circle class="af" cx="186" cy="92" r="2.6" />
-                <circle class="o pf" cx="214" cy="92" r="9" /><circle class="af" cx="214" cy="92" r="2.6" />
-                <circle class="o pf" cx="200" cy="196" r="6" /><circle class="af" cx="200" cy="196" r="2" />
-                <path class="x" d="M226 92 L304 92 M234 196 L304 196" />
-                <path class="d" d="M298 92 L298 196" />
-                <text class="lbl a big" x="306" y="140">L₀</text><text class="lbl k" x="306" y="154">5–16 cm</text>
-                <path class="t" d="M231 54 L300 50" /><circle class="ldot" cx="231" cy="54" r="1.6" /><text class="lbl" x="304" y="53">PI · TRACKING</text>
-                <path class="t" d="M172 67 L122 67" /><circle class="ldot" cx="172" cy="67" r="1.6" /><text class="lbl" x="118" y="70" text-anchor="end">ESP32 · BALANCE</text>
-                <path class="t" d="M178 97 L122 104" /><circle class="ldot" cx="178" cy="97" r="1.6" /><text class="lbl" x="118" y="107" text-anchor="end">8:1 PLANETARY</text>
-                <path class="t" d="M150 133 L122 140" /><circle class="ldot" cx="150" cy="133" r="1.6" /><text class="lbl" x="118" y="143" text-anchor="end">FIVE-BAR LEG</text>
-              </svg></div>
-          <h3>follow-me-robo</h3>
-          <p>Wheel-legged biped, five-bar legs. Gain-scheduled LQR stable over 5–16 cm leg length; ESP32 balance + Pi vision.</p>
-        </article>
-        <article class="mini">
-          <div class="media photo"><img src="media/smallbot-exterior.jpg" alt="Render of Small-bot, a tracked desk robot with two servo arms" loading="lazy" width="1000" height="750"></div>
-          <h3>Small-bot</h3>
-          <p>Palm-sized tracked desk rover. Cliff-safety in the robot layer below behavior code; tested on mocked GPIO.</p>
-        </article>
-        <article class="mini">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: webcam hand landmarks driving the orbit of a CAD model"><title>handcad: hand landmarks orbiting a CAD model</title>
-                <text class="lbl k" x="20" y="28">WEBCAM → CAD VIEWPORT</text>
-                <path class="f-top" d="M128 72 L167.8 95 L128 118 L88.2 95 Z"/>
-                <path class="h" d="M128 118 L167.8 141"/>
-                <path class="h" d="M128 118 L88.2 141"/>
-                <path class="h" d="M128 118 L128 72"/>
-                <path class="o" d="M128 72 L167.8 95"/>
-                <path class="o" d="M128 72 L88.2 95"/>
-                <path class="o" d="M88.2 141 L128 164"/>
-                <path class="o" d="M88.2 141 L88.2 95"/>
-                <path class="o" d="M88.2 95 L128 118"/>
-                <path class="o" d="M167.8 141 L128 164"/>
-                <path class="o" d="M167.8 141 L167.8 95"/>
-                <path class="o" d="M167.8 95 L128 118"/>
-                <path class="o" d="M128 164 L128 118"/>
-                <circle class="o pf" cx="128" cy="72" r="2"/>
-                <circle class="o pf" cx="88.2" cy="141" r="2"/>
-                <circle class="o pf" cx="88.2" cy="95" r="2"/>
-                <circle class="o pf" cx="167.8" cy="141" r="2"/>
-                <circle class="o pf" cx="167.8" cy="95" r="2"/>
-                <circle class="o pf" cx="128" cy="164" r="2"/>
-                <circle class="o pf" cx="128" cy="118" r="2"/>
-                <path class="a" d="M64 164 A64 20 0 0 0 192 164" style="marker-end:url(#arwA)" />
-                <text class="lbl a" x="128" y="204" text-anchor="middle">ORBIT</text>
-                <g class="t">
-                  <path d="M290 214 L262 200 L244 180 L232 160 L222 142 M290 214 L270 150 L266 118 L264 98 L262 80 M290 214 L290 146 L290 110 L290 88 L290 68 M290 214 L308 150 L312 118 L314 98 L316 82 M290 214 L324 160 L332 136 L336 120 L340 104 M270 150 L290 146 L308 150 L324 160" />
-                </g>
-                <g class="af">
-                  <circle cx="290" cy="214" r="3.6" />
-                  <circle cx="262" cy="200" r="2.2" /><circle cx="244" cy="180" r="2.2" /><circle cx="232" cy="160" r="2.2" /><circle cx="222" cy="142" r="2.2" />
-                  <circle cx="270" cy="150" r="2.2" /><circle cx="266" cy="118" r="2.2" /><circle cx="264" cy="98" r="2.2" /><circle cx="262" cy="80" r="2.2" />
-                  <circle cx="290" cy="146" r="2.2" /><circle cx="290" cy="110" r="2.2" /><circle cx="290" cy="88" r="2.2" /><circle cx="290" cy="68" r="2.2" />
-                  <circle cx="308" cy="150" r="2.2" /><circle cx="312" cy="118" r="2.2" /><circle cx="314" cy="98" r="2.2" /><circle cx="316" cy="82" r="2.2" />
-                  <circle cx="324" cy="160" r="2.2" /><circle cx="332" cy="136" r="2.2" /><circle cx="336" cy="120" r="2.2" /><circle cx="340" cy="104" r="2.2" />
-                </g>
-                <path class="t" d="M290 64 L290 48" /><text class="lbl" x="290" y="43" text-anchor="middle">21 LANDMARKS</text>
-              </svg></div>
-          <h3><a href="https://github.com/RKkanz/handcad" target="_blank" rel="noopener">handcad ↗</a></h3>
-          <p>Webcam-only gesture navigation for CAD with a hand-skeleton overlay.</p>
-        </article>
-        <article class="mini">
-          <div class="media"><svg viewBox="0 0 400 260" class="draw" role="img" aria-label="Diagram: a phone controls a Rust hub that dispatches plan, build and verify worker agents"><title>Vigil agent hub</title>
-                <text class="lbl k" x="20" y="28">MASTER → WORKERS · GIT WORKTREES</text>
-                <g transform="translate(0 12)">
-                  <rect class="o pf" x="34" y="80" width="46" height="84" rx="8" />
-                  <path class="t" d="M50 154 L64 154" /><rect class="t" x="40" y="90" width="34" height="56" rx="2" />
-                  <path class="ad" d="M84 122 L150 122" />
-                  <rect class="o pf" x="152" y="92" width="86" height="60" rx="3" />
-                  <text class="lbl k" x="195" y="119" text-anchor="middle">HUB</text>
-                  <text class="lbl" x="195" y="132" text-anchor="middle">RUST · AXUM</text>
-                  <path class="t" d="M238 122 L289 60 M238 122 L289 122 M238 122 L289 184" />
-                  <circle class="o pf" cx="300" cy="60" r="11" /><circle class="o pf" cx="300" cy="122" r="11" /><circle class="o pf" cx="300" cy="184" r="11" />
-                  <circle class="af" cx="300" cy="60" r="3" /><circle class="af" cx="300" cy="122" r="3" /><circle class="af" cx="300" cy="184" r="3" />
-                  <text class="lbl k" x="320" y="63">PLAN</text><text class="lbl k" x="320" y="125">BUILD</text><text class="lbl k" x="320" y="187">VERIFY</text>
-                  <text class="lbl" x="57" y="182" text-anchor="middle">PHONE</text>
-                </g>
-              </svg></div>
-          <h3>Vigil</h3>
-          <p>Rust (axum + tokio) agent hub: parallel workers in git worktrees; startup context 21.3k → 8.4k tokens.</p>
-        </article>
-      </div>
-    </section>
+      <section class="work">
+        <h3 class="sect">Professional work</h3>
 
-    <!-- EDUCATION -->
-    <section id="education" class="section">
-      <div class="sec-head">
-        <p class="mono idx">Education &amp; research</p>
-        <h2>School &amp; <em>lab</em></h2>
-      </div>
-      <div class="edu">
-        <div><p class="meta mono">UIUC · Dec 2025</p><h3>B.S. Mechanical Engineering</h3><p>GPA 3.58 / 4.0</p></div>
-        <div><p class="meta mono">Human Dynamics &amp; Control Lab · 2024 — 2026</p><h3>Undergraduate researcher</h3><p>Assistive backrest and Parkinsonian training robot.</p></div>
-        <div><p class="meta mono">IMMERSE Symposium · 2025</p><h3><em>VR-Based Evaluation of Hands-Free Torso-Driven Robot Navigation</em></h3><p>Fulss, Song, Moore, <b>Kanzaki</b>, Dao, Hsiao-Wecksler</p></div>
-      </div>
-    </section>
+        <article class="proj" id="m-hardware">
+          <figure class="paper"><img src="assets/drawings/compute-bracket.svg" alt="Compute bracket, isometric schematic" loading="lazy"><figcaption>Compute bracket, isometric (schematic)</figcaption></figure>
+          <div>
+            <p class="kick">03 · Foundation Robotics · 2026</p>
+            <h2>Humanoid hardware</h2>
+            <p class="lede">The parts that make a humanoid buildable and serviceable on the line.</p>
+            <table class="spec">
+              <tr><th>Compute bracket</th><td>Designed with thermal analysis</td></tr>
+              <tr><th>Battery</th><td>Mounting hardware</td></tr>
+              <tr><th>Production</th><td>Test fixtures, full-body assembly</td></tr>
+              <tr><th>Harness</th><td>Actuators daisy-chained</td></tr>
+              <tr><th>Actuators</th><td>Planetary vs cycloidal on dyno</td></tr>
+            </table>
+            <ul class="notes">
+              <li>Specified adhesives and fasteners for actuator assemblies; drove vendor design changes.</li>
+              <li>Built a robot-arm ChArUco/AprilTag rig that checks every camera before install.</li>
+            </ul>
+          </div>
+        </article>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-      <h2>Hiring for robotics or <em>mechanical design?</em></h2>
-      <div class="contact-links">
-        <a class="primary" href="mailto:rikukanzaki2003@gmail.com">rikukanzaki2003@gmail.com</a>
-        <a href="https://linkedin.com/in/rikukanzaki" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-        <a href="https://github.com/RKkanz" target="_blank" rel="noopener">GitHub <span>↗</span></a>
-      </div>
-    </section>
+        <article class="proj" id="m-gloves">
+          <figure><video src="assets/media/mech/glove-demo.mp4" poster="assets/media/mech/glove-demo.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>IMU glove driving the hand model live</figcaption></figure>
+          <div>
+            <p class="kick">04 · Foundation Robotics · 2026</p>
+            <h2>Teleoperation gloves</h2>
+            <p class="lede">Lead engineer on the gloves operators use to drive a humanoid's hands: sensors, electronics, firmware and wearable CAD.</p>
+            <table class="spec">
+              <tr><th>Hand tracking</th><td>50 → 200 Hz</td></tr>
+              <tr><th>Exo accuracy</th><td>0.5° per joint (Hall effect)</td></tr>
+              <tr><th>Validation</th><td>16 mm median vs video</td></tr>
+              <tr><th>IMUs</th><td>6/9-DOF mix, BNO085 + ISM330</td></tr>
+              <tr><th>Links</th><td>USB · BLE · WiFi</td></tr>
+            </table>
+            <ul class="notes">
+              <li>IMU architecture chosen to keep electronics small on the back of the hand.</li>
+              <li>Data-collection glove with palm and fingertip tactile sensing working within a month.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="proj" id="m-tooling">
+          <figure class="paper"><img src="assets/drawings/tooling-bracket.svg" alt="Tooling bracket, two views with GD&amp;T" loading="lazy"><figcaption>Tooling bracket, two views with GD&amp;T (schematic)</figcaption></figure>
+          <div>
+            <p class="kick">05 · Tesla Energy · 2026</p>
+            <h2>Megapack service tooling</h2>
+            <p class="lede">Service tooling and hardware for Megapack, designed for manufacture and released on GD&amp;T drawings.</p>
+            <table class="spec">
+              <tr><th>CAD</th><td>SolidWorks</td></tr>
+              <tr><th>Drawings</th><td>GD&amp;T 2D, DFM-first</td></tr>
+              <tr><th>Prototyping</th><td>3D printing + machining</td></tr>
+              <tr><th>Procedures</th><td>10+ standardized</td></tr>
+            </table>
+            <ul class="notes"><li>Developed vehicle hardware retrofits for service-readiness and durability.</li></ul>
+          </div>
+        </article>
+
+        <article class="proj" id="m-motor">
+          <figure class="paper"><img src="assets/drawings/motor.svg" alt="Representative motor, front and section view" loading="lazy"><figcaption>Representative motor, front + section A–A (schematic)</figcaption></figure>
+          <div>
+            <p class="kick">06 · Aerial Mechanica · 2025</p>
+            <h2>Patented motor design</h2>
+            <p class="lede">Owned a motor design end to end, from first concept through production release.</p>
+            <table class="spec">
+              <tr><th>IP</th><td>1 patent</td></tr>
+              <tr><th>Scope</th><td>Concept → production</td></tr>
+              <tr><th>Analysis</th><td>FEA + risk, carbon-fiber frame and legs</td></tr>
+              <tr><th>Loads</th><td>Dynamic flight</td></tr>
+            </table>
+            <ul class="notes"><li>Validated the carbon-fiber frame and landing legs under dynamic flight loads.</li></ul>
+          </div>
+        </article>
+
+        <article class="proj" id="m-uav">
+          <figure><video src="assets/media/mech/uav-flight.mp4" poster="assets/media/mech/uav-flight.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>Hangar flight test: hover and re-stabilization</figcaption></figure>
+          <div>
+            <p class="kick">07 · Aerial Industries · 2024</p>
+            <h2>12-motor UAV chassis</h2>
+            <p class="lede">Took a coaxial 12-motor chassis from prototype to flight-ready production hardware.</p>
+            <table class="spec">
+              <tr><th>Release</th><td>Production</td></tr>
+              <tr><th>CAD</th><td>Parametric, propulsion + payload</td></tr>
+              <tr><th>Requirements</th><td>Structural, thermal, electrical</td></tr>
+            </table>
+          </div>
+        </article>
+
+        <article class="proj" id="m-tremor">
+          <div class="pair">
+            <figure><img src="assets/media/mech/tremor-arm.jpg" alt="Upper-limb tremor simulator" loading="lazy"><figcaption>Upper limb (photo: UIUC HDCL)</figcaption></figure>
+            <figure><img src="assets/media/mech/tremor-leg.jpg" alt="Lower-limb tremor simulator" loading="lazy"><figcaption>Lower limb (photo: UIUC HDCL)</figcaption></figure>
+          </div>
+          <div>
+            <p class="kick">08 · UIUC Human Dynamics &amp; Control Lab · Aug 2025 — present</p>
+            <h2>Virtual patient: tremor simulators</h2>
+            <p class="lede">Robotic upper- and lower-limb simulators that reproduce Parkinsonian tremor for medical education, part of a mixed-reality virtual patient.</p>
+            <table class="spec">
+              <tr><th>Motion error</th><td>~30% lower after my redesign</td></tr>
+              <tr><th>Tremor band</th><td>4–6 Hz, plus jerk-like motion</td></tr>
+              <tr><th>Safety</th><td>TPU + silicone enclosures, no pinch points</td></tr>
+              <tr><th>Funding</th><td>Jump ARCHES (OSF HealthCare + UIUC)</td></tr>
+            </table>
+            <ul class="notes"><li>Faculty: Elizabeth T. Hsiao-Wecksler, Inki Kim, Christopher M. Zallek.</li></ul>
+          </div>
+        </article>
+      </section>
+
+      <footer class="mfoot">
+        <span>Riku Kanzaki · <a href="mailto:rikukanzaki2003@gmail.com">rikukanzaki2003@gmail.com</a></span>
+        <a href="#robotics" data-go="robotics">Robotics work →</a>
+      </footer>
+    </div>
   </main>
 
-  <footer class="foot mono">
-    <span>© 2026 Riku Kanzaki</span>
-    <span>Humanoid model: Unitree G1 (BSD-3)</span>
-  </footer>
+  <!-- profile sheet -->
+  <div class="sheet" id="profile" role="dialog" aria-modal="true" aria-labelledby="profileTitle" hidden>
+    <div class="sheet-in">
+      <button type="button" class="close" id="closeProfile" aria-label="Close profile">Close ✕</button>
+      <header class="ph">
+        <h2 id="profileTitle">Riku Kanzaki</h2>
+        <p>Robotics &amp; mechanical design engineer · San Francisco · <a href="mailto:rikukanzaki2003@gmail.com">rikukanzaki2003@gmail.com</a></p>
+      </header>
 
-  <script src="main.js"></script>
-  <script type="module" src="hero3d.js"></script>
+      <section>
+        <h3>Experience</h3>
+        <div class="row">
+          <span class="when">May 2026 — now</span>
+          <div>
+            <h4>Foundation Robotics <small>Robotics Build Engineer</small></h4>
+            <ul>
+              <li>Trained stair-climbing, throw-and-catch and box-pick policies; built stereo + VLM vision navigation for the walking policy.</li>
+              <li>Root-caused 20 robot faults across 8+ robots; built Overwatch, recall and robot-triage for the service team.</li>
+              <li>Teleop gloves (hand tracking 50 → 200 Hz); PID tuning on joint actuators; camera-calibration rig; EtherCAT diagnostics.</li>
+              <li>Compute bracket with thermal analysis, battery mounts, production test fixtures, daisy-chained actuator harness, dyno testing.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <span class="when">Jan — May 2026</span>
+          <div>
+            <h4>Tesla <small>Mechanical Tooling / Process Engineering Intern, Energy</small></h4>
+            <ul><li>Megapack service tooling in SolidWorks with GD&amp;T drawings, DFM-first; 3D printing and machining; 10+ service procedures.</li></ul>
+          </div>
+        </div>
+        <div class="row">
+          <span class="when">Apr — Aug 2025</span>
+          <div>
+            <h4>Aerial Mechanica <small>Systems Engineering Intern</small></h4>
+            <ul><li>Patented motor design, concept to production release; FEA of the carbon-fiber frame and landing legs.</li></ul>
+          </div>
+        </div>
+        <div class="row">
+          <span class="when">May — Aug 2024</span>
+          <div>
+            <h4>Aerial Industries <small>Engineering Intern</small></h4>
+            <ul><li>Production release of a 12-motor UAV chassis; parametric CAD for propulsion and payload.</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="two">
+        <div>
+          <h3>Robotics</h3>
+          <dl>
+            <dt>Learning</dt><dd>PPO, motion imitation, CEM search, whole-body IK, sim-to-sim robustness</dd>
+            <dt>Control</dt><dd>PID tuning, LQR, real-time control, teleoperation</dd>
+            <dt>Autonomy</dt><dd>ROS, ArduPilot, stereo depth, VIO, VLM targeting, state estimation</dd>
+            <dt>Hardware</dt><dd>EtherCAT, FOC / CAN, IMUs, encoders, camera calibration</dd>
+          </dl>
+        </div>
+        <div>
+          <h3>Mechanical</h3>
+          <dl>
+            <dt>CAD</dt><dd>SolidWorks, Onshape, Siemens NX, CATIA v6, Fusion 360</dd>
+            <dt>Analysis</dt><dd>FEA (Ansys, Abaqus), thermal, risk analysis</dd>
+            <dt>Drawings</dt><dd>GD&amp;T, 2D drawings, DFM / DFA, production release</dd>
+            <dt>Build</dt><dd>Fixtures and tooling, dyno testing, harnessing, composites, machining, 3D printing</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="two">
+        <div>
+          <h3>Education</h3>
+          <p><b>B.S. Mechanical Engineering</b>, University of Illinois Urbana-Champaign, Dec 2025. GPA 3.58.</p>
+          <p>Researcher, Human Dynamics &amp; Control Lab (2024 — present): assistive backrest, and the Jump ARCHES virtual-patient tremor simulators.</p>
+          <p><i>VR-Based Evaluation of Hands-Free Torso-Driven Robot Navigation</i>, IMMERSE Symposium 2025.</p>
+        </div>
+        <div>
+          <h3>Side projects</h3>
+          <p><b>follow-me-robo</b> wheel-legged biped, gain-scheduled LQR over 5–16 cm leg length.</p>
+          <p><b>Small-bot</b> tracked desk rover with layered cliff safety.</p>
+          <p><b><a href="https://github.com/RKkanz/handcad" target="_blank" rel="noopener">handcad</a></b> webcam gesture navigation for CAD.</p>
+          <p><b>Vigil</b> Rust agent hub, parallel workers in git worktrees.</p>
+          <p class="skills-sw">Software: Python, C / C++, MATLAB / Simulink, Rust, Java</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="loader" id="loader"><span>Loading lab</span><b id="loadPct">0%</b></div>
+  <noscript><p class="noscript">This site is an interactive 3D lab and needs JavaScript. Email <a href="mailto:rikukanzaki2003@gmail.com">rikukanzaki2003@gmail.com</a>.</p></noscript>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>

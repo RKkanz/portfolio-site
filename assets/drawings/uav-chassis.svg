@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: top view of a six-arm UAV frame with coaxial motor pairs"><style>
+svg{background:#f2f1ed}.draw{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.o{stroke:#141414;stroke-width:1.4}.o.thin{stroke-width:1}.t{stroke:#8a8780;stroke-width:.8}
+.h{stroke:#8a8780;stroke-width:.9;stroke-dasharray:4 3}.h.dk{stroke:#141414;stroke-width:1.1}
+.c{stroke:#8a8780;stroke-width:.7;stroke-dasharray:12 3 2 3;stroke-linecap:butt}.x{stroke:#8a8780;stroke-width:.6}
+.d{stroke:#4a4844;stroke-width:.7;marker-start:url(#arw);marker-end:url(#arw)}.d1{stroke:#4a4844;stroke-width:.7;marker-end:url(#arw)}
+.a{stroke:#e8590c;stroke-width:1.8}.a.thin{stroke-width:1}.a.stop{stroke-width:3;stroke-linecap:butt}
+.ad{stroke:#e8590c;stroke-width:1.5;stroke-dasharray:5 4}.cut{stroke:#141414;stroke-width:2.2;stroke-linecap:butt}
+.fcf{stroke:#4a4844;stroke-width:.8;fill:#f2f1ed}path.fcf{fill:none}.dat{fill:#141414;stroke:none}
+.af{fill:#e8590c;stroke:none}.ldot{fill:#4a4844;stroke:none}.gps{fill:#8a8780;stroke:none;opacity:.8}
+.pf{fill:#f2f1ed}.hf{fill:url(#hatch)}.hole{fill:#dfdbd1}.mag-n{fill:#e8590c}.coil,.coilf{fill:url(#coil)}.lamf{fill:url(#lam)}
+.f-top{fill:#f2f1ed}.f-right{fill:#e4e0d7}.f-left{fill:#d6d1c5}.bar{stroke:#141414;stroke-width:9}.bar-in{stroke:#f2f1ed;stroke-width:6.2}
+.step{stroke-width:1.1}.heat{stroke-width:1.4;marker-end:url(#arwA)}
+.lbl{font:500 8.5px 'IBM Plex Mono',ui-monospace,monospace;fill:#8a8780;stroke:none;letter-spacing:.06em}.lbl.k{fill:#4a4844}.lbl.a{fill:#e8590c}.lbl.big{font-size:13px}
+</style>
+<defs>
+<marker id="arw" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#4a4844"/></marker>
+<marker id="arwA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#e8590c"/></marker>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="5" stroke="#8a8780" stroke-width="0.8"/></pattern>
+<pattern id="coil" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="3" height="3" fill="#f6d9c8"/><line x1="0" y1="0" x2="0" y2="3" stroke="#e8590c" stroke-width="0.6" stroke-opacity=".55"/></pattern>
+<pattern id="lam" width="3" height="4" patternUnits="userSpaceOnUse"><rect width="3" height="4" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="4" stroke="#8a8780" stroke-width="0.6"/></pattern>
+</defs><title>12-motor UAV chassis top view</title>
+                <circle class="h" cx="280" cy="130" r="29"/><circle class="t" cx="280" cy="130" r="24"/>
+                <circle class="h" cx="240" cy="199.3" r="29"/><circle class="t" cx="240" cy="199.3" r="24"/>
+                <circle class="h" cx="160" cy="199.3" r="29"/><circle class="t" cx="160" cy="199.3" r="24"/>
+                <circle class="h" cx="120" cy="130" r="29"/><circle class="t" cx="120" cy="130" r="24"/>
+                <circle class="h" cx="160" cy="60.7" r="29"/><circle class="t" cx="160" cy="60.7" r="24"/>
+                <circle class="h" cx="240" cy="60.7" r="29"/><circle class="t" cx="240" cy="60.7" r="24"/>
+                <path class="bar" d="M200 130 L280 130"/>
+                <path class="bar" d="M200 130 L240 199.3"/>
+                <path class="bar" d="M200 130 L160 199.3"/>
+                <path class="bar" d="M200 130 L120 130"/>
+                <path class="bar" d="M200 130 L160 60.7"/>
+                <path class="bar" d="M200 130 L240 60.7"/>
+                <path class="bar-in" d="M200 130 L280 130"/>
+                <path class="bar-in" d="M200 130 L240 199.3"/>
+                <path class="bar-in" d="M200 130 L160 199.3"/>
+                <path class="bar-in" d="M200 130 L120 130"/>
+                <path class="bar-in" d="M200 130 L160 60.7"/>
+                <path class="bar-in" d="M200 130 L240 60.7"/>
+                <path class="o pf" d="M232.9 149 L200 168 L167.1 149 L167.1 111 L200 92 L232.9 111 Z"/>
+                <path class="h" d="M219.1 141 L200 152 L180.9 141 L180.9 119 L200 108 L219.1 119 Z"/>
+                <circle class="o pf" cx="229.4" cy="124.3" r="1.8"/>
+                <circle class="o pf" cx="229.4" cy="135.7" r="1.8"/>
+                <circle class="o pf" cx="219.7" cy="152.6" r="1.8"/>
+                <circle class="o pf" cx="209.8" cy="158.4" r="1.8"/>
+                <circle class="o pf" cx="190.2" cy="158.4" r="1.8"/>
+                <circle class="o pf" cx="180.3" cy="152.6" r="1.8"/>
+                <circle class="o pf" cx="170.6" cy="135.7" r="1.8"/>
+                <circle class="o pf" cx="170.6" cy="124.3" r="1.8"/>
+                <circle class="o pf" cx="180.3" cy="107.4" r="1.8"/>
+                <circle class="o pf" cx="190.2" cy="101.6" r="1.8"/>
+                <circle class="o pf" cx="209.8" cy="101.6" r="1.8"/>
+                <circle class="o pf" cx="219.7" cy="107.4" r="1.8"/>
+                <path class="c" d="M186 130 L214 130 M200 116 L200 144"/>
+                <circle class="af" cx="200" cy="130" r="2.6"/>
+                <circle class="o pf" cx="280" cy="130" r="10"/><circle class="t" cx="280" cy="130" r="5.5"/><circle class="af" cx="280" cy="130" r="2"/>
+                <circle class="o pf" cx="240" cy="199.3" r="10"/><circle class="t" cx="240" cy="199.3" r="5.5"/><circle class="af" cx="240" cy="199.3" r="2"/>
+                <circle class="o pf" cx="160" cy="199.3" r="10"/><circle class="t" cx="160" cy="199.3" r="5.5"/><circle class="af" cx="160" cy="199.3" r="2"/>
+                <circle class="o pf" cx="120" cy="130" r="10"/><circle class="t" cx="120" cy="130" r="5.5"/><circle class="af" cx="120" cy="130" r="2"/>
+                <circle class="o pf" cx="160" cy="60.7" r="10"/><circle class="t" cx="160" cy="60.7" r="5.5"/><circle class="af" cx="160" cy="60.7" r="2"/>
+                <circle class="o pf" cx="240" cy="60.7" r="10"/><circle class="t" cx="240" cy="60.7" r="5.5"/><circle class="af" cx="240" cy="60.7" r="2"/>
+                <path class="x" d="M120 144 L120 250 M280 144 L280 250"/>
+                <path class="d" d="M120 244 L280 244"/>
+                <text class="lbl k" x="200" y="240" text-anchor="middle">MOTOR SPAN</text>
+                <path class="t" d="M247 53.7 L296 30"/><circle class="ldot" cx="247" cy="53.7" r="1.6"/><text class="lbl" x="300" y="33" text-anchor="start">×2 COAXIAL</text>
+                <text class="lbl" x="300" y="44">= 12 MOTORS</text>
+                <path class="t" d="M250 127 L318 96"/><circle class="ldot" cx="250" cy="127" r="1.6"/><text class="lbl" x="322" y="99" text-anchor="start">ARM ×6</text>
+                <path class="t" d="M184 138 L70 196"/><circle class="ldot" cx="184" cy="138" r="1.6"/><text class="lbl" x="66" y="199" text-anchor="end">PAYLOAD BAY</text>
+                <text class="lbl k" x="20" y="28">TOP VIEW · COAXIAL HEX</text>
+              </svg>

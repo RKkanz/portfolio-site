@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" class="draw" role="img" aria-label="Drawing: isometric view of a finned compute bracket with a mounting flange and the thermal path from the hidden compute module"><style>
+svg{background:#f2f1ed}.draw{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.o{stroke:#141414;stroke-width:1.4}.o.thin{stroke-width:1}.t{stroke:#8a8780;stroke-width:.8}
+.h{stroke:#8a8780;stroke-width:.9;stroke-dasharray:4 3}.h.dk{stroke:#141414;stroke-width:1.1}
+.c{stroke:#8a8780;stroke-width:.7;stroke-dasharray:12 3 2 3;stroke-linecap:butt}.x{stroke:#8a8780;stroke-width:.6}
+.d{stroke:#4a4844;stroke-width:.7;marker-start:url(#arw);marker-end:url(#arw)}.d1{stroke:#4a4844;stroke-width:.7;marker-end:url(#arw)}
+.a{stroke:#e8590c;stroke-width:1.8}.a.thin{stroke-width:1}.a.stop{stroke-width:3;stroke-linecap:butt}
+.ad{stroke:#e8590c;stroke-width:1.5;stroke-dasharray:5 4}.cut{stroke:#141414;stroke-width:2.2;stroke-linecap:butt}
+.fcf{stroke:#4a4844;stroke-width:.8;fill:#f2f1ed}path.fcf{fill:none}.dat{fill:#141414;stroke:none}
+.af{fill:#e8590c;stroke:none}.ldot{fill:#4a4844;stroke:none}.gps{fill:#8a8780;stroke:none;opacity:.8}
+.pf{fill:#f2f1ed}.hf{fill:url(#hatch)}.hole{fill:#dfdbd1}.mag-n{fill:#e8590c}.coil,.coilf{fill:url(#coil)}.lamf{fill:url(#lam)}
+.f-top{fill:#f2f1ed}.f-right{fill:#e4e0d7}.f-left{fill:#d6d1c5}.bar{stroke:#141414;stroke-width:9}.bar-in{stroke:#f2f1ed;stroke-width:6.2}
+.step{stroke-width:1.1}.heat{stroke-width:1.4;marker-end:url(#arwA)}
+.lbl{font:500 8.5px 'IBM Plex Mono',ui-monospace,monospace;fill:#8a8780;stroke:none;letter-spacing:.06em}.lbl.k{fill:#4a4844}.lbl.a{fill:#e8590c}.lbl.big{font-size:13px}
+</style>
+<defs>
+<marker id="arw" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#4a4844"/></marker>
+<marker id="arwA" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 L10 5 L0 8.4 Z" fill="#e8590c"/></marker>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="5" stroke="#8a8780" stroke-width="0.8"/></pattern>
+<pattern id="coil" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="3" height="3" fill="#f6d9c8"/><line x1="0" y1="0" x2="0" y2="3" stroke="#e8590c" stroke-width="0.6" stroke-opacity=".55"/></pattern>
+<pattern id="lam" width="3" height="4" patternUnits="userSpaceOnUse"><rect width="3" height="4" fill="#f2f1ed"/><line x1="0" y1="0" x2="0" y2="4" stroke="#8a8780" stroke-width="0.6"/></pattern>
+</defs><title>Compute bracket isometric</title>
+                <path class="o f-top" d="M150 60 L271.2 130 L193.3 175 L72.1 105 Z"/><path class="o f-right" d="M271.2 130 L193.3 175 L193.3 181 L271.2 136 Z"/><path class="o f-left" d="M72.1 105 L193.3 175 L193.3 181 L72.1 111 Z"/>
+                <path class="o f-top" d="M72.1 105 L193.3 175 L188.1 178 L66.9 108 Z"/><path class="o f-right" d="M193.3 175 L188.1 178 L188.1 232 L193.3 229 Z"/><path class="o f-left" d="M66.9 108 L188.1 178 L188.1 232 L66.9 162 Z"/>
+                <path class="h" d="M162.1 89 L231.4 129 L231.4 145 L181.2 174 L111.9 134 L111.9 118 Z"/>
+                <path class="h" d="M181.2 158 L231.4 129"/>
+                <path class="h" d="M181.2 158 L111.9 118"/>
+                <path class="h" d="M181.2 158 L181.2 174"/>
+                <path class="o f-top" d="M150 42 L257.4 104 L253.9 106 L146.5 44 Z"/><path class="o f-right" d="M257.4 104 L253.9 106 L253.9 132 L257.4 130 Z"/><path class="o f-left" d="M146.5 44 L253.9 106 L253.9 132 L146.5 70 Z"/>
+                <path class="o f-top" d="M137.9 49 L245.3 111 L241.8 113 L134.4 51 Z"/><path class="o f-right" d="M245.3 111 L241.8 113 L241.8 139 L245.3 137 Z"/><path class="o f-left" d="M134.4 51 L241.8 113 L241.8 139 L134.4 77 Z"/>
+                <path class="o f-top" d="M125.8 56 L233.1 118 L229.7 120 L122.3 58 Z"/><path class="o f-right" d="M233.1 118 L229.7 120 L229.7 146 L233.1 144 Z"/><path class="o f-left" d="M122.3 58 L229.7 120 L229.7 146 L122.3 84 Z"/>
+                <path class="o f-top" d="M113.6 63 L221 125 L217.5 127 L110.2 65 Z"/><path class="o f-right" d="M221 125 L217.5 127 L217.5 153 L221 151 Z"/><path class="o f-left" d="M110.2 65 L217.5 127 L217.5 153 L110.2 91 Z"/>
+                <path class="o f-top" d="M101.5 70 L208.9 132 L205.4 134 L98 72 Z"/><path class="o f-right" d="M208.9 132 L205.4 134 L205.4 160 L208.9 158 Z"/><path class="o f-left" d="M98 72 L205.4 134 L205.4 160 L98 98 Z"/>
+                <path class="o f-top" d="M89.4 77 L196.8 139 L193.3 141 L85.9 79 Z"/><path class="o f-right" d="M196.8 139 L193.3 141 L193.3 167 L196.8 165 Z"/><path class="o f-left" d="M85.9 79 L193.3 141 L193.3 167 L85.9 105 Z"/>
+                <path class="o hole" d="M93.3 155.2 L93.2 154.1 L92.9 152.8 L92.5 151.6 L92 150.3 L91.3 149.1 L90.5 148 L89.6 147 L88.6 146.2 L87.6 145.5 L86.7 145 L85.7 144.8 L84.8 144.7 L84 144.9 L83.3 145.3 L82.8 145.9 L82.4 146.7 L82.1 147.7 L82 148.8 L82.1 149.9 L82.4 151.2 L82.8 152.4 L83.3 153.7 L84 154.9 L84.8 156 L85.7 157 L86.7 157.8 L87.6 158.5 L88.6 159 L89.6 159.2 L90.5 159.3 L91.3 159.1 L92 158.7 L92.5 158.1 L92.9 157.3 L93.2 156.3 Z"/>
+                <path class="c" d="M78.1 146.5 L97.2 157.5 M87.6 163 L87.6 141"/>
+                <path class="o hole" d="M133.1 178.2 L133 177.1 L132.8 175.8 L132.4 174.6 L131.8 173.3 L131.1 172.1 L130.3 171 L129.4 170 L128.5 169.2 L127.5 168.5 L126.5 168 L125.6 167.8 L124.7 167.7 L123.9 167.9 L123.2 168.3 L122.6 168.9 L122.2 169.7 L121.9 170.7 L121.9 171.8 L121.9 172.9 L122.2 174.2 L122.6 175.4 L123.2 176.7 L123.9 177.9 L124.7 179 L125.6 180 L126.5 180.8 L127.5 181.5 L128.5 182 L129.4 182.2 L130.3 182.3 L131.1 182.1 L131.8 181.7 L132.4 181.1 L132.8 180.3 L133 179.3 Z"/>
+                <path class="c" d="M118 169.5 L137 180.5 M127.5 186 L127.5 164"/>
+                <path class="o hole" d="M172.9 201.2 L172.9 200.1 L172.6 198.8 L172.2 197.6 L171.6 196.3 L170.9 195.1 L170.1 194 L169.2 193 L168.3 192.2 L167.3 191.5 L166.3 191 L165.4 190.8 L164.5 190.7 L163.7 190.9 L163 191.3 L162.4 191.9 L162 192.7 L161.8 193.7 L161.7 194.8 L161.8 195.9 L162 197.2 L162.4 198.4 L163 199.7 L163.7 200.9 L164.5 202 L165.4 203 L166.3 203.8 L167.3 204.5 L168.3 205 L169.2 205.2 L170.1 205.3 L170.9 205.1 L171.6 204.7 L172.2 204.1 L172.6 203.3 L172.9 202.3 Z"/>
+                <path class="c" d="M157.8 192.5 L176.8 203.5 M167.3 209 L167.3 187"/>
+                <path class="a heat" d="M151.7 75 L152.9 74 L153.9 73 L154.7 72 L155.1 71 L155.2 70 L154.9 69 L154.3 68 L153.3 67 L152.2 66 L151.1 65 L150 64 L149.1 63 L148.5 62 L148.2 61 L148.4 60 L148.9 59 L149.7 58 L150.8 57 L151.9 56 L153 55 L154 54 L154.8 53 L155.2 52 L155.2 51 L154.8 50 L154.1 49 L153.2 48 L152.1 47 L150.9 46 L149.8 45 L149 44 L148.4 43 L148.2 42"/>
+                <path class="a heat" d="M177.7 90 L178.9 89 L179.9 88 L180.7 87 L181.1 86 L181.2 85 L180.9 84 L180.2 83 L179.3 82 L178.2 81 L177 80 L176 79 L175.1 78 L174.5 77 L174.2 76 L174.4 75 L174.9 74 L175.7 73 L176.7 72 L177.9 71 L179 70 L180 69 L180.7 68 L181.2 67 L181.2 66 L180.8 65 L180.1 64 L179.2 63 L178 62 L176.9 61 L175.8 60 L175 59 L174.4 58 L174.2 57"/>
+                <path class="a heat" d="M203.7 105 L204.8 104 L205.9 103 L206.6 102 L207.1 101 L207.2 100 L206.9 99 L206.2 98 L205.3 97 L204.2 96 L203 95 L201.9 94 L201 93 L200.4 92 L200.2 91 L200.3 90 L200.8 89 L201.7 88 L202.7 87 L203.9 86 L205 85 L206 84 L206.7 83 L207.1 82 L207.2 81 L206.8 80 L206.1 79 L205.1 78 L204 77 L202.9 76 L201.8 75 L200.9 74 L200.4 73 L200.2 72"/>
+                <path class="t" d="M229.7 120 L292 74"/><circle class="ldot" cx="229.7" cy="120" r="1.6"/><text class="lbl" x="296" y="77" text-anchor="start">FINS ×6</text>
+                <path class="t" d="M167.3 204 L292 196"/><circle class="ldot" cx="167.3" cy="204" r="1.6"/><text class="lbl" x="296" y="199" text-anchor="start">MOUNT HOLES ×3</text>
+                <path class="t" d="M219.3 144 L292 140"/><circle class="ldot" cx="219.3" cy="144" r="1.6"/><text class="lbl" x="296" y="143" text-anchor="start">COMPUTE (HIDDEN)</text>
+                <text class="lbl a" x="127.7" y="49" text-anchor="end">THERMAL PATH</text>
+                <text class="lbl k" x="20" y="28">ISOMETRIC · COMPUTE BRACKET</text>
+                <g transform="translate(36 228)"><path class="t" d="M0 0 L17.3 10 M0 0 L-17.3 10 M0 0 L0 -20"/><text class="lbl" x="20" y="16">X</text><text class="lbl" x="-27" y="16">Y</text><text class="lbl" x="-3" y="-24">Z</text></g>
+              </svg>

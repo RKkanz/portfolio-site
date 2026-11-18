@@ -4,21 +4,16 @@ Riku Kanzaki's personal portfolio. Plain static HTML/CSS/JS with no build step a
 
 | File | Purpose |
 |------|---------|
-| `index.html` | The site (single page) |
+| `index.html` | The site: a full-screen 3D lab with Robotics and Mechanical design tracks, plus a profile sheet |
+| `app.js` | Lab logic: chapters, camera moves, stages, exploded blueprint view, routing |
 | `styles.css` | Styling |
-| `main.js` | Interactivity, including the hero IK arm canvas |
-| `404.html` | Not-found page |
-| `favicon.svg` | Site icon |
-| `hero3d.js` | Homepage hero: live humanoid replaying policy rollouts |
-| `lab.html`, `lab.js` | The interactive 3D lab (policy replays, diagnostics tooling) |
-| `assets/lab/` | Shared 3D module (`core.js`), rollout data, G1 model |
+| `assets/lab/` | Shared 3D module (`core.js`), recorded rollout data, Mk1.1 kinematic tree (`mk11.json`) |
 | `assets/media/` | Sim videos and tool screenshots (IP text blurred) |
+| `assets/drawings/` | Schematic SVGs used in mechanical chapters (placeholders for CAD screenshots) |
+| `lab.html` | Redirect to the home page (old links) |
+| `404.html` | Not-found page |
 
-3D runs on three.js and urdf-loader from jsDelivr (pinned versions in the import maps), so it needs a local server (`file://` won't load the models).
-
-## Credits
-
-The humanoid is Unitree's open-source G1 description (`assets/lab/g1/`, BSD-3-Clause, see `assets/lab/g1/LICENSE`), with meshes decimated for the web.
+3D runs on three.js from jsDelivr (pinned versions in the import map), so preview it through a local server (`file://` won't load the models).
 
 ## Preview locally
 
