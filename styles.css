@@ -149,6 +149,7 @@ body[data-track="mechanical"] #stage, body[data-track="mechanical"] .panel, body
 .index tr:hover a { color: var(--sig); }
 .mech h2 { margin: 8px 0 10px; font-weight: 650; font-stretch: 108%; font-size: 28px; line-height: 1.1; letter-spacing: -.01em; }
 .mech .lede { font-size: 15px; max-width: 560px; }
+.mech .lede + .lede { margin-top: 10px; }
 
 .feature { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 0; margin-top: 72px; border: 1px solid var(--line); background: var(--bg-2); scroll-margin-top: 24px; }
 .ftext { padding: 28px 28px 30px; border-left: 1px solid var(--line); }
@@ -171,6 +172,8 @@ body[data-track="mechanical"] #stage, body[data-track="mechanical"] .panel, body
 .mech figure img, .mech figure video { width: 100%; height: auto; }
 .mech figcaption { padding: 8px 10px; border-top: 1px solid var(--line); background: var(--bg-2); font: 500 10.5px var(--mono); letter-spacing: .03em; color: var(--fg-3); }
 .strip figure { border: 0; display: flex; flex-direction: column; }
+.strip.one { grid-template-columns: 1fr; }
+.strip.one video { max-height: 440px; object-fit: contain; background: #000; }
 .strip figure img { flex: 1; object-fit: contain; aspect-ratio: 4 / 3; }
 
 .work { margin-top: 88px; }

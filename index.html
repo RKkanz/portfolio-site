@@ -188,12 +188,19 @@
           </div>
         </article>
 
-        <article class="proj" id="m-gloves">
-          <figure><video src="assets/media/mech/glove-demo.mp4" poster="assets/media/mech/glove-demo.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>IMU glove driving the hand model live</figcaption></figure>
-          <div>
+        <article class="feature" id="m-gloves">
+          <div class="viewer" data-model="gloves">
+            <canvas aria-label="3D models of four teleoperation glove versions, each on its own pedestal"></canvas>
+            <div class="vbar">
+              <span>Assembled</span><input type="range" min="0" max="1000" value="0" aria-label="Explode the glove parts"><span>Exploded</span>
+            </div>
+            <p class="vpart" data-part="Drag to orbit · hover a part">Drag to orbit · hover a part</p>
+          </div>
+          <div class="ftext">
             <p class="kick">04 · Foundation Robotics · 2026</p>
             <h2>Teleoperation gloves</h2>
             <p class="lede">Lead engineer on the gloves operators use to drive a humanoid's hands: sensors, electronics, firmware and wearable CAD.</p>
+            <p class="lede">Four versions of the wearable CAD, left to right: finger IMU mounts, small-IMU mounts, micro-IMU (J2) mounts and the full gauntlet, each on a reference hand.</p>
             <table class="spec">
               <tr><th>Hand tracking</th><td>50 → 200 Hz</td></tr>
               <tr><th>Exo accuracy</th><td>0.5° per joint (Hall effect)</td></tr>
@@ -206,14 +213,18 @@
               <li>Data-collection glove with palm and fingertip tactile sensing working within a month.</li>
             </ul>
           </div>
+          <div class="strip one">
+            <figure><video src="assets/media/mech/glove-demo.mp4" poster="assets/media/mech/glove-demo.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>Early proof-of-concept glove driving the hand model live. Shown for context; not the glove I designed.</figcaption></figure>
+          </div>
         </article>
 
         <article class="proj" id="m-tooling">
-          <figure class="paper"><img src="assets/drawings/tooling-bracket.svg" alt="Tooling bracket, two views with GD&amp;T" loading="lazy"><figcaption>Tooling bracket, two views with GD&amp;T (schematic)</figcaption></figure>
+          <figure><img src="assets/media/mech/megapack.webp" alt="Rendering of four Tesla Megapack units under a solar canopy" loading="lazy"><figcaption>Tesla Megapack, illustrative rendering (CC0, Wikideas1 / Wikimedia Commons). Not my work.</figcaption></figure>
           <div>
             <p class="kick">05 · Tesla Energy · 2026</p>
             <h2>Megapack service tooling</h2>
             <p class="lede">Service tooling and hardware for Megapack, designed for manufacture and released on GD&amp;T drawings.</p>
+            <p class="lede">The CAD, drawings and photos from this work are Tesla proprietary, so I can't show them here.</p>
             <table class="spec">
               <tr><th>CAD</th><td>SolidWorks</td></tr>
               <tr><th>Drawings</th><td>GD&amp;T 2D, DFM-first</td></tr>
@@ -229,10 +240,11 @@
           <div>
             <p class="kick">06 · Aerial Mechanica · 2025</p>
             <h2>Patented motor design</h2>
-            <p class="lede">Owned a motor design end to end, from first concept through production release.</p>
+            <p class="lede">One of two mechanical engineers on a motor with a 3D-printed stator, whose plenum routes bleed air back through the coreless section of the motor.</p>
             <table class="spec">
-              <tr><th>IP</th><td>1 patent</td></tr>
-              <tr><th>Scope</th><td>Concept → production</td></tr>
+              <tr><th>Role</th><td>1 of 2 mechanical engineers</td></tr>
+              <tr><th>IP</th><td>Patented; I'm not a named inventor</td></tr>
+              <tr><th>Stator</th><td>3D-printed, integrated bleed-air plenum</td></tr>
               <tr><th>Analysis</th><td>FEA + risk, carbon-fiber frame and legs</td></tr>
               <tr><th>Loads</th><td>Dynamic flight</td></tr>
             </table>
@@ -245,9 +257,9 @@
           <div>
             <p class="kick">07 · Aerial Industries · 2024</p>
             <h2>12-motor UAV chassis</h2>
-            <p class="lede">Took a coaxial 12-motor chassis from prototype to flight-ready production hardware.</p>
+            <p class="lede">Developed a coaxial 12-motor chassis through flight testing. A prototype, not production-ready hardware.</p>
             <table class="spec">
-              <tr><th>Release</th><td>Production</td></tr>
+              <tr><th>Status</th><td>Flight-tested prototype, not production-ready</td></tr>
               <tr><th>CAD</th><td>Parametric, propulsion + payload</td></tr>
               <tr><th>Requirements</th><td>Structural, thermal, electrical</td></tr>
             </table>
@@ -315,14 +327,14 @@
           <span class="when">Apr — Aug 2025</span>
           <div>
             <h4>Aerial Mechanica <small>Systems Engineering Intern</small></h4>
-            <ul><li>Patented motor design, concept to production release; FEA of the carbon-fiber frame and landing legs.</li></ul>
+            <ul><li>One of two mechanical engineers on a patented motor design (not a named inventor); FEA of the carbon-fiber frame and landing legs.</li></ul>
           </div>
         </div>
         <div class="row">
           <span class="when">May — Aug 2024</span>
           <div>
             <h4>Aerial Industries <small>Engineering Intern</small></h4>
-            <ul><li>Production release of a 12-motor UAV chassis; parametric CAD for propulsion and payload.</li></ul>
+            <ul><li>Flight-tested prototype 12-motor UAV chassis (not production-ready); parametric CAD for propulsion and payload.</li></ul>
           </div>
         </div>
       </section>

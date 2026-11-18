@@ -234,7 +234,8 @@ function wireExplode() {
 
 // ---------- mechanical design: a plain page over the lab; its two CAD viewers mount on first visit ----------
 const mech = $("mech");
-const VIEWERS = { actuator: { model: "actuator", tilt: [0, Math.PI / 2, 0], view: [28, 16] }, boat: { model: "boat", view: [138, 20] } };
+const VIEWERS = { actuator: { model: "actuator", tilt: [0, Math.PI / 2, 0], view: [28, 16] }, boat: { model: "boat", view: [138, 20] },
+  gloves: { model: "gloves", view: [16, 12], spin: false } };
 let mechMounted = false;
 function showMech(id, instant) {
   mech.hidden = false;

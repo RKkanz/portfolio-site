@@ -21,14 +21,16 @@ export async function loadModel(name) {
     const I = p.idx[2] === 2 ? Uint16Array : Uint32Array;
     g.setIndex(new THREE.BufferAttribute(new I(bin, p.idx[0], p.idx[1]), 1));
     g.computeVertexNormals();
-    const metal = /bearing|Shaft hardware|Connector/.test(p.label);
-    mats[p.color] ||= new THREE.MeshStandardMaterial({ color: p.color, roughness: metal ? 0.35 : 0.62, metalness: metal ? 0.55 : 0.04 });
-    const mesh = new THREE.Mesh(g, mats[p.color]);
-    mesh.castShadow = mesh.receiveShadow = true;
-    mesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(g, 28), EDGE));
+    const metal = /bearing|Shaft hardware|Connector/.test(p.label), ghost = (p.opacity ?? 1) < 1;
+    mats[p.color + (ghost ? p.opacity : "")] ||= new THREE.MeshStandardMaterial({ color: p.color, roughness: metal ? 0.35 : 0.62, metalness: metal ? 0.55 : 0.04,
+      ...(ghost && { transparent: true, opacity: p.opacity, depthWrite: false }) });
+    const mesh = new THREE.Mesh(g, mats[p.color + (ghost ? p.opacity : "")]);
+    mesh.castShadow = mesh.receiveShadow = !ghost;
+    if (ghost) mesh.renderOrder = 1;                              // reference geometry: see-through, no outline, not pickable
+    else mesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(g, 28), EDGE));
     const holder = new THREE.Group(); holder.add(mesh); group.add(holder);
     mesh.userData.part = p;
-    return { ...p, holder, mesh, off: new THREE.Vector3(...p.explode) };
+    return { ...p, holder, mesh, ghost, off: new THREE.Vector3(...p.explode) };
   });
   const lo = new THREE.Vector3(Infinity, Infinity, Infinity), hi = lo.clone().negate();
   // bounds of the model at explode fraction t (from the per-part boxes, cheap enough to call every frame)
@@ -46,7 +48,7 @@ export async function loadModel(name) {
   return { group, parts, bounds, setExplode, get t() { return t; } };
 }
 
-// opts: { model, tilt: Euler applied to the z-up model, view: [az, el] in degrees, explode: initial fraction }
+// opts: { model, tilt: Euler applied to the z-up model, view: [az, el] in degrees, explode: initial fraction, spin: false to hold still }
 export function mountViewer(root, opts) {
   const canvas = root.querySelector("canvas"), slider = root.querySelector("input[type=range]"), readout = root.querySelector("[data-part]");
   let renderer;
@@ -62,10 +64,10 @@ export function mountViewer(root, opts) {
   const rim = new THREE.DirectionalLight(0x8fb4ff, 0.9); rim.position.set(-4, 2, -5); scene.add(rim);
   const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 50);
   const controls = new OrbitControls(camera, canvas);
-  Object.assign(controls, { enableDamping: true, dampingFactor: 0.08, enablePan: false, enableZoom: false, autoRotate: !reduceMotion, autoRotateSpeed: 1.1 });
+  Object.assign(controls, { enableDamping: true, dampingFactor: 0.08, enablePan: false, enableZoom: false, autoRotate: !reduceMotion && opts.spin !== false, autoRotateSpeed: 1.1 });
   let idle;
   controls.addEventListener("start", () => { controls.autoRotate = false; clearTimeout(idle); });
-  controls.addEventListener("end", () => { if (!reduceMotion) idle = setTimeout(() => (controls.autoRotate = true), 6000); });
+  controls.addEventListener("end", () => { if (!reduceMotion && opts.spin !== false) idle = setTimeout(() => (controls.autoRotate = true), 6000); });
 
   let M = null, dist = 1, want = 1, visible = false, dirty = true;
   const pivot = new THREE.Group(); scene.add(pivot);
@@ -105,7 +107,7 @@ export function mountViewer(root, opts) {
     const r = canvas.getBoundingClientRect();
     ptr.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(ptr, camera);
-    const hit = ray.intersectObjects(M.parts.map((p) => p.mesh), false)[0];
+    const hit = ray.intersectObjects(M.parts.filter((p) => !p.ghost).map((p) => p.mesh), false)[0];
     const mesh = hit ? hit.object : null;
     if (mesh === hot) return;
     if (hot) hot.material = hotMat;
