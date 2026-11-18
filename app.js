@@ -33,7 +33,7 @@ const CHAPTERS = {
       steps: [["Track", "The head cameras find the box and follow it in 3D from the moment it leaves the thrower's hands."], ["Predict", "Its flight is fitted on the fly to solve where and when it will arrive (amber ring): ~2 cm error at the catch."], ["Catch", "An arm policy brings both palms to that point at that moment."]],
       notes: ["Arm-pose tables found by overnight CEM search on 3 GPUs, 7-hour runs.", "In the full software-in-the-loop chain, the first throw was caught."],
       media: { video: "policies/catch.mp4", cap: "Catch rollout, run r15 (held)" },
-      caption: "View from the catching robot's head · recorded catch rollouts · throw wind-up animated",
+      caption: "From behind the thrower, zoomed on the catching robot · recorded catch rollouts · slowed for the catch",
     },
     {
       id: "pick", short: "Box pick", stage: "pick", hw: true, view: [[2.3, 1.75, 2.7], [0.15, 0.9, 0]],
@@ -240,29 +240,31 @@ hud.innerHTML = '<i class="ret"></i><span></span>'; document.body.appendChild(hu
 const hudRet = hud.querySelector(".ret"), hudTxt = hud.querySelector("span");
 const LAB_FOV = 34, va = new THREE.Vector3(), vb = new THREE.Vector3();
 function povStep() {
-  const s = pov, head = s.catcher.links.Head.getWorldPosition(va), b = s.box.getWorldPosition(vb);
-  const dir = b.clone().sub(head), d = dir.length(); dir.normalize();
-  // just behind and over one shoulder, so the box and the robot's own palms stay in frame as they meet
-  const flat = new THREE.Vector3(dir.x, 0, dir.z).normalize();
-  const side = new THREE.Vector3(-flat.z, 0, flat.x);            // over the right shoulder, clear of the head
-  const eye = head.clone().addScaledVector(flat, -0.5).addScaledVector(side, 0.4).add(new THREE.Vector3(0, 0.26, 0));
-  const de = eye.distanceTo(b);
-  // wide while the throw winds up, then zoom so the box holds its size, then open up to show the palms close on it
-  const fov = s.phase === "wind" || s.phase === "release" ? 44 : s.phase === "caught" ? 52 : THREE.MathUtils.clamp(THREE.MathUtils.radToDeg(2 * Math.atan(0.5 / de)), 12, 52);
+  const s = pov, b = s.box.getWorldPosition(vb);
+  const chest = s.catcher.links.Torso.getWorldPosition(va).clone().add(new THREE.Vector3(0, 0.1, 0));
+  const head = s.thrower.links.Head.getWorldPosition(new THREE.Vector3());
+  // behind the thrower's shoulder, looking down the throw at the catcher
+  const flat = chest.clone().sub(head).setY(0).normalize(), side = new THREE.Vector3(-flat.z, 0, flat.x);
+  const eye = head.clone().addScaledVector(flat, -0.8).addScaledVector(side, 0.75).add(new THREE.Vector3(0, 0.3, 0));
+  // aim between the box and the catcher while it flies, then settle on the catcher's palms; zoom so both stay in frame
+  const flying = s.phase === "flight", caught = s.phase === "caught";
+  const look = flying ? chest.clone().lerp(b, 0.45) : caught ? b.clone().lerp(chest, 0.3) : chest.clone();
+  const de = eye.distanceTo(look), half = flying ? b.distanceTo(chest) / 2 + 0.55 : caught ? 0.55 : 0.85;
+  const fov = THREE.MathUtils.clamp(THREE.MathUtils.radToDeg(2 * Math.atan(half / de)), 9, 40);
   const snap = POV.snap || POV.catcher !== s.catcher;
   POV.catcher = s.catcher; POV.snap = false;
-  if (snap) { camera.position.copy(eye); POV.look.copy(b); camera.fov = fov; }
-  else { camera.position.lerp(eye, 0.25); POV.look.lerp(b, 0.3); camera.fov += (fov - camera.fov) * 0.12; }
+  if (snap) { camera.position.copy(eye); POV.look.copy(look); camera.fov = fov; }
+  else { camera.position.lerp(eye, 0.2); POV.look.lerp(look, 0.12); camera.fov += (fov - camera.fov) * 0.08; }
   camera.updateProjectionMatrix();
   camera.lookAt(POV.look); controls.target.copy(POV.look);
   // reticle on the box, and which step of the pipeline is running
   const p = b.clone().project(camera), W = innerWidth, H = innerHeight;
-  const px = Math.max(26, (0.34 / (2 * Math.max(de, 0.2) * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)))) * H);
+  const px = Math.max(26, (0.34 / (2 * Math.max(camera.position.distanceTo(b), 0.2) * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)))) * H);
   const step = s.phase === "caught" ? 2 : s.phase === "flight" ? 1 : 0;
   hud.hidden = p.z > 1;
   hud.style.transform = `translate(${((p.x + 1) / 2) * W}px, ${((1 - p.y) / 2) * H}px)`;
   hudRet.style.width = hudRet.style.height = Math.min(px, 260) + "px";
-  hudTxt.textContent = ["01 Track · box in view", `02 Predict · ${s.dist.toFixed(1)} m to catch point`, "03 Catch"][step];
+  hudTxt.textContent = ["01 Track · box in view", `02 Predict · ${s.dist.toFixed(1)} m to catch point`, "03 Catch"][step] + (s.rate < 1 ? " · slow motion" : "");
   hud.dataset.step = step;
   pBody.querySelectorAll(".steps li").forEach((li) => li.classList.toggle("on", +li.dataset.step === step));
 }

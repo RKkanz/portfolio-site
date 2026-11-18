@@ -168,7 +168,10 @@ export function makeRig(ROLL) {
     // where the box will be caught, marked while it is in the air; `state` is read by the head-camera view in app.js
     const mark = new THREE.Mesh(new THREE.TorusGeometry(0.16, 0.012, 8, 40), new THREE.MeshBasicMaterial({ color: "#ffb020" }));
     mark.rotation.y = Math.PI / 2; mark.visible = false; world.add(mark);
-    const state = { catcher: A, thrower: B, box: cargo, phase: "wind", dist: 0 };
+    const state = { catcher: A, thrower: B, box: cargo, phase: "wind", dist: 0, since: 0, rate: 1 };
+    // the scene keeps its own clock so it can slow down for the catch: 0.3x from ~1.3 m out until just after the palms close
+    const SLOW = 0.3;
+    let clock = 0, last = null;
     world.state = state;
     const frameAt = (r, tt) => { let k = 0; while (k + 1 < r.t.length && r.t[k + 1] <= tt) k++; return k; };
     const idx = (n) => ARM.indexOf(n);
@@ -181,7 +184,13 @@ export function makeRig(ROLL) {
     };
     const tmp = new THREE.Vector3();
     tickers.push((t) => {
-      const n = Math.floor(t / HALF), c = t - n * HALF;
+      const dt = last === null ? null : t - last; last = t;
+      if (dt === null || dt < 0 || dt > 0.5) clock = t;          // first frame, a frozen ?t= frame, or a jump: no slow-down
+      else {
+        state.rate = (state.phase === "flight" && state.dist < 1.3) || (state.phase === "caught" && state.since < 0.9) ? SLOW : 1;
+        clock += dt * state.rate;
+      }
+      const n = Math.floor(clock / HALF), c = clock - n * HALF;
       const aCatches = n % 2 === 0;
       const R = aCatches ? r1 : r2, other = aCatches ? r2 : r1;
       const catcher = aCatches ? A : B, thrower = aCatches ? B : A;
@@ -214,7 +223,7 @@ export function makeRig(ROLL) {
         }
         const ga = mirror ? flip(R.box[R.arrive]) : R.box[R.arrive];
         mark.position.set(ga[0], ga[1], ga[2]); mark.visible = flying;
-        Object.assign(state, { catcher, thrower, phase: k < R.arrive ? (tt > 0.3 ? "flight" : "release") : "caught", dist: Math.hypot(ga[0] - bp[0], ga[1] - bp[1], ga[2] - bp[2]) });
+        Object.assign(state, { catcher, thrower, phase: k < R.arrive ? (tt > 0.3 ? "flight" : "release") : "caught", dist: Math.hypot(ga[0] - bp[0], ga[1] - bp[1], ga[2] - bp[2]), since: tt - R.t[R.arrive] });
       }
     });
     return world;
