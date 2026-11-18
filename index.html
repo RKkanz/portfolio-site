@@ -34,7 +34,7 @@
       <a href="#mechanical" data-go="mechanical"><i>02</i>Mechanical<span class="long">&nbsp;design</span></a>
     </nav>
     <div class="links">
-      <button type="button" id="openProfile">Profile</button>
+      <button type="button" id="openProfile" class="resume">Resume</button>
       <a href="mailto:rikukanzaki2003@gmail.com">Email</a>
       <a href="https://linkedin.com/in/rikukanzaki" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/RKkanz" target="_blank" rel="noopener">GitHub</a>
@@ -44,9 +44,10 @@
   <!-- landing -->
   <section class="intro" id="intro">
     <div class="hero-top">
-      <p class="label">Riku Kanzaki · Portfolio 2026</p>
+      <p class="label">Riku Kanzaki · Robotics &amp; mechanical engineer · San Francisco</p>
       <h1>Robots, from the bracket to the control loop.</h1>
       <p class="sub">I build humanoids at Foundation Robotics: the policies, autonomy and diagnostics that make them work, and the brackets, fixtures and tooling that make them buildable. Mechanical engineer, UIUC.</p>
+      <p class="worked"><span>Experience</span>Foundation Robotics · Tesla · Aerial Mechanica · Aerial Industries · UIUC Human Dynamics &amp; Control Lab</p>
     </div>
     <div class="doors">
       <a class="door" href="#robotics" data-go="robotics">
@@ -68,7 +69,7 @@
         </div>
       </a>
     </div>
-    <button type="button" class="plain" id="openProfile2">Read the one-page profile →</button>
+    <button type="button" class="plain" id="openProfile2">Resume (one page, PDF) →</button>
   </section>
 
   <!-- chapter panel -->
@@ -126,7 +127,7 @@
         <div class="ftext">
           <p class="kick">01 · Foundation Robotics · 2026</p>
           <h2>Humanoid hardware</h2>
-          <p class="lede">Hardware I designed on the Mk1.1 humanoid. Pick an area to see what I did there.</p>
+          <p class="lede">Hardware I designed on Foundation's Phantom humanoid (Mk1.1). Pick an area to see what I did there.</p>
           <div class="zones" role="tablist" aria-label="Areas of the robot">
             <button type="button" role="tab" data-zone="forearm" aria-selected="true">Forearm</button>
             <button type="button" role="tab" data-zone="torso" aria-selected="false">Torso</button>
@@ -366,7 +367,10 @@
 
   <div class="sheet" id="profile" role="dialog" aria-modal="true" aria-labelledby="profileTitle" hidden>
     <div class="sheet-in">
-      <button type="button" class="close" id="closeProfile" aria-label="Close profile">Close ✕</button>
+      <div class="sheet-actions">
+        <button type="button" id="printProfile">Download PDF ↓</button>
+        <button type="button" class="close" id="closeProfile" aria-label="Close resume">Close ✕</button>
+      </div>
       <header class="ph">
         <h2 id="profileTitle">Riku Kanzaki</h2>
         <p>Robotics &amp; mechanical design engineer · San Francisco · <a href="mailto:rikukanzaki2003@gmail.com">rikukanzaki2003@gmail.com</a></p>
@@ -379,7 +383,7 @@
           <div>
             <h4>Foundation Robotics <small>Robotics Build Engineer</small></h4>
             <ul>
-              <li>Trained stair-climbing, throw-and-catch and box-pick policies; built stereo + VLM vision navigation for the walking policy.</li>
+              <li>Trained stair-climbing, throw-and-catch and box-pick policies, all tested on the robot (box pick: 96% success on hardware); built stereo + VLM vision navigation for the walking policy.</li>
               <li>Root-caused 20 robot faults across 8+ robots; built Overwatch, recall and robot-triage for the service team.</li>
               <li>Teleop gloves (hand tracking 50 → 200 Hz); PID tuning on joint actuators; camera-calibration rig; EtherCAT diagnostics.</li>
               <li>Compute bracket with thermal analysis, battery mounts, production test fixtures, daisy-chained actuator harness, dyno testing.</li>

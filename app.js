@@ -33,7 +33,7 @@ const CHAPTERS = {
       spec: [["Clean climbs (sim)", "21 / 24"], ["Reference clips", "24, up and down"], ["Stair range", "rise 10–19 cm × tread 25–35 cm"], ["Training runs", "16, across 3 GPU hosts"], ["Failure mode found", "10–40 ms sensor latency"]],
       notes: ["A locomotion curriculum learned to descend but never climbed: inherited reward overrides zeroed every climbing reward.", "Randomized terrain, approach, COM, link mass and friction; sim-to-sim harness for noise, delay, gains and pushes."],
       media: { video: "policies/stairs.mp4", cap: "Sim rollouts on four staircases (run v11)" },
-      caption: "Recorded rollout · policy v11 · 16 cm rise, 30 cm tread · Mk1.1 kinematics, simplified geometry",
+      caption: "Recorded rollout · policy v11 · 16 cm rise, 30 cm tread · Phantom (Mk1.1) kinematics, simplified geometry",
     },
     {
       id: "nav", short: "Navigation", stage: "nav", hw: true, view: [[-0.6, 7.6, 9.6], [-1.3, 0, -0.4]],
@@ -57,7 +57,7 @@ const CHAPTERS = {
       id: "pick", short: "Box pick", stage: "pick", hw: true, view: [[2.3, 1.75, 2.7], [0.15, 0.9, 0]],
       kick: "Foundation Robotics · 2026", title: "Box pick",
       lede: "Walk to a table and lift a box with a two-palm squeeze. Pure PPO never reached the box; IK demonstrations did.",
-      spec: [["Boxes lifted (b5)", "72.5%"], ["Boxes picked (b5)", "50%"], ["Eval set", "512 randomized tables"], ["Tests", "21 passing"]],
+      spec: [["Pick success on the robot", "96%"], ["Training", "IK demonstrations → staged policy"], ["Sim eval set", "512 randomized tables"], ["Tests", "21 passing"]],
       notes: ["IK keyframe demonstrations with gravity-compensation offsets, used to train the staged policy.", "Walker and robot side built and tested."],
       media: { video: "policies/pick.mp4", cap: "New vs old pick policy" },
       caption: "Recorded rollout · staged pick policy · 0.72 m table · put-down shown as the lift in reverse",
@@ -408,7 +408,7 @@ $("next").onclick = () => {
 const profile = $("profile");
 const openProfile = () => { profile.hidden = false; $("closeProfile").focus(); };
 const closeProfile = () => { profile.hidden = true; };
-$("openProfile").onclick = openProfile; $("openProfile2").onclick = openProfile; $("closeProfile").onclick = closeProfile;
+$("openProfile").onclick = openProfile; $("printProfile").onclick = () => print(); $("openProfile2").onclick = openProfile; $("closeProfile").onclick = closeProfile;
 profile.addEventListener("click", (e) => { if (e.target === profile) closeProfile(); });
 addEventListener("keydown", (e) => {
   if (!shot.hidden) { if (e.key === "Escape") closeShot(); return; }

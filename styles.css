@@ -339,3 +339,25 @@ body.no3d #stage { display: none; }
   .viewer.hwfig { aspect-ratio: 4 / 5; }
   .pin::after { width: 28px; } .pin.left span { right: 36px; } .pin.right span { left: 36px; }
 }
+
+/* recruiter path: resume button in the bar, experience line on the landing, PDF from the resume sheet */
+.links .resume { padding: 5px 10px; border: 1px solid var(--sig); color: var(--sig); font-size: 12px; transition: background .2s, color .2s; }
+.links .resume:hover { background: var(--sig); color: #000; }
+.worked { margin-top: 14px; font-size: 13px; color: var(--fg-2); }
+.worked span { margin-right: 10px; font: 500 10.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--sig); }
+.sheet-actions { position: absolute; top: 24px; right: 32px; display: flex; gap: 16px; align-items: center; }
+.sheet-actions .close { position: static; }
+#printProfile { font: 500 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--sig); }
+#printProfile:hover { color: var(--fg); }
+@media (max-width: 900px) { .sheet-actions { right: 18px; } .links .resume { display: inline-block; } }
+@media print {
+  @page { margin: 14mm; }
+  body { background: #fff !important; color: #111 !important; overflow: visible !important; }
+  body > *:not(#profile) { display: none !important; }
+  .sheet, .sheet[hidden] { display: block !important; position: static; overflow: visible; background: #fff; }
+  .sheet-in { padding: 0; max-width: none; }
+  .sheet-actions { display: none; }
+  .sheet *, .sheet a { color: #111 !important; border-color: #bbb !important; }
+  .sheet h3, .when, .two dt { color: #555 !important; }
+  .row, .two dt, .two dd, .two p { break-inside: avoid; }
+}
