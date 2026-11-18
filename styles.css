@@ -318,3 +318,24 @@ body.no3d #stage { display: none; }
 .tag b { color: var(--sig); font-weight: 500; text-transform: uppercase; margin-right: 4px; }
 .tag.hot { border-color: var(--sig); color: var(--fg); }
 
+
+/* humanoid hardware: Foundation's public front image with callouts */
+.viewer.hwfig { display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse at 50% 45%, #f6f6f4, #d5d6d2 75%); }
+.viewer.hwfig::before { content: none; }
+.viewer.hwfig .vpart { color: #55585e; }
+.mech figure.phantom { position: relative; height: 88%; margin: 0; border: 0; background: none; }
+.mech .phantom img { display: block; height: 100%; width: auto; max-width: none; }
+.pin { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; }
+.pin::before { content: ""; position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #1b1d21; background: rgba(255, 255, 255, .85); transition: background .2s, border-color .2s; }
+.pin::after { content: ""; position: absolute; top: 0; width: 64px; height: 1px; background: #1b1d21; }
+.pin.left::after { right: 8px; } .pin.right::after { left: 8px; }
+.pin span { position: absolute; top: -12px; white-space: nowrap; padding: 4px 9px; border: 1px solid #1b1d21; background: #f4f4f2; color: #1b1d21; font: 500 11px var(--mono); letter-spacing: .05em; text-transform: uppercase; transition: background .2s, color .2s; }
+.pin.left span { right: 72px; } .pin.right span { left: 72px; }
+.pin:hover span { background: #1b1d21; color: #f4f4f2; }
+.pin.on::before { background: var(--sig); border-color: var(--sig); }
+.pin.on::after { background: var(--sig); height: 2px; }
+.pin.on span { background: var(--sig); border-color: var(--sig); color: #000; }
+@media (max-width: 900px) {
+  .viewer.hwfig { aspect-ratio: 4 / 5; }
+  .pin::after { width: 28px; } .pin.left span { right: 36px; } .pin.right span { left: 36px; }
+}

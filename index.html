@@ -113,9 +113,15 @@
       </header>
 
       <article class="feature hw" id="m-hardware">
-        <div class="viewer">
-          <canvas aria-label="Mk1.1 humanoid with the areas I designed highlighted: forearm, torso, back cover and ankle"></canvas>
-          <p class="vpart" data-part="Drag to orbit · click a part">Drag to orbit · click a part</p>
+        <div class="viewer hwfig">
+          <figure class="phantom">
+            <img src="assets/media/mech/phantom-front.webp" alt="Foundation's humanoid robot, front view, with callouts on the forearm, torso, back cover and ankle">
+            <button type="button" class="pin left" data-zone="forearm" style="--x:8%;--y:53%"><span>Forearm</span></button>
+            <button type="button" class="pin right" data-zone="torso" style="--x:56%;--y:24%"><span>Torso</span></button>
+            <button type="button" class="pin right" data-zone="back" style="--x:80%;--y:31%"><span>Back cover · rear</span></button>
+            <button type="button" class="pin left" data-zone="ankle" style="--x:34%;--y:93%"><span>Ankle</span></button>
+          </figure>
+          <p class="vpart">Click a callout · image: foundation.bot</p>
         </div>
         <div class="ftext">
           <p class="kick">01 · Foundation Robotics · 2026</p>
@@ -159,7 +165,7 @@
             <li>Specified adhesives and fasteners for actuator assemblies; drove vendor design changes.</li>
             <li>Built a robot-arm ChArUco/AprilTag rig that checks every camera before install.</li>
           </ul>
-          <p class="blur-note">Mk1.1 rendered from its URDF, zero pose.</p>
+          <p class="blur-note">Robot image: Foundation (foundation.bot).</p>
         </div>
       </article>
 
