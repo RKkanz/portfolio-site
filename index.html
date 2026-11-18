@@ -171,23 +171,54 @@
       <section class="work">
         <h3 class="sect">Professional work</h3>
 
-        <article class="proj" id="m-hardware">
-          <figure class="paper"><img src="assets/drawings/compute-bracket.svg" alt="Compute bracket, isometric schematic" loading="lazy"><figcaption>Compute bracket, isometric (schematic)</figcaption></figure>
-          <div>
+        <article class="feature hw" id="m-hardware">
+          <div class="viewer">
+            <canvas aria-label="Mk1.1 humanoid with the areas I designed highlighted: forearm, torso, back cover and ankle"></canvas>
+            <p class="vpart" data-part="Drag to orbit · click a part">Drag to orbit · click a part</p>
+          </div>
+          <div class="ftext">
             <p class="kick">03 · Foundation Robotics · 2026</p>
             <h2>Humanoid hardware</h2>
-            <p class="lede">The parts that make a humanoid buildable and serviceable on the line.</p>
+            <p class="lede">Hardware I designed on the Mk1.1 humanoid. Pick an area to see what I did there.</p>
+            <div class="zones" role="tablist" aria-label="Areas of the robot">
+              <button type="button" role="tab" data-zone="forearm" aria-selected="true">Forearm</button>
+              <button type="button" role="tab" data-zone="torso" aria-selected="false">Torso</button>
+              <button type="button" role="tab" data-zone="back" aria-selected="false">Back cover</button>
+              <button type="button" role="tab" data-zone="ankle" aria-selected="false">Ankle</button>
+            </div>
+            <div class="zone" data-zone="forearm" role="tabpanel">
+              <h3>Forearm: camera, harness, cooling</h3>
+              <ul class="notes">
+                <li>Camera mount and camera integration in the forearm.</li>
+                <li>Harness routing through the arm, including how much cable length each run needs across the joints' travel.</li>
+                <li>Heat sink for the electronics inside, after finding heat issues in the closed forearm.</li>
+              </ul>
+            </div>
+            <div class="zone" data-zone="torso" role="tabpanel" hidden>
+              <h3>Torso: electronics covers</h3>
+              <ul class="notes"><li>Plastic covers for every electronics PCB inside the torso.</li></ul>
+            </div>
+            <div class="zone" data-zone="back" role="tabpanel" hidden>
+              <h3>Back cover: compute cooling</h3>
+              <ul class="notes"><li>Back cover designed to let the Thor onboard computer cool, with an added heat sink.</li></ul>
+            </div>
+            <div class="zone" data-zone="ankle" role="tabpanel" hidden>
+              <h3>Ankle: strength</h3>
+              <ul class="notes"><li>Ankle parts designed for strength, checked with FEA.</li></ul>
+            </div>
             <table class="spec">
-              <tr><th>Compute bracket</th><td>Designed with thermal analysis</td></tr>
-              <tr><th>Battery</th><td>Mounting hardware</td></tr>
-              <tr><th>Production</th><td>Test fixtures, full-body assembly</td></tr>
+              <tr><th>Analysis</th><td>FEA and CAE in Ansys on every part above</td></tr>
+              <tr><th>Casting</th><td>Wrote my own casting-check software; used it to assess castability (DFM/DFA) of the next-generation robot (unreleased)</td></tr>
+              <tr><th>Compute + power</th><td>Compute bracket with thermal analysis, battery mounts</td></tr>
               <tr><th>Harness</th><td>Actuators daisy-chained</td></tr>
+              <tr><th>Production</th><td>Test fixtures, full-body assembly</td></tr>
               <tr><th>Actuators</th><td>Planetary vs cycloidal on dyno</td></tr>
             </table>
             <ul class="notes">
               <li>Specified adhesives and fasteners for actuator assemblies; drove vendor design changes.</li>
               <li>Built a robot-arm ChArUco/AprilTag rig that checks every camera before install.</li>
             </ul>
+            <p class="blur-note">Mk1.1 rendered from its URDF, zero pose.</p>
           </div>
         </article>
 

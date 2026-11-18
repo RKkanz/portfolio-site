@@ -4,6 +4,7 @@ import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import { MAT, box, loadRollouts, loadRobot, makeRig } from "./assets/lab/core.js";
 import { loadModel, mountViewer } from "./assets/lab/cad.js";
+import { mountHardware } from "./assets/lab/hw.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -270,7 +271,7 @@ let mechMounted = false;
 function showMech(id, instant) {
   mech.hidden = false;
   $("loader").classList.add("done");                         // the lab keeps loading behind the page
-  if (!mechMounted) { mechMounted = true; mech.querySelectorAll(".viewer").forEach((v) => mountViewer(v, VIEWERS[v.dataset.model])); }
+  if (!mechMounted) { mechMounted = true; mech.querySelectorAll(".viewer[data-model]").forEach((v) => mountViewer(v, VIEWERS[v.dataset.model])); mountHardware($("m-hardware")); }
   const el = id && $("m-" + id);
   if (el) el.scrollIntoView({ behavior: instant || reduceMotion ? "auto" : "smooth" }); else mech.scrollTop = 0;
   history.replaceState(null, "", id ? `#mechanical/${id}` : "#mechanical");
