@@ -91,44 +91,134 @@
         <table class="index">
           <thead><tr><th>No.</th><th>Project</th><th>Where</th><th>Year</th></tr></thead>
           <tbody>
-            <tr><td>01</td><td><a href="#mechanical/actuator">3D-printed planetary actuator</a></td><td>Side project</td><td>2026</td></tr>
-            <tr><td>02</td><td><a href="#mechanical/boat">Autonomous boat test platform</a></td><td>ASNE</td><td>2025</td></tr>
-            <tr><td>03</td><td><a href="#mechanical/hardware">Humanoid hardware</a></td><td>Foundation Robotics</td><td>2026</td></tr>
-            <tr><td>04</td><td><a href="#mechanical/gloves">Teleoperation gloves</a></td><td>Foundation Robotics</td><td>2026</td></tr>
-            <tr><td>05</td><td><a href="#mechanical/tooling">Megapack service tooling + fleet retrofits</a></td><td>Tesla</td><td>2026</td></tr>
-            <tr><td>06</td><td><a href="#mechanical/motor">Patented motor design</a></td><td>Aerial Mechanica</td><td>2025</td></tr>
-            <tr><td>07</td><td><a href="#mechanical/uav">12-motor UAV chassis</a></td><td>Aerial Industries</td><td>2024</td></tr>
+            <tr><td>01</td><td><a href="#mechanical/hardware">Humanoid hardware</a></td><td>Foundation Robotics</td><td>2026</td></tr>
+            <tr><td>02</td><td><a href="#mechanical/gloves">Teleoperation gloves</a></td><td>Foundation Robotics</td><td>2026</td></tr>
+            <tr><td>03</td><td><a href="#mechanical/motor">Patented motor design</a></td><td>Aerial Mechanica</td><td>2025</td></tr>
+            <tr><td>04</td><td><a href="#mechanical/tooling">Megapack service tooling + fleet retrofits</a></td><td>Tesla</td><td>2026</td></tr>
+            <tr><td>05</td><td><a href="#mechanical/boat">Autonomous boat test platform</a></td><td>ASNE</td><td>2025</td></tr>
+            <tr><td>06</td><td><a href="#mechanical/uav">12-motor UAV chassis</a></td><td>Aerial Industries</td><td>2024</td></tr>
+            <tr><td>07</td><td><a href="#mechanical/actuator">3D-printed planetary actuator</a></td><td>Side project</td><td>2026</td></tr>
             <tr><td>08</td><td><a href="#mechanical/tremor">Virtual patient tremor simulators</a></td><td>UIUC HDCL</td><td>2025</td></tr>
             <tr><td>09</td><td><a href="#mechanical/backrest">Assistive torso-driven backrest</a></td><td>UIUC HDCL</td><td>2025</td></tr>
           </tbody>
         </table>
       </header>
 
-      <article class="feature" id="m-actuator">
-        <div class="viewer" data-model="actuator">
-          <canvas aria-label="3D model of the planetary actuator"></canvas>
+      <article class="feature hw" id="m-hardware">
+        <div class="viewer">
+          <canvas aria-label="Mk1.1 humanoid with the areas I designed highlighted: forearm, torso, back cover and ankle"></canvas>
+          <p class="vpart" data-part="Drag to orbit · click a part">Drag to orbit · click a part</p>
+        </div>
+        <div class="ftext">
+          <p class="kick">01 · Foundation Robotics · 2026</p>
+          <h2>Humanoid hardware</h2>
+          <p class="lede">Hardware I designed on the Mk1.1 humanoid. Pick an area to see what I did there.</p>
+          <div class="zones" role="tablist" aria-label="Areas of the robot">
+            <button type="button" role="tab" data-zone="forearm" aria-selected="true">Forearm</button>
+            <button type="button" role="tab" data-zone="torso" aria-selected="false">Torso</button>
+            <button type="button" role="tab" data-zone="back" aria-selected="false">Back cover</button>
+            <button type="button" role="tab" data-zone="ankle" aria-selected="false">Ankle</button>
+          </div>
+          <div class="zone" data-zone="forearm" role="tabpanel">
+            <h3>Forearm: camera, harness, cooling</h3>
+            <ul class="notes">
+              <li>Camera mount and camera integration in the forearm.</li>
+              <li>Harness routing through the arm, including how much cable length each run needs across the joints' travel.</li>
+              <li>Heat sink for the electronics inside, after finding heat issues in the closed forearm.</li>
+            </ul>
+          </div>
+          <div class="zone" data-zone="torso" role="tabpanel" hidden>
+            <h3>Torso: electronics covers</h3>
+            <ul class="notes"><li>Plastic covers for every electronics PCB inside the torso.</li></ul>
+          </div>
+          <div class="zone" data-zone="back" role="tabpanel" hidden>
+            <h3>Back cover: compute cooling</h3>
+            <ul class="notes"><li>Back cover designed to let the Thor onboard computer cool, with an added heat sink.</li></ul>
+          </div>
+          <div class="zone" data-zone="ankle" role="tabpanel" hidden>
+            <h3>Ankle: strength</h3>
+            <ul class="notes"><li>Ankle parts designed for strength, checked with FEA.</li></ul>
+          </div>
+          <table class="spec">
+            <tr><th>Analysis</th><td>FEA and CAE in Ansys on every part above</td></tr>
+            <tr><th>Casting</th><td>Wrote my own casting-check software; used it to assess castability (DFM/DFA) of the next-generation robot (unreleased)</td></tr>
+            <tr><th>Compute + power</th><td>Compute bracket with thermal analysis, battery mounts</td></tr>
+            <tr><th>Harness</th><td>Actuators daisy-chained</td></tr>
+            <tr><th>Production</th><td>Test fixtures, full-body assembly</td></tr>
+            <tr><th>Actuators</th><td>Planetary vs cycloidal on dyno</td></tr>
+          </table>
+          <ul class="notes">
+            <li>Specified adhesives and fasteners for actuator assemblies; drove vendor design changes.</li>
+            <li>Built a robot-arm ChArUco/AprilTag rig that checks every camera before install.</li>
+          </ul>
+          <p class="blur-note">Mk1.1 rendered from its URDF, zero pose.</p>
+        </div>
+      </article>
+
+      <article class="feature" id="m-gloves">
+        <div class="viewer" data-model="gloves">
+          <canvas aria-label="3D models of four teleoperation glove versions, each on its own pedestal"></canvas>
           <div class="vbar">
-            <span>Assembled</span><input type="range" min="0" max="1000" value="0" aria-label="Explode the assembly"><span>Exploded</span>
+            <span>Assembled</span><input type="range" min="0" max="1000" value="0" aria-label="Explode the glove parts"><span>Exploded</span>
           </div>
           <p class="vpart" data-part="Drag to orbit · hover a part">Drag to orbit · hover a part</p>
         </div>
         <div class="ftext">
-          <p class="kick">01 · Side project · 2026</p>
-          <h2>3D-printed planetary actuator</h2>
-          <p class="lede">A two-stage planetary gearbox built around a hobby outrunner, designed to be printed and assembled on a desk. A separate design from the actuators used at Foundation.</p>
+          <p class="kick">02 · Foundation Robotics · 2026</p>
+          <h2>Teleoperation gloves</h2>
+          <p class="lede">Lead engineer on the gloves operators use to drive a humanoid's hands: sensors, electronics, firmware and wearable CAD.</p>
+          <p class="lede">Four versions of the wearable CAD, left to right: finger IMU mounts, small-IMU mounts, micro-IMU (J2) mounts and the full gauntlet, each on a reference hand.</p>
           <table class="spec">
-            <tr><th>Reduction</th><td>22.6 : 1, two stages</td></tr>
-            <tr><th>Stage 1</th><td>5.14 : 1 · sun 14T, planets 22T, ring 58T, m1</td></tr>
-            <tr><th>Stage 2</th><td>4.40 : 1 · sun 15T, planets 18T, ring 51T, m1.25</td></tr>
-            <tr><th>Envelope</th><td>Ø110 × 106 mm</td></tr>
-            <tr><th>Motor</th><td>Outrunner, up to 88 × 26 mm</td></tr>
-            <tr><th>Bearings</th><td>2 × 6810-2RS output, 12 × 623ZZ planet</td></tr>
-            <tr><th>Parts</th><td>21 printed · 15 bought</td></tr>
+            <tr><th>Hand tracking</th><td>50 → 200 Hz</td></tr>
+            <tr><th>Exo accuracy</th><td>0.5° per joint (Hall effect)</td></tr>
+            <tr><th>Validation</th><td>16 mm median vs video</td></tr>
+            <tr><th>IMUs</th><td>6/9-DOF mix, BNO085 + ISM330</td></tr>
+            <tr><th>Links</th><td>USB · BLE · WiFi</td></tr>
           </table>
           <ul class="notes">
-            <li>Both ring gears are cut into one printed housing, so the two stages share a single bore.</li>
-            <li>Sun 1 bolts straight to the motor's rotor: no shaft, no coupling.</li>
-            <li>Every planet runs on a pair of 623ZZ bearings instead of a printed bushing.</li>
+            <li>IMU architecture chosen to keep electronics small on the back of the hand.</li>
+            <li>Data-collection glove with palm and fingertip tactile sensing working within a month.</li>
+          </ul>
+        </div>
+        <div class="strip one">
+          <figure><video src="assets/media/mech/glove-demo.mp4" poster="assets/media/mech/glove-demo.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>Early proof-of-concept glove driving the hand model live. Shown for context; not the glove I designed.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="proj" id="m-motor">
+        <figure class="paper"><a href="assets/media/mech/motor-plenum.jpg" target="_blank" rel="noopener"><img src="assets/media/mech/motor-plenum.jpg" alt="Section view of the 3D-printed stator plenum, with a detail of the bleed-air path into the coreless section" loading="lazy"></a><figcaption>Stator plenum, section view: bleed air reverse-flows into the coreless section</figcaption></figure>
+        <div>
+          <p class="kick">03 · Aerial Mechanica · 2025</p>
+          <h2>Patented motor design</h2>
+          <p class="lede">One of two mechanical engineers on a motor with a 3D-printed stator, whose plenum routes bleed air back through the coreless section of the motor.</p>
+          <table class="spec">
+            <tr><th>Role</th><td>1 of 2 mechanical engineers</td></tr>
+            <tr><th>IP</th><td>Patented; I'm not a named inventor</td></tr>
+            <tr><th>Stator</th><td>3D-printed, integrated bleed-air plenum</td></tr>
+            <tr><th>Analysis</th><td>FEA + risk, carbon-fiber frame and legs</td></tr>
+            <tr><th>Loads</th><td>Dynamic flight</td></tr>
+          </table>
+          <ul class="notes"><li>Validated the carbon-fiber frame and landing legs under dynamic flight loads.</li></ul>
+        </div>
+      </article>
+
+      <article class="proj" id="m-tooling">
+        <figure><img src="assets/media/mech/megapack-site.jpg" alt="A Tesla Megapack battery site from above" loading="lazy"><figcaption>Tesla Megapack site (Tesla photo). Not my work.</figcaption></figure>
+        <div>
+          <p class="kick">04 · Tesla · Mechanical / process engineering intern · 2026</p>
+          <h2>Megapack service tooling + fleet retrofits</h2>
+          <p class="lede">Service procedures and tooling for Tesla Energy products, and retrofit hardware for the commercial vehicle fleet, released on GD&amp;T drawings.</p>
+          <p class="lede">The CAD, drawings and photos from this work are Tesla proprietary, so I can't show them here.</p>
+          <table class="spec">
+            <tr><th>Procedures</th><td>30+ service procedures, Tesla Energy products</td></tr>
+            <tr><th>Safety</th><td>Technician injury risk and fatal site failures down ~4%</td></tr>
+            <tr><th>Retrofit</th><td>Driver Impact Protection Panel</td></tr>
+            <tr><th>Outcome</th><td>Passed internal + government regulatory standards; approved for ~50% of the commercial fleet</td></tr>
+            <tr><th>CAD</th><td>SolidWorks, GD&amp;T 2D, DFM-first</td></tr>
+          </table>
+          <ul class="notes">
+            <li>Driver Impact Protection Panel: keeps unsecured tools from reaching the driver during emergency deceleration. I owned the whole timeline: prototype, validation, install procedure and shipping.</li>
+            <li>Main trade-off was structural strength against manufacturability, in a design simple enough to retrofit.</li>
           </ul>
         </div>
       </article>
@@ -142,7 +232,7 @@
           <p class="vpart" data-part="Drag to orbit · hover a part">Drag to orbit · hover a part</p>
         </div>
         <div class="ftext">
-          <p class="kick">02 · ASNE · Aug 2025 — Jan 2026</p>
+          <p class="kick">05 · ASNE · Aug 2025 — Jan 2026</p>
           <h2>Autonomous boat test platform</h2>
           <p class="lede">A printed scale boat for testing the team's autonomy stack on the water, alongside the 6 ft fiberglass race hull.</p>
           <table class="spec">
@@ -168,177 +258,83 @@
         </div>
       </article>
 
-      <section class="work">
-        <h3 class="sect">Professional work</h3>
+      <article class="proj" id="m-uav">
+        <figure><video src="assets/media/mech/uav-flight.mp4" poster="assets/media/mech/uav-flight.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>Hangar flight test: hover and re-stabilization</figcaption></figure>
+        <div>
+          <p class="kick">06 · Aerial Industries · 2024</p>
+          <h2>12-motor UAV chassis</h2>
+          <p class="lede">Developed a coaxial 12-motor chassis through flight testing. A prototype, not production-ready hardware.</p>
+          <table class="spec">
+            <tr><th>Status</th><td>Flight-tested prototype, not production-ready</td></tr>
+            <tr><th>CAD</th><td>Parametric, propulsion + payload</td></tr>
+            <tr><th>Requirements</th><td>Structural, thermal, electrical</td></tr>
+          </table>
+        </div>
+      </article>
 
-        <article class="feature hw" id="m-hardware">
-          <div class="viewer">
-            <canvas aria-label="Mk1.1 humanoid with the areas I designed highlighted: forearm, torso, back cover and ankle"></canvas>
-            <p class="vpart" data-part="Drag to orbit · click a part">Drag to orbit · click a part</p>
+      <article class="feature" id="m-actuator">
+        <div class="viewer" data-model="actuator">
+          <canvas aria-label="3D model of the planetary actuator"></canvas>
+          <div class="vbar">
+            <span>Assembled</span><input type="range" min="0" max="1000" value="0" aria-label="Explode the assembly"><span>Exploded</span>
           </div>
-          <div class="ftext">
-            <p class="kick">03 · Foundation Robotics · 2026</p>
-            <h2>Humanoid hardware</h2>
-            <p class="lede">Hardware I designed on the Mk1.1 humanoid. Pick an area to see what I did there.</p>
-            <div class="zones" role="tablist" aria-label="Areas of the robot">
-              <button type="button" role="tab" data-zone="forearm" aria-selected="true">Forearm</button>
-              <button type="button" role="tab" data-zone="torso" aria-selected="false">Torso</button>
-              <button type="button" role="tab" data-zone="back" aria-selected="false">Back cover</button>
-              <button type="button" role="tab" data-zone="ankle" aria-selected="false">Ankle</button>
-            </div>
-            <div class="zone" data-zone="forearm" role="tabpanel">
-              <h3>Forearm: camera, harness, cooling</h3>
-              <ul class="notes">
-                <li>Camera mount and camera integration in the forearm.</li>
-                <li>Harness routing through the arm, including how much cable length each run needs across the joints' travel.</li>
-                <li>Heat sink for the electronics inside, after finding heat issues in the closed forearm.</li>
-              </ul>
-            </div>
-            <div class="zone" data-zone="torso" role="tabpanel" hidden>
-              <h3>Torso: electronics covers</h3>
-              <ul class="notes"><li>Plastic covers for every electronics PCB inside the torso.</li></ul>
-            </div>
-            <div class="zone" data-zone="back" role="tabpanel" hidden>
-              <h3>Back cover: compute cooling</h3>
-              <ul class="notes"><li>Back cover designed to let the Thor onboard computer cool, with an added heat sink.</li></ul>
-            </div>
-            <div class="zone" data-zone="ankle" role="tabpanel" hidden>
-              <h3>Ankle: strength</h3>
-              <ul class="notes"><li>Ankle parts designed for strength, checked with FEA.</li></ul>
-            </div>
-            <table class="spec">
-              <tr><th>Analysis</th><td>FEA and CAE in Ansys on every part above</td></tr>
-              <tr><th>Casting</th><td>Wrote my own casting-check software; used it to assess castability (DFM/DFA) of the next-generation robot (unreleased)</td></tr>
-              <tr><th>Compute + power</th><td>Compute bracket with thermal analysis, battery mounts</td></tr>
-              <tr><th>Harness</th><td>Actuators daisy-chained</td></tr>
-              <tr><th>Production</th><td>Test fixtures, full-body assembly</td></tr>
-              <tr><th>Actuators</th><td>Planetary vs cycloidal on dyno</td></tr>
-            </table>
-            <ul class="notes">
-              <li>Specified adhesives and fasteners for actuator assemblies; drove vendor design changes.</li>
-              <li>Built a robot-arm ChArUco/AprilTag rig that checks every camera before install.</li>
-            </ul>
-            <p class="blur-note">Mk1.1 rendered from its URDF, zero pose.</p>
-          </div>
-        </article>
+          <p class="vpart" data-part="Drag to orbit · hover a part">Drag to orbit · hover a part</p>
+        </div>
+        <div class="ftext">
+          <p class="kick">07 · Side project · 2026</p>
+          <h2>3D-printed planetary actuator</h2>
+          <p class="lede">A two-stage planetary gearbox built around a hobby outrunner, designed to be printed and assembled on a desk. A separate design from the actuators used at Foundation.</p>
+          <table class="spec">
+            <tr><th>Reduction</th><td>22.6 : 1, two stages</td></tr>
+            <tr><th>Stage 1</th><td>5.14 : 1 · sun 14T, planets 22T, ring 58T, m1</td></tr>
+            <tr><th>Stage 2</th><td>4.40 : 1 · sun 15T, planets 18T, ring 51T, m1.25</td></tr>
+            <tr><th>Envelope</th><td>Ø110 × 106 mm</td></tr>
+            <tr><th>Motor</th><td>Outrunner, up to 88 × 26 mm</td></tr>
+            <tr><th>Bearings</th><td>2 × 6810-2RS output, 12 × 623ZZ planet</td></tr>
+            <tr><th>Parts</th><td>21 printed · 15 bought</td></tr>
+          </table>
+          <ul class="notes">
+            <li>Both ring gears are cut into one printed housing, so the two stages share a single bore.</li>
+            <li>Sun 1 bolts straight to the motor's rotor: no shaft, no coupling.</li>
+            <li>Every planet runs on a pair of 623ZZ bearings instead of a printed bushing.</li>
+          </ul>
+        </div>
+      </article>
 
-        <article class="feature" id="m-gloves">
-          <div class="viewer" data-model="gloves">
-            <canvas aria-label="3D models of four teleoperation glove versions, each on its own pedestal"></canvas>
-            <div class="vbar">
-              <span>Assembled</span><input type="range" min="0" max="1000" value="0" aria-label="Explode the glove parts"><span>Exploded</span>
-            </div>
-            <p class="vpart" data-part="Drag to orbit · hover a part">Drag to orbit · hover a part</p>
-          </div>
-          <div class="ftext">
-            <p class="kick">04 · Foundation Robotics · 2026</p>
-            <h2>Teleoperation gloves</h2>
-            <p class="lede">Lead engineer on the gloves operators use to drive a humanoid's hands: sensors, electronics, firmware and wearable CAD.</p>
-            <p class="lede">Four versions of the wearable CAD, left to right: finger IMU mounts, small-IMU mounts, micro-IMU (J2) mounts and the full gauntlet, each on a reference hand.</p>
-            <table class="spec">
-              <tr><th>Hand tracking</th><td>50 → 200 Hz</td></tr>
-              <tr><th>Exo accuracy</th><td>0.5° per joint (Hall effect)</td></tr>
-              <tr><th>Validation</th><td>16 mm median vs video</td></tr>
-              <tr><th>IMUs</th><td>6/9-DOF mix, BNO085 + ISM330</td></tr>
-              <tr><th>Links</th><td>USB · BLE · WiFi</td></tr>
-            </table>
-            <ul class="notes">
-              <li>IMU architecture chosen to keep electronics small on the back of the hand.</li>
-              <li>Data-collection glove with palm and fingertip tactile sensing working within a month.</li>
-            </ul>
-          </div>
-          <div class="strip one">
-            <figure><video src="assets/media/mech/glove-demo.mp4" poster="assets/media/mech/glove-demo.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>Early proof-of-concept glove driving the hand model live. Shown for context; not the glove I designed.</figcaption></figure>
-          </div>
-        </article>
+      <article class="proj" id="m-tremor">
+        <div class="pair">
+          <figure><img src="assets/media/mech/tremor-arm.jpg" alt="Upper-limb tremor simulator" loading="lazy"><figcaption>Upper limb (photo: UIUC HDCL)</figcaption></figure>
+          <figure><img src="assets/media/mech/tremor-leg.jpg" alt="Lower-limb tremor simulator" loading="lazy"><figcaption>Lower limb (photo: UIUC HDCL)</figcaption></figure>
+        </div>
+        <div>
+          <p class="kick">08 · UIUC Human Dynamics &amp; Control Lab · Aug 2025 — present</p>
+          <h2>Virtual patient: tremor simulators</h2>
+          <p class="lede">Robotic upper- and lower-limb simulators that reproduce Parkinsonian tremor for medical education, part of a mixed-reality virtual patient.</p>
+          <table class="spec">
+            <tr><th>Motion error</th><td>~30% lower after my redesign</td></tr>
+            <tr><th>Tremor band</th><td>4–6 Hz, plus jerk-like motion</td></tr>
+            <tr><th>Safety</th><td>TPU + silicone enclosures, no pinch points</td></tr>
+            <tr><th>Funding</th><td>Jump ARCHES (OSF HealthCare + UIUC)</td></tr>
+          </table>
+          <ul class="notes"><li>Faculty: Elizabeth T. Hsiao-Wecksler, Inki Kim, Christopher M. Zallek.</li></ul>
+        </div>
+      </article>
 
-        <article class="proj" id="m-tooling">
-          <figure><img src="assets/media/mech/megapack-site.jpg" alt="A Tesla Megapack battery site from above" loading="lazy"><figcaption>Tesla Megapack site (Tesla photo). Not my work.</figcaption></figure>
-          <div>
-            <p class="kick">05 · Tesla · Mechanical / process engineering intern · 2026</p>
-            <h2>Megapack service tooling + fleet retrofits</h2>
-            <p class="lede">Service procedures and tooling for Tesla Energy products, and retrofit hardware for the commercial vehicle fleet, released on GD&amp;T drawings.</p>
-            <p class="lede">The CAD, drawings and photos from this work are Tesla proprietary, so I can't show them here.</p>
-            <table class="spec">
-              <tr><th>Procedures</th><td>30+ service procedures, Tesla Energy products</td></tr>
-              <tr><th>Safety</th><td>Technician injury risk and fatal site failures down ~4%</td></tr>
-              <tr><th>Retrofit</th><td>Driver Impact Protection Panel</td></tr>
-              <tr><th>Outcome</th><td>Passed internal + government regulatory standards; approved for ~50% of the commercial fleet</td></tr>
-              <tr><th>CAD</th><td>SolidWorks, GD&amp;T 2D, DFM-first</td></tr>
-            </table>
-            <ul class="notes">
-              <li>Driver Impact Protection Panel: keeps unsecured tools from reaching the driver during emergency deceleration. I owned the whole timeline: prototype, validation, install procedure and shipping.</li>
-              <li>Main trade-off was structural strength against manufacturability, in a design simple enough to retrofit.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="proj" id="m-motor">
-          <figure class="paper"><a href="assets/media/mech/motor-plenum.jpg" target="_blank" rel="noopener"><img src="assets/media/mech/motor-plenum.jpg" alt="Section view of the 3D-printed stator plenum, with a detail of the bleed-air path into the coreless section" loading="lazy"></a><figcaption>Stator plenum, section view: bleed air reverse-flows into the coreless section</figcaption></figure>
-          <div>
-            <p class="kick">06 · Aerial Mechanica · 2025</p>
-            <h2>Patented motor design</h2>
-            <p class="lede">One of two mechanical engineers on a motor with a 3D-printed stator, whose plenum routes bleed air back through the coreless section of the motor.</p>
-            <table class="spec">
-              <tr><th>Role</th><td>1 of 2 mechanical engineers</td></tr>
-              <tr><th>IP</th><td>Patented; I'm not a named inventor</td></tr>
-              <tr><th>Stator</th><td>3D-printed, integrated bleed-air plenum</td></tr>
-              <tr><th>Analysis</th><td>FEA + risk, carbon-fiber frame and legs</td></tr>
-              <tr><th>Loads</th><td>Dynamic flight</td></tr>
-            </table>
-            <ul class="notes"><li>Validated the carbon-fiber frame and landing legs under dynamic flight loads.</li></ul>
-          </div>
-        </article>
-
-        <article class="proj" id="m-uav">
-          <figure><video src="assets/media/mech/uav-flight.mp4" poster="assets/media/mech/uav-flight.jpg" muted loop playsinline autoplay preload="metadata"></video><figcaption>Hangar flight test: hover and re-stabilization</figcaption></figure>
-          <div>
-            <p class="kick">07 · Aerial Industries · 2024</p>
-            <h2>12-motor UAV chassis</h2>
-            <p class="lede">Developed a coaxial 12-motor chassis through flight testing. A prototype, not production-ready hardware.</p>
-            <table class="spec">
-              <tr><th>Status</th><td>Flight-tested prototype, not production-ready</td></tr>
-              <tr><th>CAD</th><td>Parametric, propulsion + payload</td></tr>
-              <tr><th>Requirements</th><td>Structural, thermal, electrical</td></tr>
-            </table>
-          </div>
-        </article>
-
-        <article class="proj" id="m-tremor">
-          <div class="pair">
-            <figure><img src="assets/media/mech/tremor-arm.jpg" alt="Upper-limb tremor simulator" loading="lazy"><figcaption>Upper limb (photo: UIUC HDCL)</figcaption></figure>
-            <figure><img src="assets/media/mech/tremor-leg.jpg" alt="Lower-limb tremor simulator" loading="lazy"><figcaption>Lower limb (photo: UIUC HDCL)</figcaption></figure>
-          </div>
-          <div>
-            <p class="kick">08 · UIUC Human Dynamics &amp; Control Lab · Aug 2025 — present</p>
-            <h2>Virtual patient: tremor simulators</h2>
-            <p class="lede">Robotic upper- and lower-limb simulators that reproduce Parkinsonian tremor for medical education, part of a mixed-reality virtual patient.</p>
-            <table class="spec">
-              <tr><th>Motion error</th><td>~30% lower after my redesign</td></tr>
-              <tr><th>Tremor band</th><td>4–6 Hz, plus jerk-like motion</td></tr>
-              <tr><th>Safety</th><td>TPU + silicone enclosures, no pinch points</td></tr>
-              <tr><th>Funding</th><td>Jump ARCHES (OSF HealthCare + UIUC)</td></tr>
-            </table>
-            <ul class="notes"><li>Faculty: Elizabeth T. Hsiao-Wecksler, Inki Kim, Christopher M. Zallek.</li></ul>
-          </div>
-        </article>
-
-        <article class="proj" id="m-backrest">
-          <figure><a href="assets/media/mech/hri-poster.jpg" target="_blank" rel="noopener"><img src="assets/media/mech/hri-poster.jpg" alt="IMMERSE poster on hands-free torso-driven robot control, with the instrumented backrest rig, VR headset and the virtual course on a monitor" loading="lazy"></a><figcaption>Poster, instrumented backrest rig and VR course at IMMERSE</figcaption></figure>
-          <div>
-            <p class="kick">09 · UIUC Human Dynamics &amp; Control Lab · 2025</p>
-            <h2>Assistive torso-driven backrest</h2>
-            <p class="lede">An instrumented backrest and seat that read a seated user's torso motion, used to drive a virtual omnidirectional robot hands-free through a VR course.</p>
-            <table class="spec">
-              <tr><th>Torso angle</th><td>&lt; 2° error, encoder + ToF fusion</td></tr>
-              <tr><th>Signal</th><td>&gt; 90% consistency</td></tr>
-              <tr><th>Mechanism</th><td>Pivot with torsion spring, hard angle limits</td></tr>
-              <tr><th>Compared</th><td>Joystick vs IMU vs seat + IMU vs seat + backrest</td></tr>
-            </table>
-            <p class="pub"><span>Publication · IMMERSE, Center for Immersive Computing, UIUC · 2025</span><i>Immersive VR-Based Evaluation of Hands-Free Torso-Driven Control for Virtual Robot Navigation</i>R. E. Fulss, P. Moore, L. Dao, <b>R. Kanzaki</b>, S. Y. Song, M. Tenzer, E. T. Hsiao-Wecksler. Supported by NSF NRI.</p>
-          </div>
-        </article>
-      </section>
+      <article class="proj" id="m-backrest">
+        <figure><a href="assets/media/mech/hri-poster.jpg" target="_blank" rel="noopener"><img src="assets/media/mech/hri-poster.jpg" alt="IMMERSE poster on hands-free torso-driven robot control, with the instrumented backrest rig, VR headset and the virtual course on a monitor" loading="lazy"></a><figcaption>Poster, instrumented backrest rig and VR course at IMMERSE</figcaption></figure>
+        <div>
+          <p class="kick">09 · UIUC Human Dynamics &amp; Control Lab · 2025</p>
+          <h2>Assistive torso-driven backrest</h2>
+          <p class="lede">An instrumented backrest and seat that read a seated user's torso motion, used to drive a virtual omnidirectional robot hands-free through a VR course.</p>
+          <table class="spec">
+            <tr><th>Torso angle</th><td>&lt; 2° error, encoder + ToF fusion</td></tr>
+            <tr><th>Signal</th><td>&gt; 90% consistency</td></tr>
+            <tr><th>Mechanism</th><td>Pivot with torsion spring, hard angle limits</td></tr>
+            <tr><th>Compared</th><td>Joystick vs IMU vs seat + IMU vs seat + backrest</td></tr>
+          </table>
+          <p class="pub"><span>Publication · IMMERSE, Center for Immersive Computing, UIUC · 2025</span><i>Immersive VR-Based Evaluation of Hands-Free Torso-Driven Control for Virtual Robot Navigation</i>R. E. Fulss, P. Moore, L. Dao, <b>R. Kanzaki</b>, S. Y. Song, M. Tenzer, E. T. Hsiao-Wecksler. Supported by NSF NRI.</p>
+        </div>
+      </article>
 
       <footer class="mfoot">
         <span>Riku Kanzaki · <a href="mailto:rikukanzaki2003@gmail.com">rikukanzaki2003@gmail.com</a></span>
