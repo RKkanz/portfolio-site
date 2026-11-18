@@ -283,7 +283,7 @@ function endPov() {
 // ---------- UI state ----------
 let track = "home", idx = 0, fly = null, follow = null;
 const panel = $("panel"), pBody = $("pBody"), rail = $("rail");
-const HOME_VIEW = { stage: "catch", view: [[6.2, 2.6, 6.4], [-0.6, 0.95, 0]] };   // the first stage in the line, like the first chapter
+const HOME_VIEW = { stage: "catch", view: [[0.4, 2.7, 8.6], [0, 1.05, 0]] };   // the lab is hidden on the landing; park by the first chapter
 
 function mediaHTML(m) {
   if (!m) return "";
@@ -367,6 +367,7 @@ function aimLights(stageKey) {
 
 let rigReady = false;
 function go(t, i = 0, instant = false) {
+  if (track === "home") instant = true;
   track = t; document.body.dataset.track = t;
   if (t === "mechanical") { follow = null; playDiag(false); showMech(typeof i === "string" ? i : null, instant); return; }
   mech.hidden = true;
@@ -374,6 +375,7 @@ function go(t, i = 0, instant = false) {
   if (!list) {
     history.replaceState(null, "", location.pathname + location.search);
     follow = null; endPov();
+    $("loader").classList.add("done");
     if (rigReady) { aimLights(HOME_VIEW.stage); flyTo(viewFor(HOME_VIEW, HOME_VIEW.stage), instant); playDiag(false); }
     return;
   }
@@ -475,7 +477,7 @@ async function boot() {
   if (still) for (const s of Object.values(stage)) for (const f of s.tickers) f(T);
   renderer.setAnimationLoop(() => {
     const raw = clock.getDelta(), dt = Math.min(raw, 0.05);
-    if (document.hidden || !profile.hidden || track === "mechanical") return;
+    if (document.hidden || !profile.hidden || track === "mechanical" || track === "home") return;
     if (!still) {
       T += dt;
       // only the stages near the camera need to move
