@@ -301,3 +301,9 @@ body.no3d #stage { display: none; }
   .choose em { margin-top: 4px; }
   .plain { margin-top: 12px; }
 }
+
+/* publication citation */
+.pub { margin-top: 16px; padding: 12px 14px; border-left: 2px solid var(--sig); background: var(--bg-2); font-size: 13.5px; color: var(--fg-2); }
+.pub span { display: block; margin-bottom: 6px; font: 500 10.5px var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--fg-3); }
+.pub i { display: block; margin-bottom: 4px; font-style: normal; font-weight: 600; color: var(--fg); }
+.pub b { color: var(--fg); font-weight: 600; }
