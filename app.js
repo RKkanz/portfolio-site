@@ -17,6 +17,33 @@ const MEDIA = "assets/media/";
 const CHAPTERS = {
   robotics: [
     {
+      id: "pick", short: "Box pick", stage: "pick", hw: true, view: [[2.3, 1.75, 2.7], [0.15, 0.9, 0]],
+      kick: "Foundation Robotics · 2026", title: "Box pick",
+      lede: "Walk to a table and lift a box with a two-palm squeeze. Pure PPO never reached the box; IK demonstrations did.",
+      spec: [["Boxes lifted (b5)", "72.5%"], ["Boxes picked (b5)", "50%"], ["Eval set", "512 randomized tables"], ["Tests", "21 passing"]],
+      notes: ["IK keyframe demonstrations with gravity-compensation offsets, used to train the staged policy.", "Walker and robot side built and tested."],
+      media: { video: "policies/pick.mp4", cap: "New vs old pick policy" },
+      caption: "Recorded rollout · staged pick policy · 0.72 m table · put-down shown as the lift in reverse",
+    },
+    {
+      id: "diag", short: "Fleet diagnostics", stage: "diag", view: [[0.2, 2.1, 6.6], [0, 1.4, -0.8]],
+      kick: "Foundation Robotics · 2026", title: "Fleet diagnostics",
+      lede: "Tools so the next fault takes minutes instead of days: replay a log, see what failed, get a ranked verdict.",
+      spec: [["Faults root-caused", "20, across 8+ robots"], ["Overwatch", "Live per-actuator fault cards, bus health"], ["recall", "Log replay on the URDF, per-joint charts"], ["robot-triage", "Ranked verdict in ~6 s"]],
+      notes: ["Faults included EtherCAT dropouts, an encoder failing 43% of bring-ups, harness chafe and a 3.4× knee-gain regression.", "/triage runs six subsystem lenses with adversarial verification, ending in one verdict."],
+      media: { shots: ["tools/overwatch-overview.jpg", "tools/recall-loaded.jpg", "tools/robot-triage-terminal.jpg"], cap: "Overwatch · recall · robot-triage (internal details blurred)" },
+      caption: "Real recordings on the monitors: recall, Overwatch, robot-triage · internal details blurred",
+    },
+    {
+      id: "nav", short: "Navigation", stage: "nav", hw: true, view: [[-0.6, 7.6, 9.6], [-1.3, 0, -0.4]],
+      kick: "Foundation Robotics · 2026", title: "Vision navigation",
+      lede: "The mission: given a target, the humanoid walks there on its own using only its head cameras. A stereo occupancy map plans the route, an optional VLM picks the target, and velocity commands drive the walking policy.",
+      spec: [["Camera-tilt error found", "38°"], ["Stereo baseline fix", "×1.43"], ["Pace", "76 commits in 8 days"], ["Safety", "Dead-man switch + watchdog"]],
+      notes: ["Root-caused the planner seeing walls everywhere: tilt off by 38°, baseline 1.43× short.", "Scored software-in-the-loop simulator; NN-free VIO branch (OKVIS2). Rejected neural stereo: floor read 2–3× too near."],
+      media: { img: "policies/nav.png", cap: "SITL mission: through a door, planned path in orange", dark: true },
+      caption: "Mission route from a real navigation run · amber ring = target · walking gait animated",
+    },
+    {
       id: "stairs", short: "Stair climbing", stage: "stairs", hw: true, view: [[3.8, 2.1, 4.6], [-0.2, 0.75, 0]],
       kick: "Foundation Robotics · 2026", title: "Stair-climbing policy",
       lede: "Animator-style RL: keyframe the motion with whole-body IK, then train one policy to imitate it across 24 staircases.",
@@ -34,33 +61,6 @@ const CHAPTERS = {
       notes: ["Arm-pose tables found by overnight CEM search on 3 GPUs, 7-hour runs.", "In the full software-in-the-loop chain, the first throw was caught."],
       media: { video: "policies/catch.mp4", cap: "Catch rollout, run r15 (held)" },
       caption: "From behind the thrower, zoomed on the catching robot · recorded catch rollouts · slowed for the catch",
-    },
-    {
-      id: "pick", short: "Box pick", stage: "pick", hw: true, view: [[2.3, 1.75, 2.7], [0.15, 0.9, 0]],
-      kick: "Foundation Robotics · 2026", title: "Box pick",
-      lede: "Walk to a table and lift a box with a two-palm squeeze. Pure PPO never reached the box; IK demonstrations did.",
-      spec: [["Boxes lifted (b5)", "72.5%"], ["Boxes picked (b5)", "50%"], ["Eval set", "512 randomized tables"], ["Tests", "21 passing"]],
-      notes: ["IK keyframe demonstrations with gravity-compensation offsets, used to train the staged policy.", "Walker and robot side built and tested."],
-      media: { video: "policies/pick.mp4", cap: "New vs old pick policy" },
-      caption: "Recorded rollout · staged pick policy · 0.72 m table · put-down shown as the lift in reverse",
-    },
-    {
-      id: "nav", short: "Navigation", stage: "nav", hw: true, view: [[-0.6, 7.6, 9.6], [-1.3, 0, -0.4]],
-      kick: "Foundation Robotics · 2026", title: "Vision navigation",
-      lede: "The mission: given a target, the humanoid walks there on its own using only its head cameras. A stereo occupancy map plans the route, an optional VLM picks the target, and velocity commands drive the walking policy.",
-      spec: [["Camera-tilt error found", "38°"], ["Stereo baseline fix", "×1.43"], ["Pace", "76 commits in 8 days"], ["Safety", "Dead-man switch + watchdog"]],
-      notes: ["Root-caused the planner seeing walls everywhere: tilt off by 38°, baseline 1.43× short.", "Scored software-in-the-loop simulator; NN-free VIO branch (OKVIS2). Rejected neural stereo: floor read 2–3× too near."],
-      media: { img: "policies/nav.png", cap: "SITL mission: through a door, planned path in orange", dark: true },
-      caption: "Mission route from a real navigation run · amber ring = target · walking gait animated",
-    },
-    {
-      id: "diag", short: "Fleet diagnostics", stage: "diag", view: [[0.2, 2.1, 6.6], [0, 1.4, -0.8]],
-      kick: "Foundation Robotics · 2026", title: "Fleet diagnostics",
-      lede: "Tools so the next fault takes minutes instead of days: replay a log, see what failed, get a ranked verdict.",
-      spec: [["Faults root-caused", "20, across 8+ robots"], ["Overwatch", "Live per-actuator fault cards, bus health"], ["recall", "Log replay on the URDF, per-joint charts"], ["robot-triage", "Ranked verdict in ~6 s"]],
-      notes: ["Faults included EtherCAT dropouts, an encoder failing 43% of bring-ups, harness chafe and a 3.4× knee-gain regression.", "/triage runs six subsystem lenses with adversarial verification, ending in one verdict."],
-      media: { shots: ["tools/overwatch-overview.jpg", "tools/recall-loaded.jpg", "tools/robot-triage-terminal.jpg"], cap: "Overwatch · recall · robot-triage (internal details blurred)" },
-      caption: "Real recordings on the monitors: recall, Overwatch, robot-triage · internal details blurred",
     },
     {
       id: "boat", short: "Autonomous boat", stage: "boat", explode: true, view: [[2.0, 1.6, 2.6], [0.05, 0.9, 0]],
@@ -146,9 +146,11 @@ const DIAG = [
   { video: "tools/recall.mp4", name: "recall · log replay on the URDF", short: "recall" },
   { video: "tools/overwatch.mp4", name: "Overwatch · live per-actuator fault cards", short: "Overwatch" },
   { img: "tools/robot-triage-terminal.jpg", scroll: true, name: "robot-triage · ranked verdict", short: "robot-triage" },   // tall report: scroll it slowly
-];
+].map((d) => ({ ...d, stage: "diag", blurred: true }));
+// the boat's control + hardware stack (from the project deck), on a screen behind the boat: [x, z, yaw, drop] on the stage
+DIAG.push({ img: "boat/control-stack.png", stage: "boat", at: [-0.3, -1.9, 0.18, -0.8], name: "Boat control + hardware stack: camera, GPS and IMU into a Raspberry Pi 5 (OpenCV) and CubeOrange flight controller (ArduPilot), PWM to the ESCs and motors", short: "control stack" });
 function buildDiag() {
-  const g = stage.diag.g, loader = new THREE.TextureLoader();
+  const loader = new THREE.TextureLoader();
   const W = 1.9, H = 1.1;
   const fit = (t, w, h) => { const vis = (w / h) / (W / H); if (vis < 1) { t.repeat.set(1, vis); t.offset.set(0, 1 - vis); } else t.repeat.set(1 / vis, 1); };
   DIAG.forEach((sc, i) => {
@@ -164,15 +166,18 @@ function buildDiag() {
         const vis = (t.image.width / t.image.height) / (W / H);
         if (vis < 1) {
           t.repeat.set(1, vis);
-          stage.diag.tickers.push((tt) => { t.offset.y = (1 - vis) * (0.5 + 0.5 * Math.cos(tt * 0.18)); });
+          stage[sc.stage].tickers.push((tt) => { t.offset.y = (1 - vis) * (0.5 + 0.5 * Math.cos(tt * 0.18)); });
         } else fit(t, t.image.width, t.image.height);
       });
     }
     tex.colorSpace = THREE.SRGBColorSpace;
     const grp = new THREE.Group();
-    const a = (i - 1) * 0.62;                                     // spread on a wide arc behind the robot
-    grp.position.set(Math.sin(a) * 4.2, 0, -Math.cos(a) * 4.2 + 1.8);
-    grp.rotation.y = -a;
+    if (sc.at) { grp.position.set(sc.at[0], sc.at[3] || 0, sc.at[1]); grp.rotation.y = sc.at[2]; }   // optional 4th: drop (post sinks into the floor)
+    else {
+      const a = (i - 1) * 0.62;                                   // diagnostics: spread on a wide arc behind the robot
+      grp.position.set(Math.sin(a) * 4.2, 0, -Math.cos(a) * 4.2 + 1.8);
+      grp.rotation.y = -a;
+    }
     const frame = box(W + 0.1, H + 0.1, 0.05, MAT.prop); frame.position.y = 1.75;
     const scr = new THREE.Mesh(new THREE.PlaneGeometry(W, H), new THREE.MeshBasicMaterial({ map: tex, toneMapped: false }));
     scr.position.set(0, 1.75, 0.03);
@@ -187,32 +192,33 @@ function buildDiag() {
     glow.position.set(0, 1.75, -0.035);
     const edge = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints([[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([x, y]) => new THREE.Vector3(x * (W / 2 + 0.01), 1.75 + y * (H / 2 + 0.01), 0.032))), new THREE.LineBasicMaterial({ color: SIG, transparent: true, opacity: 0.7, toneMapped: false }));
     diagGlows.push([glow, edge]);
-    grp.add(glow, frame, scr, edge, post, foot, tag); g.add(grp);
+    grp.add(glow, frame, scr, edge, post, foot, tag); stage[sc.stage].g.add(grp);
   });
 }
-// the recordings only play while the camera is at the diagnostics stage
-let diagOn = false;
-function playDiag(on) {
-  diagOn = on;
-  for (const v of diagVideos) { if (on) v.play().catch(() => {}); else v.pause(); }
-  for (const t of diagTags) t.visible = on;
+// screens are live (tagged, clickable, recordings playing) only at their own stage
+let screenStage = null;
+function playDiag(on) { setScreens(on ? "diag" : null); }
+function setScreens(st) {
+  screenStage = st;
+  for (const v of diagVideos) { if (st === "diag") v.play().catch(() => {}); else v.pause(); }
+  diagTags.forEach((t, i) => (t.visible = DIAG[i].stage === st));
 }
 
 // click a monitor to open its recording full size (a drag that orbits the camera doesn't count as a click)
 const shot = $("shot"), shotIn = $("shotIn"), shotCap = $("shotCap");
 const ptr = new THREE.Vector2(), ray = new THREE.Raycaster();
 function screenAt(e) {
-  if (!diagOn || !renderer) return null;
+  if (!screenStage || !renderer) return null;
   const r = canvas.getBoundingClientRect();
   ptr.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
   ray.setFromCamera(ptr, camera);
-  return ray.intersectObjects(diagScreens, false)[0]?.object || null;
+  return ray.intersectObjects(diagScreens.filter((m) => m.userData.view.stage === screenStage), false)[0]?.object || null;
 }
 function openShot(sc) {
   shotIn.innerHTML = sc.video
     ? `<video src="${MEDIA + sc.video}" controls autoplay muted loop playsinline></video>`
-    : `<img src="${MEDIA + sc.img}" alt="${esc(sc.name)}">`;
-  shotCap.textContent = sc.name + " · internal details blurred";
+    : `<img class="${sc.scroll ? "" : "fit"}" src="${MEDIA + sc.img}" alt="${esc(sc.name)}">`;
+  shotCap.textContent = sc.name + (sc.blurred ? " · internal details blurred" : "");
   shot.hidden = false;
 }
 function closeShot() { shot.hidden = true; shotIn.innerHTML = ""; }
@@ -384,7 +390,7 @@ function go(t, i = 0, instant = false) {
   const sk = c.stage;
   aimLights(sk);
   follow = c.follow ? stage.nav.robot : null;
-  playDiag(t === "robotics" && c.stage === "diag");
+  setScreens(t === "robotics" ? c.stage : null);
   if (c.pov && stage.catch.state) { pov = stage.catch.state; POV.snap = instant; controls.enabled = false; fly = null; return; }
   endPov();
   flyTo(viewFor(c, sk), instant);

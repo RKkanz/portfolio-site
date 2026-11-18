@@ -206,6 +206,7 @@ body[data-track="mechanical"] #stage, body[data-track="mechanical"] .panel, body
 .shot-in { max-width: min(1400px, 100%); max-height: calc(100vh - 140px); overflow: auto; border: 1px solid var(--line-2); background: #000; }
 .shot-in video, .shot-in img { display: block; width: 100%; height: auto; }
 .shot-in video { max-height: calc(100vh - 142px); }
+.shot-in img.fit { width: auto; max-width: 100%; max-height: calc(100vh - 142px); }   /* wide images fit; the tall report scrolls */
 .shot p { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
 .shot-x { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border: 1px solid var(--line-2); background: var(--bg-2); color: var(--fg); font-size: 20px; cursor: pointer; }
 .shot-x:hover { border-color: var(--sig); color: var(--sig); }
