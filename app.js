@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer.js";
+import { CSS2DRenderer, CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import { MAT, box, loadRollouts, loadRobot, makeRig } from "./assets/lab/core.js";
 import { loadModel, mountViewer } from "./assets/lab/cad.js";
@@ -17,7 +17,7 @@ const MEDIA = "assets/media/";
 const CHAPTERS = {
   robotics: [
     {
-      id: "stairs", short: "Stair climbing", stage: "stairs", view: [[3.8, 2.1, 4.6], [-0.2, 0.75, 0]],
+      id: "stairs", short: "Stair climbing", stage: "stairs", hw: true, view: [[3.8, 2.1, 4.6], [-0.2, 0.75, 0]],
       kick: "Foundation Robotics · 2026", title: "Stair-climbing policy",
       lede: "Animator-style RL: keyframe the motion with whole-body IK, then train one policy to imitate it across 24 staircases.",
       spec: [["Clean climbs (sim)", "21 / 24"], ["Reference clips", "24, up and down"], ["Stair range", "rise 10–19 cm × tread 25–35 cm"], ["Training runs", "16, across 3 GPU hosts"], ["Failure mode found", "10–40 ms sensor latency"]],
@@ -26,31 +26,32 @@ const CHAPTERS = {
       caption: "Recorded rollout · policy v11 · 16 cm rise, 30 cm tread · Mk1.1 kinematics, simplified geometry",
     },
     {
-      id: "catch", short: "Throw & catch", stage: "catch", view: [[0.4, 2.7, 8.6], [0, 1.05, 0]],
+      id: "catch", short: "Throw & catch", stage: "catch", hw: true, pov: true, view: [[0.4, 2.7, 8.6], [0, 1.05, 0]],
       kick: "Foundation Robotics · 2026", title: "Throw & catch",
       lede: "Head cameras track and predict a thrown box; an arm policy brings both palms to it at the right moment.",
       spec: [["Prediction error at catch", "~2 cm"], ["Throw distance", "3.9–4 m"], ["Search", "CEM, 96 throws per candidate"], ["Status", "Deployed on robot"]],
+      steps: [["Track", "The head cameras find the box and follow it in 3D from the moment it leaves the thrower's hands."], ["Predict", "Its flight is fitted on the fly to solve where and when it will arrive (amber ring): ~2 cm error at the catch."], ["Catch", "An arm policy brings both palms to that point at that moment."]],
       notes: ["Arm-pose tables found by overnight CEM search on 3 GPUs, 7-hour runs.", "In the full software-in-the-loop chain, the first throw was caught."],
       media: { video: "policies/catch.mp4", cap: "Catch rollout, run r15 (held)" },
-      caption: "Recorded rollouts · catch policy · two 4 m throws, both caught · throw wind-up animated",
+      caption: "View from the catching robot's head · recorded catch rollouts · throw wind-up animated",
     },
     {
-      id: "pick", short: "Box pick", stage: "pick", view: [[2.3, 1.75, 2.7], [0.15, 0.9, 0]],
+      id: "pick", short: "Box pick", stage: "pick", hw: true, view: [[2.3, 1.75, 2.7], [0.15, 0.9, 0]],
       kick: "Foundation Robotics · 2026", title: "Box pick",
       lede: "Walk to a table and lift a box with a two-palm squeeze. Pure PPO never reached the box; IK demonstrations did.",
       spec: [["Boxes lifted (b5)", "72.5%"], ["Boxes picked (b5)", "50%"], ["Eval set", "512 randomized tables"], ["Tests", "21 passing"]],
       notes: ["IK keyframe demonstrations with gravity-compensation offsets, used to train the staged policy.", "Walker and robot side built and tested."],
       media: { video: "policies/pick.mp4", cap: "New vs old pick policy" },
-      caption: "Recorded rollout · staged pick policy · 0.72 m table",
+      caption: "Recorded rollout · staged pick policy · 0.72 m table · put-down shown as the lift in reverse",
     },
     {
-      id: "nav", short: "Navigation", stage: "nav", follow: true, view: [[3.4, 3.2, 4.4], [0, 0.85, 0]],
+      id: "nav", short: "Navigation", stage: "nav", hw: true, view: [[-0.6, 7.6, 9.6], [-1.3, 0, -0.4]],
       kick: "Foundation Robotics · 2026", title: "Vision navigation",
-      lede: "The humanoid walks to targets using only its head cameras: stereo occupancy map, optional VLM targeting, velocity commands to the walking policy.",
+      lede: "The mission: given a target, the humanoid walks there on its own using only its head cameras. A stereo occupancy map plans the route, an optional VLM picks the target, and velocity commands drive the walking policy.",
       spec: [["Camera-tilt error found", "38°"], ["Stereo baseline fix", "×1.43"], ["Pace", "76 commits in 8 days"], ["Safety", "Dead-man switch + watchdog"]],
       notes: ["Root-caused the planner seeing walls everywhere: tilt off by 38°, baseline 1.43× short.", "Scored software-in-the-loop simulator; NN-free VIO branch (OKVIS2). Rejected neural stereo: floor read 2–3× too near."],
       media: { img: "policies/nav.png", cap: "SITL mission: through a door, planned path in orange", dark: true },
-      caption: "Recorded commands from a real navigation run · walking policy · 2.5× speed",
+      caption: "Mission route from a real navigation run · amber ring = target · walking gait animated",
     },
     {
       id: "diag", short: "Fleet diagnostics", stage: "diag", view: [[0.2, 2.1, 6.6], [0, 1.4, -0.8]],
@@ -59,7 +60,7 @@ const CHAPTERS = {
       spec: [["Faults root-caused", "20, across 8+ robots"], ["Overwatch", "Live per-actuator fault cards, bus health"], ["recall", "Log replay on the URDF, per-joint charts"], ["robot-triage", "Ranked verdict in ~6 s"]],
       notes: ["Faults included EtherCAT dropouts, an encoder failing 43% of bring-ups, harness chafe and a 3.4× knee-gain regression.", "/triage runs six subsystem lenses with adversarial verification, ending in one verdict."],
       media: { shots: ["tools/overwatch-overview.jpg", "tools/recall-loaded.jpg", "tools/robot-triage-terminal.jpg"], cap: "Overwatch · recall · robot-triage (internal details blurred)" },
-      caption: "Real recordings on the monitors: recall, Overwatch, robot-triage · click a monitor to open it · internal details blurred",
+      caption: "Real recordings on the monitors: recall, Overwatch, robot-triage · internal details blurred",
     },
     {
       id: "boat", short: "Autonomous boat", stage: "boat", explode: true, view: [[2.0, 1.6, 2.6], [0.05, 0.9, 0]],
@@ -140,17 +141,17 @@ for (const k of Object.keys(STAGES)) {
 }
 
 // ---------- diagnostics stage: three monitors playing the real tool recordings (internal details blurred) ----------
-const diagVideos = [], diagScreens = [];
+const diagVideos = [], diagScreens = [], diagTags = [], diagGlows = [];
+const DIAG = [
+  { video: "tools/recall.mp4", name: "recall · log replay on the URDF", short: "recall" },
+  { video: "tools/overwatch.mp4", name: "Overwatch · live per-actuator fault cards", short: "Overwatch" },
+  { img: "tools/robot-triage-terminal.jpg", scroll: true, name: "robot-triage · ranked verdict", short: "robot-triage" },   // tall report: scroll it slowly
+];
 function buildDiag() {
   const g = stage.diag.g, loader = new THREE.TextureLoader();
   const W = 1.9, H = 1.1;
   const fit = (t, w, h) => { const vis = (w / h) / (W / H); if (vis < 1) { t.repeat.set(1, vis); t.offset.set(0, 1 - vis); } else t.repeat.set(1 / vis, 1); };
-  const screens = [
-    { video: "tools/recall.mp4", name: "recall · log replay on the URDF" },
-    { video: "tools/overwatch.mp4", name: "Overwatch · live per-actuator fault cards" },
-    { img: "tools/robot-triage-terminal.jpg", scroll: true, name: "robot-triage · ranked verdict" },   // tall report: scroll it slowly
-  ];
-  screens.forEach((sc, i) => {
+  DIAG.forEach((sc, i) => {
     let tex;
     if (sc.video) {
       const v = document.createElement("video");
@@ -178,12 +179,24 @@ function buildDiag() {
     scr.userData.view = sc; diagScreens.push(scr);
     const post = box(0.06, 1.2, 0.06, MAT.prop); post.position.y = 0.6;
     const foot = box(0.5, 0.03, 0.32, MAT.prop); foot.position.y = 0.015;
-    grp.add(frame, scr, post, foot); g.add(grp);
+    const tagEl = document.createElement("div"); tagEl.className = "tag";
+    tagEl.textContent = "Click to open ↗";
+    const tag = new CSS2DObject(tagEl); tag.position.set(0, 1.75 + H / 2 + 0.16, 0.03); tag.visible = false; diagTags.push(tag);
+    // amber edge glow around the screen says "this opens"; it brightens under the cursor
+    const glow = new THREE.Mesh(new THREE.PlaneGeometry(W + 0.24, H + 0.24), new THREE.MeshBasicMaterial({ color: SIG, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
+    glow.position.set(0, 1.75, -0.035);
+    const edge = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints([[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([x, y]) => new THREE.Vector3(x * (W / 2 + 0.01), 1.75 + y * (H / 2 + 0.01), 0.032))), new THREE.LineBasicMaterial({ color: SIG, transparent: true, opacity: 0.7, toneMapped: false }));
+    diagGlows.push([glow, edge]);
+    grp.add(glow, frame, scr, edge, post, foot, tag); g.add(grp);
   });
 }
 // the recordings only play while the camera is at the diagnostics stage
 let diagOn = false;
-function playDiag(on) { diagOn = on; for (const v of diagVideos) { if (on) v.play().catch(() => {}); else v.pause(); } }
+function playDiag(on) {
+  diagOn = on;
+  for (const v of diagVideos) { if (on) v.play().catch(() => {}); else v.pause(); }
+  for (const t of diagTags) t.visible = on;
+}
 
 // click a monitor to open its recording full size (a drag that orbits the camera doesn't count as a click)
 const shot = $("shot"), shotIn = $("shotIn"), shotCap = $("shotCap");
@@ -209,9 +222,55 @@ canvas.addEventListener("pointerup", (e) => {
   if (!downAt || Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 6) return;
   const s = screenAt(e); if (s) openShot(s.userData.view);
 });
-canvas.addEventListener("pointermove", (e) => { if (!e.buttons) canvas.style.cursor = screenAt(e) ? "pointer" : ""; });
+canvas.addEventListener("pointermove", (e) => {
+  if (e.buttons) return;
+  const s = screenAt(e);
+  canvas.style.cursor = s ? "pointer" : "";
+  diagTags.forEach((t, i) => t.element.classList.toggle("hot", s === diagScreens[i]));
+  diagGlows.forEach(([glow, edge], i) => { const on = s === diagScreens[i]; glow.material.opacity = on ? 0.5 : 0.22; edge.material.opacity = on ? 1 : 0.7; });
+});
 $("shotClose").onclick = closeShot;
 shot.addEventListener("click", (e) => { if (e.target === shot) closeShot(); });
+
+// ---------- catch: the view from the catching robot's head, zoomed on the box ----------
+let pov = null;                                                 // the catch scene's live state while the chapter is open
+const POV = { look: new THREE.Vector3(), catcher: null, snap: true };
+const hud = document.createElement("div"); hud.className = "hud"; hud.hidden = true;
+hud.innerHTML = '<i class="ret"></i><span></span>'; document.body.appendChild(hud);
+const hudRet = hud.querySelector(".ret"), hudTxt = hud.querySelector("span");
+const LAB_FOV = 34, va = new THREE.Vector3(), vb = new THREE.Vector3();
+function povStep() {
+  const s = pov, head = s.catcher.links.Head.getWorldPosition(va), b = s.box.getWorldPosition(vb);
+  const dir = b.clone().sub(head), d = dir.length(); dir.normalize();
+  // just behind and over one shoulder, so the box and the robot's own palms stay in frame as they meet
+  const flat = new THREE.Vector3(dir.x, 0, dir.z).normalize();
+  const side = new THREE.Vector3(-flat.z, 0, flat.x);            // over the right shoulder, clear of the head
+  const eye = head.clone().addScaledVector(flat, -0.5).addScaledVector(side, 0.4).add(new THREE.Vector3(0, 0.26, 0));
+  const de = eye.distanceTo(b);
+  // wide while the throw winds up, then zoom so the box holds its size, then open up to show the palms close on it
+  const fov = s.phase === "wind" || s.phase === "release" ? 44 : s.phase === "caught" ? 52 : THREE.MathUtils.clamp(THREE.MathUtils.radToDeg(2 * Math.atan(0.5 / de)), 12, 52);
+  const snap = POV.snap || POV.catcher !== s.catcher;
+  POV.catcher = s.catcher; POV.snap = false;
+  if (snap) { camera.position.copy(eye); POV.look.copy(b); camera.fov = fov; }
+  else { camera.position.lerp(eye, 0.25); POV.look.lerp(b, 0.3); camera.fov += (fov - camera.fov) * 0.12; }
+  camera.updateProjectionMatrix();
+  camera.lookAt(POV.look); controls.target.copy(POV.look);
+  // reticle on the box, and which step of the pipeline is running
+  const p = b.clone().project(camera), W = innerWidth, H = innerHeight;
+  const px = Math.max(26, (0.34 / (2 * Math.max(de, 0.2) * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)))) * H);
+  const step = s.phase === "caught" ? 2 : s.phase === "flight" ? 1 : 0;
+  hud.hidden = p.z > 1;
+  hud.style.transform = `translate(${((p.x + 1) / 2) * W}px, ${((1 - p.y) / 2) * H}px)`;
+  hudRet.style.width = hudRet.style.height = Math.min(px, 260) + "px";
+  hudTxt.textContent = ["01 Track · box in view", `02 Predict · ${s.dist.toFixed(1)} m to catch point`, "03 Catch"][step];
+  hud.dataset.step = step;
+  pBody.querySelectorAll(".steps li").forEach((li) => li.classList.toggle("on", +li.dataset.step === step));
+}
+function endPov() {
+  if (!pov) return;
+  pov = null; hud.hidden = true; controls.enabled = true;
+  camera.fov = LAB_FOV; camera.updateProjectionMatrix();
+}
 
 // ---------- UI state ----------
 let track = "home", idx = 0, fly = null, follow = null;
@@ -227,7 +286,8 @@ function mediaHTML(m) {
   return `<figure class="${m.paper ? "paper" : ""}"><a href="${MEDIA + m.img}" target="_blank" rel="noopener"><img src="${MEDIA + m.img}" alt="${esc(m.cap)}" loading="lazy"></a>${cap}</figure>`;
 }
 function chapterHTML(c) {
-  return `<p class="kick">${esc(c.kick)}</p><h2>${esc(c.title)}</h2><p class="lede">${esc(c.lede)}</p>
+  return `<p class="kick">${esc(c.kick)}${c.hw ? `<span class="hwtag">Tested on hardware</span>` : ""}</p><h2>${esc(c.title)}</h2><p class="lede">${esc(c.lede)}</p>
+    ${c.steps ? `<ol class="steps">${c.steps.map(([h, x], i) => `<li data-step="${i}"><b><i>${String(i + 1).padStart(2, "0")}</i>${esc(h)}</b>${esc(x)}</li>`).join("")}</ol>` : ""}
     ${c.explode ? `<div class="explode"><label><span>Assembled</span><b id="exVal">${Math.round(boatT * 100)}%</b><span>Exploded</span></label><input type="range" id="labExplode" min="0" max="1000" value="${Math.round(boatT * 1000)}" aria-label="Explode the boat assembly"></div>` : ""}
     <table class="spec">${c.spec.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}</table>
     ${c.notes.length ? `<ul class="notes">${c.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}
@@ -305,7 +365,7 @@ function go(t, i = 0, instant = false) {
   const list = CHAPTERS[t];
   if (!list) {
     history.replaceState(null, "", location.pathname + location.search);
-    follow = null;
+    follow = null; endPov();
     if (rigReady) { aimLights("stairs"); flyTo(viewFor(HOME_VIEW, "stairs"), instant); playDiag(false); }
     return;
   }
@@ -323,6 +383,8 @@ function go(t, i = 0, instant = false) {
   aimLights(sk);
   follow = c.follow ? stage.nav.robot : null;
   playDiag(t === "robotics" && c.stage === "diag");
+  if (c.pov && stage.catch.state) { pov = stage.catch.state; POV.snap = instant; controls.enabled = false; fly = null; return; }
+  endPov();
   flyTo(viewFor(c, sk), instant);
 }
 
@@ -383,7 +445,7 @@ async function boot() {
   $("loadPct").textContent = "100%";
   const rig = makeRig(ROLL);
   rig.buildStairs(stage.stairs.sim, R(), R(), stage.stairs.tickers);
-  rig.buildCatch(stage.catch.sim, R(), R(), stage.catch.tickers);
+  stage.catch.state = rig.buildCatch(stage.catch.sim, R(), R(), stage.catch.tickers).state;
   rig.buildPick(stage.pick.sim, R(), stage.pick.tickers);
   const walker = R(); rig.buildNav(stage.nav.sim, walker, stage.nav.tickers); stage.nav.robot = walker;
   const stand = (k, pos = [0, 0]) => {
@@ -411,7 +473,9 @@ async function boot() {
       // only the stages near the camera need to move
       for (const [k, s] of Object.entries(stage)) if (camera.position.distanceTo(STAGES[k]) < 30) for (const f of s.tickers) f(T);
     }
-    if (fly) {
+    if (pov) {
+      povStep();
+    } else if (fly) {
       fly.t = Math.min(1, fly.t + Math.min(raw, 0.25) / fly.dur);
       const e = fly.t < 0.5 ? 4 * fly.t ** 3 : 1 - (-2 * fly.t + 2) ** 3 / 2;
       camera.position.lerpVectors(fly.p0, fly.p1, e);
@@ -424,7 +488,7 @@ async function boot() {
       key.position.add(d); key.target.position.add(d); rim.position.add(d); rim.target.position.add(d);
     }
     frameOffset();
-    controls.update();
+    if (!pov) controls.update();
     renderer.render(scene, camera);
     labels.render(scene, camera);
   });
