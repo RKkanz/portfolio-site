@@ -191,6 +191,14 @@ body[data-track="mechanical"] #stage, body[data-track="mechanical"] .panel, body
 /* profile sheet */
 .sheet { position: fixed; z-index: 40; inset: 0; overflow-y: auto; background: #0a0b0c; }
 .sheet[hidden] { display: none; }
+.shot { position: fixed; z-index: 45; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 64px 24px 24px; background: rgba(6, 7, 8, .94); }
+.shot[hidden] { display: none; }
+.shot-in { max-width: min(1400px, 100%); max-height: calc(100vh - 140px); overflow: auto; border: 1px solid var(--line-2); background: #000; }
+.shot-in video, .shot-in img { display: block; width: 100%; height: auto; }
+.shot-in video { max-height: calc(100vh - 142px); }
+.shot p { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
+.shot-x { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border: 1px solid var(--line-2); background: var(--bg-2); color: var(--fg); font-size: 20px; cursor: pointer; }
+.shot-x:hover { border-color: var(--sig); color: var(--sig); }
 .sheet-in { position: relative; max-width: 920px; margin: 0 auto; padding: 72px 32px 96px; }
 .close { position: absolute; top: 24px; right: 32px; font: 500 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--fg-2); }
 .close:hover { color: var(--fg); }

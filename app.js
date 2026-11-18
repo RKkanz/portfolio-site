@@ -58,7 +58,7 @@ const CHAPTERS = {
       spec: [["Faults root-caused", "20, across 8+ robots"], ["Overwatch", "Live per-actuator fault cards, bus health"], ["recall", "Log replay on the URDF, per-joint charts"], ["robot-triage", "Ranked verdict in ~6 s"]],
       notes: ["Faults included EtherCAT dropouts, an encoder failing 43% of bring-ups, harness chafe and a 3.4× knee-gain regression.", "/triage runs six subsystem lenses with adversarial verification, ending in one verdict."],
       media: { shots: ["tools/overwatch-overview.jpg", "tools/recall-loaded.jpg", "tools/robot-triage-terminal.jpg"], cap: "Overwatch · recall · robot-triage (internal details blurred)" },
-      caption: "Real recordings on the monitors: recall, Overwatch, robot-triage · internal details blurred",
+      caption: "Real recordings on the monitors: recall, Overwatch, robot-triage · click a monitor to open it · internal details blurred",
     },
     {
       id: "boat", short: "Autonomous boat", stage: "boat", explode: true, view: [[2.0, 1.6, 2.6], [0.05, 0.9, 0]],
@@ -139,15 +139,15 @@ for (const k of Object.keys(STAGES)) {
 }
 
 // ---------- diagnostics stage: three monitors playing the real tool recordings (internal details blurred) ----------
-const diagVideos = [];
+const diagVideos = [], diagScreens = [];
 function buildDiag() {
   const g = stage.diag.g, loader = new THREE.TextureLoader();
   const W = 1.9, H = 1.1;
   const fit = (t, w, h) => { const vis = (w / h) / (W / H); if (vis < 1) { t.repeat.set(1, vis); t.offset.set(0, 1 - vis); } else t.repeat.set(1 / vis, 1); };
   const screens = [
-    { video: "tools/recall.mp4" },
-    { video: "tools/overwatch.mp4" },
-    { img: "tools/robot-triage-terminal.jpg", scroll: true },     // tall report: scroll it slowly
+    { video: "tools/recall.mp4", name: "recall · log replay on the URDF" },
+    { video: "tools/overwatch.mp4", name: "Overwatch · live per-actuator fault cards" },
+    { img: "tools/robot-triage-terminal.jpg", scroll: true, name: "robot-triage · ranked verdict" },   // tall report: scroll it slowly
   ];
   screens.forEach((sc, i) => {
     let tex;
@@ -174,13 +174,43 @@ function buildDiag() {
     const frame = box(W + 0.1, H + 0.1, 0.05, MAT.prop); frame.position.y = 1.75;
     const scr = new THREE.Mesh(new THREE.PlaneGeometry(W, H), new THREE.MeshBasicMaterial({ map: tex, toneMapped: false }));
     scr.position.set(0, 1.75, 0.03);
+    scr.userData.view = sc; diagScreens.push(scr);
     const post = box(0.06, 1.2, 0.06, MAT.prop); post.position.y = 0.6;
     const foot = box(0.5, 0.03, 0.32, MAT.prop); foot.position.y = 0.015;
     grp.add(frame, scr, post, foot); g.add(grp);
   });
 }
 // the recordings only play while the camera is at the diagnostics stage
-function playDiag(on) { for (const v of diagVideos) { if (on) v.play().catch(() => {}); else v.pause(); } }
+let diagOn = false;
+function playDiag(on) { diagOn = on; for (const v of diagVideos) { if (on) v.play().catch(() => {}); else v.pause(); } }
+
+// click a monitor to open its recording full size (a drag that orbits the camera doesn't count as a click)
+const shot = $("shot"), shotIn = $("shotIn"), shotCap = $("shotCap");
+const ptr = new THREE.Vector2(), ray = new THREE.Raycaster();
+function screenAt(e) {
+  if (!diagOn || !renderer) return null;
+  const r = canvas.getBoundingClientRect();
+  ptr.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  ray.setFromCamera(ptr, camera);
+  return ray.intersectObjects(diagScreens, false)[0]?.object || null;
+}
+function openShot(sc) {
+  shotIn.innerHTML = sc.video
+    ? `<video src="${MEDIA + sc.video}" controls autoplay muted loop playsinline></video>`
+    : `<img src="${MEDIA + sc.img}" alt="${esc(sc.name)}">`;
+  shotCap.textContent = sc.name + " · internal details blurred";
+  shot.hidden = false;
+}
+function closeShot() { shot.hidden = true; shotIn.innerHTML = ""; }
+let downAt = null;
+canvas.addEventListener("pointerdown", (e) => (downAt = [e.clientX, e.clientY]));
+canvas.addEventListener("pointerup", (e) => {
+  if (!downAt || Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 6) return;
+  const s = screenAt(e); if (s) openShot(s.userData.view);
+});
+canvas.addEventListener("pointermove", (e) => { if (!e.buttons) canvas.style.cursor = screenAt(e) ? "pointer" : ""; });
+$("shotClose").onclick = closeShot;
+shot.addEventListener("click", (e) => { if (e.target === shot) closeShot(); });
 
 // ---------- UI state ----------
 let track = "home", idx = 0, fly = null, follow = null;
@@ -308,6 +338,7 @@ const closeProfile = () => { profile.hidden = true; };
 $("openProfile").onclick = openProfile; $("openProfile2").onclick = openProfile; $("closeProfile").onclick = closeProfile;
 profile.addEventListener("click", (e) => { if (e.target === profile) closeProfile(); });
 addEventListener("keydown", (e) => {
+  if (!shot.hidden) { if (e.key === "Escape") closeShot(); return; }
   if (!profile.hidden) { if (e.key === "Escape") closeProfile(); return; }
   if (track === "home") return;
   if (e.key === "Escape") go("home");
